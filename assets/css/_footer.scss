@@ -1,0 +1,88 @@
+/*####################################
+# ==Footer
+####################################*/
+.footer-wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.page-footer {
+  background-color: #f1f1f1;
+  color: inherit;
+}
+#footer {
+  margin-bottom:20px;
+}
+
+#footer a {
+  background-color:inherit;
+  color:inherit;
+  text-decoration:underline;
+}
+
+#footer a:hover {
+  background-color:inherit;
+  color:#005580;
+}
+
+/* bottom */
+#links {
+  padding: 15px;
+  font-size:smaller;
+  line-height:1;
+}
+
+#links .row {
+  margin-bottom:0;
+}
+
+.links {
+  margin:10px 0 10px;
+  padding:0;
+  list-style-type:none;
+}
+
+.links a {
+  overflow:hidden;
+  width:100%;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-weight:400;
+  line-height:1.5;
+}
+
+#corporate {
+  background-color:#b8dd1f;
+  color:inherit;
+  font-size:smaller;
+}
+
+#corporate .row {
+  margin-bottom:0;
+}
+
+#corporate_links {
+  margin:0;
+  padding:15px 0 0;
+  list-style-type:none;
+}
+
+#corporate_links .row > div {
+  line-height:19px;
+}
+
+#corporate_links a {
+  display:block;
+  color:#1e1e1e;
+  text-align:center;
+}
+
+#social {
+  margin:0;
+  padding:0;
+  list-style-type:none;
+}
+
+#social .row > div {
+  line-height:46px;
+}

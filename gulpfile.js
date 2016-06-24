@@ -83,9 +83,9 @@ gulp.task('js', function(){
             config.scriptsDir       + '/debug.js',
         ])
         .pipe(concat('app.js'))
-        .pipe(gulp.dest(config.jsPublicDir))
         .pipe(stripComments())
         .pipe(uglify())
+        .pipe(gulp.dest(config.jsPublicDir))
     ;
 });
 
