@@ -1,0 +1,29 @@
+# Example For Custom template
+# Custom action : EntityController
+# Still keep "list" default action fields config (WIP)
+
+# SearchLog:
+#     class: AppBundle\Entity\SearchLog
+#     controller: AppBundle\Admin\SearchLogController
+#     disabled_actions: ['delete', 'edit']
+#     list:
+#         fields: ['id', 'search', 'results', 'created_at']
+#     without_results:
+#         fields: ['id', 'search', 'results']
+#     templates:
+#         without_results: 'easy_admin/SearchLog/without_results.html.twig'
+
+easy_admin:
+    entities:
+        User:
+            class: AppBundle\Entity\User
+
+    site_name: '<img src="https://diplomeo-static.com/media/diplomeo-logo-blanc-min.svg" alt="Logo Diplomeo" width="120" height="25">'
+
+    # Useless if use of custom layout with gulp
+    # design:
+    #     assets:
+    #         css:
+    #             - 'css/backend.css'
+    #         js:
+    #             - 'js/backend.js'
