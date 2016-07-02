@@ -5,6 +5,8 @@ AppBundle\Entity\User:
     oneToOne:
         user_profile:
             targetEntity: AppBundle\Entity\UserProfile
+            joinColumn: profileId
+            referencedColumnName: id
             cascade:
                 - persist
     id:
@@ -13,4 +15,7 @@ AppBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
+    fields:
+        profileId:
+            type: integer
     lifecycleCallbacks: {  }
