@@ -28,12 +28,13 @@ var config = {
 var watchPaths = {
     stylesheets: ['assets/css/*.scss'],
     scripts:     ['assets/js/*.js'],
+    medias:      ['assets/media/**/*'],
 };
 
 /*
 * Default - prepare all assets
 */
-gulp.task('default',['css','js','font']);
+gulp.task('default',['css','js','font', 'media']);
 
 /*
 * CSS
@@ -87,6 +88,14 @@ gulp.task('js', function(){
         .pipe(uglify())
         .pipe(gulp.dest(config.jsPublicDir))
     ;
+});
+
+/*
+* Images from assets to dist
+*/
+gulp.task('media', function(){
+    gulp.src(config.mediasDir + '/**/*')
+        .pipe(gulp.dest(config.mediaPublicDir));
 });
 
 /*
