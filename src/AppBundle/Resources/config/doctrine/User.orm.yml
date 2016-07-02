@@ -18,4 +18,5 @@ AppBundle\Entity\User:
     fields:
         profileId:
             type: integer
+            nullable: true
     lifecycleCallbacks: {  }
