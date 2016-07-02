@@ -1,0 +1,51 @@
+AppBundle\Entity\UserProfile:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\UserProfileRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        avatar:
+            type: string
+            length: 255
+            nullable: true
+        cover:
+            type: string
+            length: 255
+            nullable: true
+        facebook:
+            type: string
+            length: 255
+            nullable: true
+        twitter:
+            type: string
+            length: 255
+            nullable: true
+        website:
+            type: string
+            length: 255
+            nullable: true
+        biographie:
+            type: text
+            nullable: true
+        favoriteBook:
+            type: string
+            length: 255
+            nullable: true
+            column: favorite_book
+        inspiration:
+            type: string
+            length: 255
+            nullable: true
+        style:
+            type: string
+            length: 255
+            nullable: true
+        experience:
+            type: text
+            nullable: true
+    lifecycleCallbacks: {  }
