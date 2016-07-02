@@ -50,4 +50,33 @@ class User extends BaseUser
     {
         return $this->credentialsExpireAt;
     }
+    /**
+     * @var \AppBundle\Entity\UserProfile
+     */
+    private $user_profile;
+
+
+    /**
+     * Set userProfile
+     *
+     * @param \AppBundle\Entity\UserProfile $userProfile
+     *
+     * @return User
+     */
+    public function setUserProfile(\AppBundle\Entity\UserProfile $userProfile = null)
+    {
+        $this->user_profile = $userProfile;
+
+        return $this;
+    }
+
+    /**
+     * Get userProfile
+     *
+     * @return \AppBundle\Entity\UserProfile
+     */
+    public function getUserProfile()
+    {
+        return $this->user_profile;
+    }
 }

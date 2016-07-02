@@ -39,6 +39,8 @@ framework:
                base_path: '/dist/js'
             css:
                base_path: '/dist/css'
+            media:
+               base_path: '/dist/media'
 
 # Twig Configuration
 twig:

@@ -24,6 +24,7 @@ var config = {
     fontPublictDir: 'web/dist/font',
     jsPublicDir:    'web/dist/js',
     mediaPublicDir: 'web/dist/media',
+    mediasDir:      'assets/media',
 };
 var watchPaths = {
     stylesheets: ['assets/css/*.scss'],
@@ -104,4 +105,5 @@ gulp.task('media', function(){
 gulp.task('watch', function(){
     gulp.watch(watchPaths.stylesheets, ['css']);
     gulp.watch(watchPaths.scripts, ['js']);
+    gulp.watch(watchPaths.medias, ['media']);
 });

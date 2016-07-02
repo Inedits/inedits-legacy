@@ -14,7 +14,7 @@ security:
             memory: ~
 
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -36,10 +36,14 @@ security:
             anonymous:    true
 
     access_control:
+        # ANONYMOUS
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        # USER
+        - { path: ^/profile/, role: ROLE_USER }
+        # ADMIN
+        - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'

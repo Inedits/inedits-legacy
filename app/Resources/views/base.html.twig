@@ -14,8 +14,12 @@
 
         <title>{{ project_name }} | {% block title %}{% endblock %}</title>
     </head>
-    {% block bodyTag %}<body>{% endblock %}
+    <body class="{% block body_class %}layout-main{% endblock %}">
+        {# NAVBAR #}
+        {{ include('frontend/_navbar.html.twig', with_context = false) }}
+        {# BODY #}
         {% block body %}{% endblock %}
+        {# JAVASCRIPTS #}
         {% block javascripts %}
             <script src="{{ asset('app.js','js') }}" async></script>
         {% endblock %}

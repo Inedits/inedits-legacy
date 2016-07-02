@@ -1,6 +1,10 @@
 // Fonts
 $icon-font-path: '../font/';
 
+// Vendor
 @import "_bootstrap";
 @import "_responsive_text_center";
+
+// Frontend
+@import "_navbar";
 @import "main";

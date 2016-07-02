@@ -2,6 +2,11 @@ AppBundle\Entity\User:
     type: entity
     table: null
     repositoryClass: AppBundle\Repository\UserRepository
+    oneToOne:
+        user_profile:
+            targetEntity: AppBundle\Entity\UserProfile
+            cascade:
+                - persist
     id:
         id:
             type: integer
