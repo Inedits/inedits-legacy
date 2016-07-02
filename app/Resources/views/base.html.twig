@@ -14,12 +14,8 @@
 
         <title>{{ project_name }} | {% block title %}{% endblock %}</title>
     </head>
-    {% block bodyTag %}
-        <body>
-    {% endblock %}
-        <div id="main-wrapper">
-            {% block body %}{% endblock %}
-        </div>
+    {% block bodyTag %}<body>{% endblock %}
+        {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('app.js','js') }}" async></script>
         {% endblock %}
