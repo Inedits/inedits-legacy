@@ -14,19 +14,16 @@
         </div>
         <div class="col-sm-8">
             <section>
-                <header>
-                    {% if app.user.userProfile.biographie is not empty %}
-                        <p class="h3">
-                            Biographie
-                        </p>
-                        <p>{{ app.user.userProfile.biographie }}</p>
-                    {% endif %}
-                </header>
                 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-                    {{ form_widget(form) }}
-                    <div>
+
+                    {{ form_row(form.userProfile.biographie) }}
+
+                    {{ form_rest(form) }}
+
+                    <div class="form-group">
                         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
                     </div>
+
                 {{ form_end(form) }}
             </section>
         </div>
