@@ -5,6 +5,7 @@ AppBundle\Entity\User:
     oneToOne:
         user_profile:
             targetEntity: AppBundle\Entity\UserProfile
+            inversedBy: user
             joinColumn: profileId
             referencedColumnName: id
             cascade:
@@ -16,7 +17,10 @@ AppBundle\Entity\User:
             generator:
                 strategy: AUTO
     fields:
-        profileId:
-            type: integer
-            nullable: true
+        firstName:
+            type: string
+            length: 255
+        lastName:
+            type: string
+            length: 255
     lifecycleCallbacks: {  }

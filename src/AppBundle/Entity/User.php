@@ -15,6 +15,12 @@ class User extends BaseUser
         return $this->username;
     }
 
+    // To Remove Username Field In Form
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
+
     /**
      * @var int
      */
@@ -66,6 +72,7 @@ class User extends BaseUser
     public function setUserProfile(\AppBundle\Entity\UserProfile $userProfile = null)
     {
         $this->user_profile = $userProfile;
+        $userProfile->setUser($this);
 
         return $this;
     }
@@ -107,5 +114,63 @@ class User extends BaseUser
     public function getProfileId()
     {
         return $this->profileId;
+    }
+    /**
+     * @var string
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     */
+    private $lastName;
+
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
     }
 }

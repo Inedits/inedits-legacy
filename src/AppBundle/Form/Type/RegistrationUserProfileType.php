@@ -10,7 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserProfileType extends AbstractType
+class RegistrationUserProfileType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -19,24 +19,6 @@ class UserProfileType extends AbstractType
     {
         $builder
             ->add('biographie', Types\TextareaType::class, [
-                'required' => false,
-            ])
-            ->add('facebook', Types\TextType::class, [
-                'required' => false,
-            ])
-            ->add('twitter', Types\TextType::class, [
-                'required' => false,
-            ])
-            ->add('website', Types\TextType::class, [
-                'required' => false,
-            ])
-            ->add('style', Types\TextType::class, [
-                'required' => false,
-            ])
-            ->add('experience', Types\TextareaType::class, [
-                'required' => false,
-            ])
-            ->add('favoriteBook', Types\TextType::class, [
                 'required' => false,
             ])
         ;

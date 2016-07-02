@@ -62,6 +62,10 @@ class UserProfile
      */
     private $experience;
 
+    public function __toString()
+    {
+        return 'coucou';
+    }
 
     /**
      * Get id
@@ -312,62 +316,63 @@ class UserProfile
     {
         return $this->experience;
     }
+
     /**
-     * @var string
+     * @var integer
      */
-    private $firstName;
-
+    private $userId;
     /**
-     * @var string
-     */
-    private $lastName;
-
-
-    /**
-     * Set firstName
+     * Set userId
      *
-     * @param string $firstName
+     * @param integer $userId
      *
      * @return UserProfile
      */
-    public function setFirstName($firstName)
+    public function setUserId($userId)
     {
-        $this->firstName = $firstName;
+        $this->user_id = $userId;
 
         return $this;
     }
 
     /**
-     * Get firstName
+     * Get userId
      *
-     * @return string
+     * @return integer
      */
-    public function getFirstName()
+    public function getUserId()
     {
-        return $this->firstName;
+        return $this->user_id;
     }
 
     /**
-     * Set lastName
+     * @var \AppBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * Set user
      *
-     * @param string $lastName
+     * @param \AppBundle\Entity\User $user
      *
      * @return UserProfile
      */
-    public function setLastName($lastName)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
-        $this->lastName = $lastName;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get lastName
+     * Get user
      *
-     * @return string
+     * @return \AppBundle\Entity\User
      */
-    public function getLastName()
+    public function getUser()
     {
-        return $this->lastName;
+        return $this->user;
     }
+
+
 }

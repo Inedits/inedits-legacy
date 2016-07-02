@@ -2,6 +2,12 @@ AppBundle\Entity\UserProfile:
     type: entity
     table: null
     repositoryClass: AppBundle\Repository\UserProfileRepository
+    oneToOne:
+        user:
+            targetEntity: AppBundle\Entity\User
+            mappedBy: user_profile
+            cascade:
+                - remove
     id:
         id:
             type: integer
@@ -9,12 +15,6 @@ AppBundle\Entity\UserProfile:
             generator:
                 strategy: AUTO
     fields:
-        firstName:
-            type: string
-            length: 255
-        lastName:
-            type: string
-            length: 255
         avatar:
             type: string
             length: 255
