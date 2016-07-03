@@ -1,7 +1,7 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block player %}
-    {{ include('frontend/_player.html.twig', { message: app.user.username }, with_context = false) }}
+    {{ include('frontend/_player.html.twig', { message: app.user.firstName ~' '~ app.user.lastName }, with_context = false) }}
 {% endblock %}
 
 {% block fos_user_content %}

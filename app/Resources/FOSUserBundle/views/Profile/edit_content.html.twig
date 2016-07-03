@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-4">
             <a href="{{ path('fos_user_profile_show') }}">Mon profil</a>
-            {% if app.user.userProfile.facebook is not empty or app.user.userProfile.twitter is not empty or app.user.userProfile.website is not empty%}
+            {% if app.user.userProfile.facebook is not empty and app.user.userProfile.twitter is not empty and app.user.userProfile.website is not empty%}
                 <ul class="nav nav-sidebar">
                     <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
                     <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
@@ -16,15 +16,146 @@
             <section>
                 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
-                    {{ form_row(form.userProfile.biographie) }}
-
-                    {{ form_rest(form) }}
-
-                    <div class="form-group">
-                        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group text-left">
+                                {{ form_row(form.userProfile.biographie) }}
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                        </div>
                     </div>
 
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    {{ form_row(form.userProfile.favoriteBook) }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ form_row(form.userProfile.favoriteBook) }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ form_row(form.userProfile.favoriteBook) }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ form_row(form.userProfile.style) }}
+                                </div>
+                            </div>
+                            {{ form_row(form.userProfile.experience) }}
+                        </div>
+                        <div class="panel-footer">
+                            <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Informations personnelles
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_errors(form.firstName) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                            {{ form_widget(form.firstName, { attr: { placeholder: 'Prénom' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.lastName) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                            {{ form_widget(form.lastName, { attr: { placeholder: 'Nom' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.email) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                            {{ form_widget(form.email, { attr: { placeholder: 'Adresse email' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.userProfile.facebook) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                            {{ form_widget(form.userProfile.facebook, { attr: { placeholder: 'Facebook' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_errors(form.userProfile.twitter) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                            {{ form_widget(form.userProfile.twitter, { attr: { placeholder: 'Twitter' } }) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        {{ form_errors(form.userProfile.website) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                            {{ form_widget(form.userProfile.website, { attr: { placeholder: 'Site web' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                        </div>
+                    </div>
+                    {{ form_rest(form) }}
                 {{ form_end(form) }}
+
+                {{ form_start(change_form, { 'action': path('fos_user_change_password'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Sécurité
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_errors(change_form.current_password) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
+                                            {{ form_widget(change_form.current_password, { attr: { placeholder: 'Mot de passe' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_errors(change_form.plainPassword.first) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
+                                            {{ form_widget(change_form.plainPassword.first, { attr: { placeholder: 'Nouveau mot de passe' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_errors(change_form.plainPassword.second) }}
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
+                                            {{ form_widget(change_form.plainPassword.second, { attr: { placeholder: 'Confirmation Mot de passe' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                        </div>
+                    </div>
+
+                    {{ form_rest(change_form) }}
+
+                {{ form_end(change_form) }}
             </section>
         </div>
     </div>

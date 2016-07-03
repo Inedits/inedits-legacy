@@ -35,9 +35,11 @@ class UserProfileType extends AbstractType
             ])
             ->add('experience', Types\TextareaType::class, [
                 'required' => false,
+                'label'     => 'En quoi l\'écriture collaborative vous motive-t-elle ?'
             ])
             ->add('favoriteBook', Types\TextType::class, [
-                'required' => false,
+                'required'  => false,
+                'label'     => 'Livre préféré'
             ])
         ;
         $builder->setAction($options['action']);

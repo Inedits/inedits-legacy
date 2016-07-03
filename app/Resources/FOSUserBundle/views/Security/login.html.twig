@@ -11,7 +11,7 @@
 
 {% block fos_user_content %}
 {% if error %}
-    {{ include('global/bootstrap-alert.html.twig',{ type: 'danger', message: error.messageKey|trans(error.messageData, 'security') }, { with_context: false }) }}
+    {{ include('global/_alerts.html.twig',{ type: 'danger', message: error.messageKey|trans(error.messageData, 'security') }, { with_context: false }) }}
 {% endif %}
 
 <div class="container">
@@ -24,8 +24,8 @@
 
                         <div class="form-group">
                             <div class="input-group">
-                              <span class="input-group-addon">@</span>
-                              <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                                <span class="input-group-addon">@</span>
+                                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
                             </div>
                         </div>
 

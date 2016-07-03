@@ -12,7 +12,7 @@ class User extends BaseUser
 {
     public function __toString()
     {
-        return $this->username;
+        return 'toString';
     }
 
     // To Remove Username Field In Form
