@@ -49,9 +49,18 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+    service:
+            mailer: fos_user.mailer.twig_swift
     registration:
         form:
             type: AppBundle\Form\Type\RegistrationType
+        confirmation:
+            enabled: true
+            template:        FOSUserBundle:Registration:email.txt.twig
+            from_email:
+                address:        'clemence@inedits.fr'
+                sender_name:    Demo App
+
     profile:
         form:
             type: AppBundle\Form\Type\ProfileType
