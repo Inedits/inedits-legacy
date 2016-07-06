@@ -1,0 +1,36 @@
+AppBundle\Entity\Post:
+    type: entity
+    table: post
+    repositoryClass: AppBundle\Repository\PostRepository
+    ManyToOne:
+        user:
+            targetEntity: AppBundle\Entity\User
+            inversedBy: posts
+            joinColumn:
+                name: userId
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+            nullable: true
+        isMain:
+            type: boolean
+            nullable: true
+            column: is_main
+        isEnd:
+            type: boolean
+            nullable: true
+            column: is_end
+        userId:
+            type: integer
+            column: user_id
+    lifecycleCallbacks: {  }

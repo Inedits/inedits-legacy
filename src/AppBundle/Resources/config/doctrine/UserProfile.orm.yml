@@ -1,6 +1,6 @@
 AppBundle\Entity\UserProfile:
     type: entity
-    table: null
+    table: user_profile
     repositoryClass: AppBundle\Repository\UserProfileRepository
     oneToOne:
         user:
