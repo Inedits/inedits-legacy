@@ -4,11 +4,12 @@ namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\User;
 use AppBundle\Entity\UserProfile;
-use Symfony\Component\Form\Extension\Core\Type as Types;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type as Types;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class UserProfileType extends AbstractType
 {
@@ -40,6 +41,10 @@ class UserProfileType extends AbstractType
             ->add('favoriteBook', Types\TextType::class, [
                 'required'  => false,
                 'label'     => 'Livre préféré'
+            ])
+            ->add('avatar_file', Types\FileType::class, [
+                'required'  => false,
+                'label'     => 'Image de profil',
             ])
         ;
         $builder->setAction($options['action']);

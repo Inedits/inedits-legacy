@@ -2,7 +2,7 @@ AppBundle\Entity\Post:
     type: entity
     table: post
     repositoryClass: AppBundle\Repository\PostRepository
-    ManyToOne:
+    manyToOne:
         user:
             targetEntity: AppBundle\Entity\User
             inversedBy: posts

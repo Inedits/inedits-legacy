@@ -21,6 +21,11 @@ class RegistrationUserProfileType extends AbstractType
             ->add('biographie', Types\TextareaType::class, [
                 'required' => false,
             ])
+            ->add('avatar_file', Types\FileType::class, [
+                'required'  => false,
+                'label'     => 'Image de profil',
+                'mapped'    => false,
+            ])
         ;
         $builder->setAction($options['action']);
     }

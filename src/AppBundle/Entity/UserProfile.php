@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\File;
+
 /**
  * UserProfile
  */
@@ -62,9 +64,61 @@ class UserProfile
      */
     private $experience;
 
+    /**
+     * @var \DateTime
+     */
+    private $created_at;
+
+    /**
+     * @var \DateTime
+     */
+    private $updated_at;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     *
+     *
+     * @var File
+     */
+    private $avatarFile;
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Product
+     */
+    public function setAvatarFile(File $image = null)
+    {
+        $this->avatarFile = $image;
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updated_at = new \DateTime();
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return File
+     */
+    public function getAvatarFile()
+    {
+        return $this->avatarFile;
+    }
+
+
     public function __toString()
     {
-        return 'coucou';
+        return 'Profil utilisateur';
     }
 
     /**
@@ -374,5 +428,51 @@ class UserProfile
         return $this->user;
     }
 
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return UserProfile
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
 
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return UserProfile
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
 }
