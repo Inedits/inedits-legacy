@@ -7,7 +7,7 @@ AppBundle\Entity\Post:
             targetEntity: AppBundle\Entity\User
             inversedBy: posts
             joinColumn:
-                name: userId
+                name: user_id
                 referencedColumnName: id
     id:
         id:
