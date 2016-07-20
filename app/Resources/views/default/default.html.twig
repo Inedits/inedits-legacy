@@ -2,7 +2,7 @@
 {% block title %}Homepage{% endblock %}
 {% block body %}
     {% if tree.id is defined %}
-        <a id="getTreeLink" href="{{ path('post_json', { id: tree.id }) }}"></a>
+        <a id="getTreeLink" href="{{ path('post_json', { slug: tree.slug }) }}"></a>
         <div class="tree-container"></div>
     {% endif %}
 {% endblock %}

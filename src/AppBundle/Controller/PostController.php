@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Post as IneditsPost;
+use AppBundle\Entity\Post;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -15,7 +15,7 @@ class PostController extends Controller
     /**
      * @Route("/contribution/{slug}", name="post_show")
      */
-    public function showAction(Request $request, IneditsPost $post)
+    public function showAction(Post $post, Request $request)
     {
         $repository = $this->getDoctrine()->getRepository('AppBundle\Entity\Post');
 
@@ -23,13 +23,12 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/contribution/{id}/json", name="post_json")
+     * @Route("/contribution/{slug}/json", name="post_json")
      */
-    public function treeAction(Request $request)
+    public function treeAction(Post $post, Request $request)
     {
         $repository             = $this->getDoctrine()->getRepository('AppBundle\Entity\Post');
-        $post                   = $repository->find($request->attributes->get('id'));
-        $arrayTree['theTree']   = $repository->childrenHierarchy($post, true, [], true);
+        $arrayTree['theTree']   = $repository->childrenHierarchy(null, false, []);
 
         $response = new Response(json_encode($arrayTree));
         $response->headers->set('Content-Type', 'application/json');
