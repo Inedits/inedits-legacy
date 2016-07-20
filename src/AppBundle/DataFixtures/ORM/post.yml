@@ -1,0 +1,9 @@
+AppBundle\Entity\Post:
+    first_post:
+        title: hellos trees
+        user: '@admin'
+    first_second_post:
+        title: hellos papa
+        user: '@admin'
+        parent: '@first_post'
+

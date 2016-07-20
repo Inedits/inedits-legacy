@@ -1,0 +1,25 @@
+AppBundle\Entity\UserProfile:
+    admin_profile:
+        facebook: admin
+    user_profile:
+        facebook: user
+AppBundle\Entity\User:
+    admin:
+        username: admin
+        firstName: Sébastien
+        lastName: Kalinine
+        plainPassword: admin
+        email: sebastien@diplomeo.fr
+        enabled: true
+        roles: ['ROLE_ADMIN']
+        user_profile: '@admin_profile'
+    user:
+        username: user
+        firstName: Jean
+        lastName: Lambda
+        plainPassword: user
+        email: sebastien.kalinine@gmail.com
+        enabled: true
+        roles: ['ROLE_USER']
+        user_profile: '@user_profile'
+

@@ -27,4 +27,24 @@ AppBundle\Entity\User:
         lastName:
             type: string
             length: 255
+        slug:
+            type: string
+            length: 128
+            unique: true
+            gedmo:
+                slug:
+                    separator: -
+                    fields:
+                        - firstName
+                        - lastName
+        created_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: "create"
+        updated_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: "update"
     lifecycleCallbacks: {  }

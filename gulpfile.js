@@ -70,6 +70,8 @@ gulp.task('js', function(){
     gulp.src([
             config.jqueryDir        + '/jquery.js',
             config.jqueryuiDir      + '/jquery-ui.js',
+            config.scriptsDir       + '/d3.js',
+            config.scriptsDir       + '/d3-tips.js',
             config.bootstrapDir     + '/assets/javascripts/bootstrap/affix.js',
             config.bootstrapDir     + '/assets/javascripts/bootstrap/alert.js',
             config.bootstrapDir     + '/assets/javascripts/bootstrap/collapse.js',
@@ -79,10 +81,7 @@ gulp.task('js', function(){
             config.bootstrapDir     + '/assets/javascripts/bootstrap/tooltip.js',
             config.bootstrapDir     + '/assets/javascripts/bootstrap/transition.js',
             config.masonryDir       + '/dist/masonry.pkgd.js',
-            config.scriptsDir       + '/*.js',
-            config.nodeModulesDir   + '/bootlint/dist/browser/bootlint.js',
-            config.nodeModulesDir   + '/imagesloaded/imagesloaded.pkgd.js',
-            config.scriptsDir       + '/debug.js',
+            config.scriptsDir       + '/*.js'
         ])
         .pipe(concat('app.js'))
         .pipe(stripComments())

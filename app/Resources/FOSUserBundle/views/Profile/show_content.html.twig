@@ -4,15 +4,21 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="user-sidebar">
-                <img class="img-responsive" src="{{ vich_uploader_asset(app.user.userProfile, 'avatar_file') }}">
-                <a href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
-                {% if app.user.userProfile.facebook is not empty and app.user.userProfile.twitter is not empty and app.user.userProfile.website is not empty%}
-                    <ul class="nav nav-sidebar">
-                        <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
-                        <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
-                        <li><a href="{{ app.user.userProfile.website }}">Site Web</a></li>
-                    </ul>
+                {% if app.user.userProfile.avatar is defined %}
+                    <img class="img-responsive" src="{{ vich_uploader_asset(app.user.userProfile, 'avatar_file') }}">
                 {% endif %}
+                <a href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
+                <ul class="nav nav-sidebar">
+                    {% if app.user.userProfile.facebook is not empty %}
+                        <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
+                    {% endif %}
+                    {% if app.user.userProfile.twitter is not empty %}
+                        <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
+                    {% endif %}
+                    {% if app.user.userProfile.twitter is not empty %}
+                        <li><a href="{{ app.user.userProfile.website }}">Site Web</a></li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
         <div class="col-sm-8">

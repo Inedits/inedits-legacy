@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use Gedmo\Tree\Traits\Repository\ORM\NestedTreeRepositoryTrait;
+
 /**
  * PostRepository
  *
@@ -10,4 +12,12 @@ namespace AppBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+    // use NestedTreeRepositoryTrait; // or MaterializedPathRepositoryTrait or ClosureTreeRepositoryTrait.
+
+    // public function __construct(EntityManager $em, ClassMetadata $class)
+    // {
+    //     parent::__construct($em, $class);
+
+    //     $this->initializeTreeRepository($em, $class);
+    // }
 }

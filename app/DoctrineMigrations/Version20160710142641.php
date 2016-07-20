@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20160706221718 extends AbstractMigration
+class Version20160710142641 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -18,9 +18,10 @@ class Version20160706221718 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE post ADD userId INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE post ADD CONSTRAINT FK_5A8A6C8D64B64DCC FOREIGN KEY (userId) REFERENCES user (id)');
-        $this->addSql('CREATE INDEX IDX_5A8A6C8D64B64DCC ON post (userId)');
+        $this->addSql('ALTER TABLE post ADD slug VARCHAR(128) NOT NULL, ADD created_at DATETIME NOT NULL, ADD updated_at DATETIME NOT NULL');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_5A8A6C8D989D9B62 ON post (slug)');
+        $this->addSql('ALTER TABLE user ADD slug VARCHAR(128) NOT NULL, ADD created_at DATETIME NOT NULL, ADD updated_at DATETIME NOT NULL');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649989D9B62 ON user (slug)');
     }
 
     /**
@@ -31,8 +32,9 @@ class Version20160706221718 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE post DROP FOREIGN KEY FK_5A8A6C8D64B64DCC');
-        $this->addSql('DROP INDEX IDX_5A8A6C8D64B64DCC ON post');
-        $this->addSql('ALTER TABLE post DROP userId');
+        $this->addSql('DROP INDEX UNIQ_5A8A6C8D989D9B62 ON post');
+        $this->addSql('ALTER TABLE post DROP slug, DROP created_at, DROP updated_at');
+        $this->addSql('DROP INDEX UNIQ_8D93D649989D9B62 ON user');
+        $this->addSql('ALTER TABLE user DROP slug, DROP created_at, DROP updated_at');
     }
 }

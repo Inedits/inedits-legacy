@@ -1,7 +1,10 @@
 AppBundle\Entity\Post:
     type: entity
     table: post
-    repositoryClass: AppBundle\Repository\PostRepository
+    repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
+    gedmo:
+        tree:
+            type: nested
     manyToOne:
         user:
             targetEntity: AppBundle\Entity\User
@@ -9,6 +12,21 @@ AppBundle\Entity\Post:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+        parent:
+            targetEntity: AppBundle\Entity\Post
+            inversedBy: children
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id
+                onDelete: CASCADE
+            gedmo:
+                - treeParent
+    oneToMany:
+        children:
+            targetEntity: AppBundle\Entity\Post
+            mappedBy: parent
+            orderBy:
+                lft: ASC
     id:
         id:
             type: integer
@@ -33,4 +51,40 @@ AppBundle\Entity\Post:
         userId:
             type: integer
             column: user_id
+        lft:
+            type: integer
+            gedmo:
+                - treeLeft
+        rgt:
+            type: integer
+            gedmo:
+            - treeRight
+        root:
+            type: integer
+            nullable: true
+            gedmo:
+                - treeRoot
+        lvl:
+            type: integer
+            gedmo:
+                - treeLevel
+        slug:
+            type: string
+            length: 128
+            unique: true
+            gedmo:
+                slug:
+                    separator: -
+                    fields:
+                        - title
+        created_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: "create"
+        updated_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: "update"
     lifecycleCallbacks: {  }
