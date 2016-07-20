@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-class Post extends Controller
+class PostController extends Controller
 {
     /**
      * @Route("/contribution/{slug}", name="post_show")
