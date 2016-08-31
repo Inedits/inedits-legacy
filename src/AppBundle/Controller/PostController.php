@@ -13,22 +13,29 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class PostController extends Controller
 {
     /**
-     * @Route("/contribution/{slug}", name="post_show")
+     * @Route("/contribution/{slug}", name="post_show", requirements={ "slug": "[a-zA-Z0-9-]+", "id": "\d+" })
      */
-    public function showAction(Post $post, Request $request)
+    public function showPostAction(Post $post, Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle\Entity\Post');
-
-        return $this->render('default\default.html.twig', ['tree' => $post]);
+        return $this->render('post\show.html.twig', ['tree' => $post]);
     }
 
     /**
-     * @Route("/contribution/{slug}/json", name="post_json")
+     * @Route("/arbre/{slug}", name="post_tree_show", requirements={ "slug": "[a-zA-Z0-9-]+", "id": "\d+" })
+     */
+    public function showTreeAction(Post $post, Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository('AppBundle\Entity\Post');
+
+        return $this->render('post\tree.html.twig', ['tree' => $post]);
+    }
+
+    /**
+     * @Route("/contribution/{slug}/json", name="post_json", requirements={ "slug": "[a-zA-Z0-9-]+", "id": "\d+" })
      */
     public function treeAction(Post $post, Request $request)
     {
         $repository             = $this->getDoctrine()->getRepository('AppBundle\Entity\Post');
-        //$arrayTree['theTree']   = $repository->childrenHierarchy(null, false, []);
 
         $query = $this->getDoctrine()->getManager()
             ->createQueryBuilder()
@@ -39,9 +46,9 @@ class PostController extends Controller
             ->setParameter('postID', $post->getId())
             ->getQuery()
         ;
-// dump($post);
-// exit();
+
         $arrayTree['theTree'] = $repository->buildTree($query->getArrayResult($post), []);
+
         $response = new Response(json_encode($arrayTree));
         $response->headers->set('Content-Type', 'application/json');
 

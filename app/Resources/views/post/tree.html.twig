@@ -1,5 +1,5 @@
-{% extends 'FOSUserBundle:layout.html.twig' %}
-{% block title %}Homepage{% endblock %}
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block title %}Tree{% endblock %}
 {% block body %}
     {% if tree.id is defined %}
         <a id="getTreeLink" href="{{ path('post_json', { slug: tree.slug }) }}"></a>
