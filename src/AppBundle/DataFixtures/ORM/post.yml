@@ -6,4 +6,8 @@ AppBundle\Entity\Post:
         title: hellos papa
         user: '@admin'
         parent: '@first_post'
+    first_first_post:
+        title: hellos papa 1
+        user: '@admin'
+        parent: '@first_post'
 

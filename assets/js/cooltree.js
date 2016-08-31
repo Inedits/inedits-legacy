@@ -154,7 +154,7 @@ var CoolTree = (function () {
         ;
 
         nodeExit.select("text")
-            .style("fill", function(d){return 'url(#'+d.User.slug+')';})
+            .style("fill", function(d){return 'url(#'+d.user.slug+')';})
         ;
 
         // Update the links…
