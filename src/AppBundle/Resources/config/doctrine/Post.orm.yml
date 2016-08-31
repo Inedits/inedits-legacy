@@ -6,6 +6,13 @@ AppBundle\Entity\Post:
         tree:
             type: nested
     manyToOne:
+        root:
+            targetEntity: AppBundle\Entity\Post
+            joinColumn:
+                referencedColumnName: id
+                onDelete: CASCADE
+            gedmo:
+            - treeRoot
         user:
             targetEntity: AppBundle\Entity\User
             inversedBy: posts
@@ -16,7 +23,6 @@ AppBundle\Entity\Post:
             targetEntity: AppBundle\Entity\Post
             inversedBy: children
             joinColumn:
-                name: parent_id
                 referencedColumnName: id
                 onDelete: CASCADE
             gedmo:
@@ -59,11 +65,6 @@ AppBundle\Entity\Post:
             type: integer
             gedmo:
             - treeRight
-        root:
-            type: integer
-            nullable: true
-            gedmo:
-                - treeRoot
         lvl:
             type: integer
             gedmo:

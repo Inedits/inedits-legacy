@@ -35,10 +35,13 @@ class PostController extends Controller
             ->select('node, user')
             ->from('AppBundle\Entity\Post', 'node')
             ->leftJoin('node.user', 'user')
+            ->where('node.root = :postID')
+            ->setParameter('postID', $post->getId())
             ->getQuery()
         ;
-
-        $arrayTree['theTree'] = $repository->buildTree($query->getArrayResult(), []);
+// dump($post);
+// exit();
+        $arrayTree['theTree'] = $repository->buildTree($query->getArrayResult($post), []);
         $response = new Response(json_encode($arrayTree));
         $response->headers->set('Content-Type', 'application/json');
 
