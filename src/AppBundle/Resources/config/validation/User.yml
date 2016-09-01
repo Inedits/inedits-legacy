@@ -1,0 +1,6 @@
+AppBundle\Entity\User:
+    properties:
+        firstName:
+            - Type:
+                type: string
+                message: type invalide

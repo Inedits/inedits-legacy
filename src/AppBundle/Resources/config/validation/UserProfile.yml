@@ -1,0 +1,6 @@
+AppBundle\Entity\UserProfile:
+    properties:
+        biographie:
+            - Type:
+                type: integer
+                message: Format invalide
