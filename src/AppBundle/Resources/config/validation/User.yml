@@ -3,4 +3,8 @@ AppBundle\Entity\User:
         firstName:
             - Type:
                 type: string
-                message: type invalide
+                message: Incorrect
+        lastName:
+            - Type:
+                type: string
+                message: Incorrect

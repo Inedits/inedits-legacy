@@ -3,4 +3,33 @@ AppBundle\Entity\UserProfile:
         biographie:
             - Type:
                 type: integer
-                message: Format invalide
+                message: Incorrect
+        facebook:
+            - Type:
+                type: string
+                message: Incorrect
+        twitter:
+            - Type:
+                type: string
+                message: Incorrect
+        website:
+            - Type:
+                type: string
+                message: Incorrect
+        favoriteBook:
+            - Type:
+                type: string
+                message: Incorrect
+        inspiration:
+            - Type:
+                type: string
+                message: Incorrect
+        style:
+            - Type:
+                type: string
+                message: Incorrect
+        experience:
+            - Type:
+                type: string
+                message: Incorrect
+
