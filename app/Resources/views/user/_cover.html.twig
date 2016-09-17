@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <div class="user-cover">
+        {% if cover is not null %}
+            <img class="img-responsive" src="{{ asset(cover, 'cover') }}" alt="{{ alt }}">
+        {% else %}
+            <img class="img-responsive" src="{{ asset('cover.jpg', 'default') }}" alt="{{ alt }}">
+        {% endif %}
+    </div>
+</div>

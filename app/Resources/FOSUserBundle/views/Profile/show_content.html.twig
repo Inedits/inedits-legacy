@@ -6,6 +6,8 @@
             <div class="user-sidebar">
                 {% if app.user.userProfile.avatar is not null %}
                     <img class="img-responsive" src="{{ asset(app.user.userProfile.avatar, 'avatar') }}">
+                {% else %}
+                    <img class="img-responsive" src="{{ asset('avatar.jpg', 'default') }}">
                 {% endif %}
                 <a href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
                 <ul class="nav nav-sidebar">

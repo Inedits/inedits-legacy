@@ -3,11 +3,9 @@
 {% block title %}Profile{% endblock %}
 {% block body_class %}profile{% endblock %}
 {% block player %}
-    {{ include('frontend/_player.html.twig', {
-        message: app.user.username,
+    {{ include('user/_cover.html.twig', {
         cover: app.user.userProfile.cover,
-        firstName: app.user.firstName,
-        lastName: app.user.lastName
+        alt: app.user.firstName ~ app.user.lastName,
     }, with_context = false) }}
 {% endblock %}
 

@@ -11,6 +11,7 @@ imports:
 parameters:
     locale: fr
     project_name:       'Inédits'
+    # directories
     avatar_directory:   '%kernel.root_dir%/../web/uploads/avatar'
     cover_directory:    '%kernel.root_dir%/../web/uploads/cover'
     post_directory:     '%kernel.root_dir%/../web/uploads/post'
@@ -48,6 +49,8 @@ framework:
                base_path: '/uploads/avatar'
             cover:
                base_path: '/uploads/cover'
+            default:
+               base_path: '/dist/media/default'
             post:
                base_path: '/uploads/post'
 
