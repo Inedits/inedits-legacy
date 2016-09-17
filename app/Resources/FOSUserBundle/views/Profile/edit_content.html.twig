@@ -4,8 +4,10 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="user-sidebar">
-                {% if app.user.userProfile.avatar is defined %}
+                {% if app.user.userProfile.avatar is not null %}
                     <img class="img-responsive" src="{{ asset(app.user.userProfile.avatar, 'avatar') }}">
+                {% else %}
+                    <img class="img-responsive" src="{{ asset('avatar.jpg', 'default') }}">
                 {% endif %}
                 <a href="{{ path('fos_user_profile_show') }}">Mon profil</a>
                 <ul class="nav nav-sidebar">

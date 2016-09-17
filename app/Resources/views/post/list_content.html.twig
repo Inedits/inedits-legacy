@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row">
+        {% for tree in trees %}
+            <div class="col-xs-12 col-sm-4">
+                {{ include('post/_box.html.twig', { tree:tree }, with_context = false) }}
+            </div>
+        {% endfor %}
+    </div>
+</div>

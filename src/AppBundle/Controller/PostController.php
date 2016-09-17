@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +13,19 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class PostController extends Controller
 {
+    /**
+     * @Route("/les-arbres", name="tree_list")
+     * @Method({"GET"})
+     */
+    public function listPostAction(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Post');
+        $trees      = $repository->getRootPost();
+dump($trees);
+exit();
+        return $this->render('post\list.html.twig', ['trees' => $trees]);
+    }
+
     /**
      * @Route("/contribution/{slug}", name="post_show", requirements={ "slug": "[a-zA-Z0-9-]+", "id": "\d+" })
      */

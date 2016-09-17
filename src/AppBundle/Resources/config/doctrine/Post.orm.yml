@@ -1,7 +1,8 @@
 AppBundle\Entity\Post:
     type: entity
     table: post
-    repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
+    repositoryClass: AppBundle\Repository\PostRepository
+    # repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
     gedmo:
         tree:
             type: nested

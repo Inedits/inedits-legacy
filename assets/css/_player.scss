@@ -1,7 +1,7 @@
 /*####################################
 # ==Players
 ####################################*/
-.profile .jumbotron {
+.user-cover {
     position: relative;
     max-height: 264px;
     padding: 0;
@@ -14,4 +14,9 @@
             min-width: 100%;
         }
     }
+}
+
+.home-player {
+    background: url('../media/frontend/home-header.jpg') center center;
+    background-size: cover;
 }
