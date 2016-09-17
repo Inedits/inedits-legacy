@@ -10,7 +10,11 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    project_name: Inédits
+    project_name:       'Inédits'
+    # directories
+    avatar_directory:   '%kernel.root_dir%/../web/uploads/avatar'
+    cover_directory:    '%kernel.root_dir%/../web/uploads/cover'
+    post_directory:     '%kernel.root_dir%/../web/uploads/post'
 
 framework:
     #esi:             ~
@@ -21,7 +25,7 @@ framework:
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
-    validation:      { enabled: true }
+    validation:      { enabled: true, enable_annotations: true }
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
@@ -41,6 +45,14 @@ framework:
                base_path: '/dist/css'
             media:
                base_path: '/dist/media'
+            avatar:
+               base_path: '/uploads/avatar'
+            cover:
+               base_path: '/uploads/cover'
+            default:
+               base_path: '/dist/media/default'
+            post:
+               base_path: '/uploads/post'
 
 # Twig Configuration
 twig:
@@ -83,12 +95,12 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-vich_uploader:
-    db_driver: orm
-    mappings:
-        avatar_file:
-            uri_prefix:         /uploads/avatar
-            upload_destination: %kernel.root_dir%/../web/uploads/avatar
+# vich_uploader:
+#     db_driver: orm
+#     mappings:
+#         avatar_file:
+#             uri_prefix:         /uploads/avatar
+#             upload_destination: %kernel.root_dir%/../web/uploads/avatar
         # cover:
         #     uri_prefix:         /uploads/cover
         #     upload_destination: %kernel.root_dir%/../web/uploads/cover

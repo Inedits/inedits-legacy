@@ -20,4 +20,15 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
 
     //     $this->initializeTreeRepository($em, $class);
     // }
+
+    public function getRootPost()
+    {
+        $q = $this->createQueryBuilder('p');
+        $q
+            ->where('p.lvl = 0')
+            ->orderBy('p.created_at', 'DESC')
+        ;
+
+        return $q->getQuery()->getResult();
+    }
 }

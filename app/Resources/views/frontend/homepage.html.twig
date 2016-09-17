@@ -1,0 +1,9 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block title %}Homepage{% endblock %}
+
+{% block player %}
+    {{ include('frontend/_player_homepage.html.twig', with_context = false) }}
+{% endblock %}
+
+{% block body %}
+{% endblock %}

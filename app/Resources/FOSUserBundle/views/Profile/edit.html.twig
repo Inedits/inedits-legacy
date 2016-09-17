@@ -1,7 +1,12 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+{% block title %}Profile{% endblock %}
+{% block body_class %}profile{% endblock %}
 {% block player %}
-    {{ include('frontend/_player.html.twig', { message: app.user.firstName ~' '~ app.user.lastName }, with_context = false) }}
+    {{ include('user/_cover.html.twig', {
+        cover: app.user.userProfile.cover,
+        alt: app.user.firstName ~ app.user.lastName,
+    }, with_context = false) }}
 {% endblock %}
 
 {% block fos_user_content %}

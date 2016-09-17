@@ -21,10 +21,13 @@ class RegistrationUserProfileType extends AbstractType
             ->add('biographie', Types\TextareaType::class, [
                 'required' => false,
             ])
-            ->add('avatar_file', Types\FileType::class, [
+            ->add('avatar', Types\FileType::class, [
                 'required'  => false,
                 'label'     => 'Image de profil',
-                'mapped'    => false,
+            ])
+            ->add('cover', Types\FileType::class, [
+                'required'  => false,
+                'label'     => 'Image de couverture',
             ])
         ;
         $builder->setAction($options['action']);
@@ -36,7 +39,8 @@ class RegistrationUserProfileType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'        => UserProfile::class,
+            'data_class'            => UserProfile::class,
+            'validation_groups'     => array('registration'),
         ));
     }
 

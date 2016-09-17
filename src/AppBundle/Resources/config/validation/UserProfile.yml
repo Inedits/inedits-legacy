@@ -1,0 +1,56 @@
+AppBundle\Entity\UserProfile:
+    properties:
+        biographie:
+            - Type:
+                groups: [registration]
+                type: string
+                message: Incorrect
+        facebook:
+            - Type:
+                type: integer
+                message: Incorrect
+            - Url:
+                message: Incorrect
+        twitter:
+            - Type:
+                type: string
+                message: Incorrect
+            - Url:
+                message: Incorrect
+        website:
+            - Type:
+                type: string
+                message: Incorrect
+            - Url:
+                message: Incorrect
+        favoriteBook:
+            - Type:
+                type: string
+                message: Incorrect
+        inspiration:
+            - Type:
+                type: string
+                message: Incorrect
+        style:
+            - Type:
+                type: string
+                message: Incorrect
+        experience:
+            - Type:
+                type: string
+                message: Incorrect
+        avatar:
+            - File:
+                groups: [registration]
+                mimeTypes: [image/png, image/jpeg]
+                mimeTypesMessage: "Formats supportés: JPG, PNG"
+                maxSize: 1M
+                maxSizeMessage: "Taille Max: 1M"
+        cover:
+            - File:
+                groups: [registration]
+                mimeTypes: [image/png, image/jpeg]
+                mimeTypesMessage: "Formats supportés: JPG, PNG"
+                maxSize: 1M
+                maxSizeMessage: "Taille Max: 1M"
+

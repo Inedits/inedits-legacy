@@ -51,6 +51,7 @@ class ProfileController extends Controller
     public function editAction(Request $request)
     {
         $user = $this->getUser();
+        $user->setUserProfile($user->getUserProfile());
 
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -84,6 +85,34 @@ class ProfileController extends Controller
 
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
+
+            // Retrieve Files Objects
+            $avatar     = $form['userProfile']->get('avatar')->getData();
+            $cover      = $form['userProfile']->get('cover')->getData();
+
+            if($avatar)
+            {
+                $fileName = md5(uniqid()).'.'.$avatar->guessExtension();
+
+                $avatar->move(
+                    $this->getParameter('avatar_directory'),
+                    $fileName
+                );
+
+                $user->getUserProfile()->setAvatar($fileName);
+            }
+
+            if($cover)
+            {
+                $fileName = md5(uniqid()).'.'.$cover->guessExtension();
+
+                $cover->move(
+                    $this->getParameter('cover_directory'),
+                    $fileName
+                );
+
+                $user->getUserProfile()->setCover($fileName);
+            }
 
             $userManager->updateUser($user);
 

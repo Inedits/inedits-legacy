@@ -1,6 +1,22 @@
 /*####################################
 # ==Players
 ####################################*/
-.profile .jumbotron {
-    background: url('http://placehold.it/1550x450') center center no-repeat;
+.user-cover {
+    position: relative;
+    max-height: 264px;
+    padding: 0;
+    overflow: hidden;
+
+    .user-cover {
+        height: auto;
+
+        img {
+            min-width: 100%;
+        }
+    }
+}
+
+.home-player {
+    background: url('../media/frontend/home-header.jpg') center center;
+    background-size: cover;
 }

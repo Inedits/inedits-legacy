@@ -1,0 +1,22 @@
+AppBundle\Entity\User:
+    properties:
+        firstName:
+            - NotBlank: ~
+            - Type:
+                type: string
+                message: Incorrect
+        lastName:
+            - NotBlank: ~
+            - Type:
+                type: string
+                message: Incorrect
+        plainPassword:
+            - Length:
+                min: 5
+                minMessage: 5 caractères minimum
+        gtu:
+            - NotNull:
+                message: Vous devez accepter les conditions générales d'utilisation
+            - NotBlank:
+                message: Vous devez accepter les conditions générales d'utilisation
+

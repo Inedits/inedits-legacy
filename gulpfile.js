@@ -13,6 +13,7 @@ var gulp = require('gulp'),
 ;
 
 var config = {
+    // Private
     nodeModulesDir: 'node_modules',
     bootstrapDir:   'vendor/twbs/bootstrap-sass',
     masonryDir:     'vendor/desandro/masonry',
@@ -20,11 +21,12 @@ var config = {
     jqueryuiDir:    'vendor/components/jqueryui',
     scriptsDir:     'assets/js',
     stylesheetsDir: 'assets/css',
+    mediasDir:      'assets/media',
+    // Public
     cssPublicDir:   'web/dist/css',
     fontPublictDir: 'web/dist/font',
     jsPublicDir:    'web/dist/js',
     mediaPublicDir: 'web/dist/media',
-    mediasDir:      'assets/media',
 };
 var watchPaths = {
     stylesheets: ['assets/css/*.scss'],

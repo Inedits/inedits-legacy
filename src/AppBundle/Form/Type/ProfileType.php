@@ -15,36 +15,46 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-        {
-            $builder
-                ->add('firstName', Types\TextType::class, [
-                    'label' => 'Prénom'
-                ])
-                ->add('lastName', Types\TextType::class, [
-                    'label' => 'Nom'
-                ])
-                ->add('userProfile', new UserProfileType())
-                ->remove('username')
-                ->remove('current_password')
-            ;
-        }
+    {
+        $builder
+            ->add('firstName', Types\TextType::class, [
+                'label' => 'Prénom'
+            ])
+            ->add('lastName', Types\TextType::class, [
+                'label' => 'Nom'
+            ])
+            ->add('userProfile', new UserProfileType())
+            ->remove('username')
+            ->remove('current_password')
+        ;
+    }
 
-        public function getParent()
-        {
-            return 'FOS\UserBundle\Form\Type\ProfileFormType';
+    public function getParent()
+    {
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
 
-            // Or for Symfony < 2.8
-            // return 'fos_user_Profile';
-        }
+        // Or for Symfony < 2.8
+        // return 'fos_user_Profile';
+    }
 
-        public function getBlockPrefix()
-        {
-            return 'app_user_profile';
-        }
+    public function getBlockPrefix()
+    {
+        return 'app_user_profile';
+    }
 
-        // For Symfony 2.x
-        public function getName()
-        {
-            return $this->getBlockPrefix();
-        }
+    // For Symfony 2.x
+    public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class'        => User::class,
+        ));
+    }
 }
