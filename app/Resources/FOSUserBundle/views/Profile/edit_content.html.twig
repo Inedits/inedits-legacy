@@ -3,14 +3,23 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <a href="{{ path('fos_user_profile_show') }}">Mon profil</a>
-            {% if app.user.userProfile.facebook is not empty and app.user.userProfile.twitter is not empty and app.user.userProfile.website is not empty%}
+            <div class="user-sidebar">
+                {% if app.user.userProfile.avatar is defined %}
+                    <img class="img-responsive" src="{{ asset(app.user.userProfile.avatar, 'avatar') }}">
+                {% endif %}
+                <a href="{{ path('fos_user_profile_show') }}">Mon profil</a>
                 <ul class="nav nav-sidebar">
-                    <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
-                    <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
-                    <li><a href="{{ app.user.userProfile.website }}">Site Web</a></li>
+                    {% if app.user.userProfile.facebook is not empty %}
+                        <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
+                    {% endif %}
+                    {% if app.user.userProfile.twitter is not empty %}
+                        <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
+                    {% endif %}
+                    {% if app.user.userProfile.twitter is not empty %}
+                        <li><a href="{{ app.user.userProfile.website }}">Site Web</a></li>
+                    {% endif %}
                 </ul>
-            {% endif %}
+            </div>
         </div>
         <div class="col-sm-8">
             <section>
@@ -102,7 +111,8 @@
                                             {{ form_widget(form.userProfile.website, { attr: { placeholder: 'Site web' } }) }}
                                         </div>
                                     </div>
-                                    {{ form_row(form.userProfile.avatar_file) }}
+                                    {{ form_row(form.userProfile.avatar) }}
+                                    {{ form_row(form.userProfile.cover) }}
                                 </div>
                             </div>
                         </div>

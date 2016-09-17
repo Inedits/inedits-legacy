@@ -5,7 +5,7 @@
         <div class="col-sm-4">
             <div class="user-sidebar">
                 {% if app.user.userProfile.avatar is defined %}
-                    <img class="img-responsive" src="{{ vich_uploader_asset(app.user.userProfile, 'avatar_file') }}">
+                    <img class="img-responsive" src="{{ asset(app.user.userProfile.avatar, 'avatar') }}">
                 {% endif %}
                 <a href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
                 <ul class="nav nav-sidebar">

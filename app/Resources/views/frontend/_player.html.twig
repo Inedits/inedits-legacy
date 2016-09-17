@@ -1,5 +1,10 @@
 <div class="jumbotron">
-    <div class="container">
-        <h1>{{ message }}</h1>
+    <div class="user-cover">
+        <img class="img-responsive" src="{{ asset(cover, 'cover') }}" alt="{{ firstName ~ '-' ~ lastName}}">
+    </div>
+    <div class="absolute-center">
+        <div class="container">
+            <h1>{{ message }}</h1>
+        </div>
     </div>
 </div>

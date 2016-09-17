@@ -42,9 +42,17 @@ class UserProfileType extends AbstractType
                 'required'  => false,
                 'label'     => 'Livre préféré'
             ])
-            ->add('avatar_file', Types\FileType::class, [
+            ->add('avatar', Types\FileType::class, [
                 'required'  => false,
                 'label'     => 'Image de profil',
+                'mapped'    => false,
+                'data_class'=> null,
+            ])
+            ->add('cover', Types\FileType::class, [
+                'required'  => false,
+                'label'     => 'Image de couverture',
+                'mapped'    => false,
+                'data_class'=> null,
             ])
         ;
         $builder->setAction($options['action']);
