@@ -64,7 +64,7 @@ class UserProfileType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'        => UserProfile::class,
+            'data_class'            => UserProfile::class,
         ));
     }
 

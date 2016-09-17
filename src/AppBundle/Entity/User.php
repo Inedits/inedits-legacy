@@ -299,4 +299,31 @@ class User extends BaseUser
     {
         return $this->updated_at;
     }
+
+    protected $gtu;
+
+
+    /**
+     * Get gtu
+     *
+     * @return boolean
+     */
+    public function getGtu()
+    {
+        return $this->gtu;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \Boolean $gtu
+     *
+     * @return User
+     */
+    public function setGtu($gtu)
+    {
+        $this->gtu = $gtu;
+
+        return $this;
+    }
 }

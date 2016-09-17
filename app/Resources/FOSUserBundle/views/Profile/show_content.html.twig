@@ -4,18 +4,18 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="user-sidebar">
-                {% if app.user.userProfile.avatar is defined %}
+                {% if app.user.userProfile.avatar is not null %}
                     <img class="img-responsive" src="{{ asset(app.user.userProfile.avatar, 'avatar') }}">
                 {% endif %}
                 <a href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
                 <ul class="nav nav-sidebar">
-                    {% if app.user.userProfile.facebook is not empty %}
+                    {% if app.user.userProfile.facebook is not null %}
                         <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
                     {% endif %}
-                    {% if app.user.userProfile.twitter is not empty %}
+                    {% if app.user.userProfile.twitter is not null %}
                         <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
                     {% endif %}
-                    {% if app.user.userProfile.twitter is not empty %}
+                    {% if app.user.userProfile.twitter is not null %}
                         <li><a href="{{ app.user.userProfile.website }}">Site Web</a></li>
                     {% endif %}
                 </ul>
@@ -24,7 +24,7 @@
         <div class="col-sm-8">
             <section>
                 <header>
-                    {% if app.user.userProfile.biographie is not empty %}
+                    {% if app.user.userProfile.biographie is not null %}
                         <p class="h3">
                             Biographie
                         </p>

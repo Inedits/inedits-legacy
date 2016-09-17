@@ -59,7 +59,7 @@ fos_user:
             template:        FOSUserBundle:Registration:email.txt.twig
             from_email:
                 address:        'clemence@inedits.fr'
-                sender_name:    Demo App
+                sender_name:    Inédits | Écriture Collaborative
 
     profile:
         form:
