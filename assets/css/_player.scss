@@ -1,6 +1,13 @@
 /*####################################
 # ==Players
 ####################################*/
+.jumbotron.default {
+    background: url('../media/frontend/default-header.jpg') center center;
+    background-size: cover;
+    min-height: 236px;
+    position: relative;
+}
+
 .user-cover {
     position: relative;
     max-height: 264px;
