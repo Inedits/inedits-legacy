@@ -14,8 +14,8 @@
         </ul>
       </div>
       <div class="panel-footer">
-        <button class="btn" type="button">Lire</button>
-        <button class="btn" type="button">Participer</button>
+        <a class="btn" href="{{ path('post_show', {slug:tree.slug}) }}">Lire</a>
+        <a class="btn" href="{{ path('post_tree_show', {slug:tree.slug}) }}">Participer</a>
       </div>
     </div>
 </article>

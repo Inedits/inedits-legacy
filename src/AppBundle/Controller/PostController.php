@@ -26,7 +26,7 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/contribution/{slug}", name="post_show", requirements={ "slug": "[a-zA-Z0-9-]+", "id": "\d+" })
+     * @Route("/contribution/{slug}", name="post_show", requirements={ "slug": "[a-zA-Z0-9-]+" })
      */
     public function showPostAction(Post $post, Request $request)
     {
@@ -34,7 +34,7 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/arbre/{slug}", name="post_tree_show", requirements={ "slug": "[a-zA-Z0-9-]+", "id": "\d+" })
+     * @Route("/arbre/{slug}", name="post_tree_show", requirements={ "slug": "[a-zA-Z0-9-]+" })
      */
     public function showTreeAction(Post $post, Request $request)
     {
