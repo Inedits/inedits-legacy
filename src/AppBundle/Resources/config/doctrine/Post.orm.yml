@@ -34,6 +34,18 @@ AppBundle\Entity\Post:
             mappedBy: parent
             orderBy:
                 lft: ASC
+    manyToMany:
+        users:
+            targetEntity: AppBundle\Entity\User
+            joinTable:
+                name: post_user
+            joinColumns:
+                - joinColumn:
+                    name: root_id
+                    referencedColumnName: root
+                - inversedJoinColumn:
+                    name: user_id
+                    referencedColumnName: id
     id:
         id:
             type: integer

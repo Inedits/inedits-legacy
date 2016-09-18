@@ -21,8 +21,7 @@ class PostController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('AppBundle:Post');
         $trees      = $repository->getRootPost();
-dump($trees);
-exit();
+
         return $this->render('post\list.html.twig', ['trees' => $trees]);
     }
 
