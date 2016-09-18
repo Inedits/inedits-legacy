@@ -44,7 +44,7 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/contribution/{slug}/json", name="post_json", requirements={ "slug": "[a-zA-Z0-9-]+" })
+     * @Route("/arbre/{slug}/json", name="post_tree_json", requirements={ "slug": "[a-zA-Z0-9-]+" })
      */
     public function treeAction(Post $post, Request $request)
     {
