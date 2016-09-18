@@ -13,9 +13,11 @@
         margin-top: 0;
     }
 
-    li > a {
-        height: 60px;
-        line-height: 60px;
-        padding: 0 2em;
+    .navbar-left {
+        li > a {
+            height: 60px;
+            line-height: 60px;
+            padding: 0 2em;
+        }
     }
 }
