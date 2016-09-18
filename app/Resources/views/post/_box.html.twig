@@ -7,8 +7,11 @@
         {{ tree.content }}
       </div>
       <div class="panel-footer">
-        <button class="btn" type="button">Lire</button>
-        <button class="btn" type="button">Participer</button>
+        <ul class="list-inline">
+          {% for author in tree.getUsers() %}
+              <li>{{ author.firstName }}</li>
+          {% endfor %}
+        </ul>
       </div>
       <div class="panel-footer">
         <button class="btn" type="button">Lire</button>
