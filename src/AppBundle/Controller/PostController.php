@@ -48,7 +48,7 @@ class PostController extends Controller
      */
     public function treeAction(Post $post, Request $request)
     {
-        $repository             = $this->getDoctrine()->getRepository('AppBundle\Entity\Post');
+        $repository = $this->getDoctrine()->getRepository('AppBundle\Entity\Post');
 
         $query = $this->getDoctrine()->getManager()
             ->createQueryBuilder()
@@ -66,6 +66,34 @@ class PostController extends Controller
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
+    }
+
+    /**
+     * @Route("/contribuer", name="post_add")
+     * @Method({"POST"})
+     */
+    public function newAction(Request $request)
+    {
+        $addForm = $this->createFormBuilder(
+            new PostAddType(),
+            new Post(),
+        );
+
+        $addForm->handleRequest($request);
+
+        if ($addForm->isSubmitted() && $addForm->isValid())
+        {
+            $post = $addForm->getData();
+
+            $form = $this->createFormBuilder(
+                new PostType(),
+                $post,
+            );
+        }
+
+        return $this->render('post/_add.html.twig', [
+            'form'          => $form->createView(),
+        ]);
     }
 
 }
