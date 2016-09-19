@@ -4,22 +4,18 @@
 .jumbotron {
     background: url('../media/frontend/default-header.jpg')#4d5479 center center;
     background-size: cover;
-    min-height: 236px;
     position: relative;
+    min-height: 264px;
 }
 
 .user-cover {
-    position: relative;
     max-height: 264px;
     padding: 0;
     overflow: hidden;
+    height: auto;
 
-    .user-cover {
-        height: auto;
-
-        img {
-            min-width: 100%;
-        }
+    img {
+        min-width: 100%;
     }
 }
 

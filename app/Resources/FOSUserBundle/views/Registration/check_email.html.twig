@@ -1,0 +1,19 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Confirmation{% endblock %}
+
+{% block player %}
+    {{ include('frontend/_player_homepage.html.twig', with_context = false) }}
+{% endblock %}
+
+
+{% block flashbag %}
+    <div class="container">
+        {{ include('global/_alerts.html.twig', {
+            message: 'registration.check_email'|trans({'%email%': user.email}),
+            type: 'success'
+        } , with_context = false) }}
+    </div>
+{% endblock %}
+

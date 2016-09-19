@@ -55,7 +55,7 @@ fos_user:
         form:
             type: AppBundle\Form\Type\RegistrationType
         confirmation:
-            # enabled: true
+            enabled: true
             template:        FOSUserBundle:Registration:email.txt.twig
             from_email:
                 address:        'clemence@inedits.fr'
