@@ -3,8 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Form\Type\PostType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -69,29 +71,22 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/contribuer", name="post_add")
-     * @Method({"POST"})
+     * @Route("/{slug}/{child}/contribuer", name="post_add")
+     * @ParamConverter("post", class="AppBundle:Post", options={"mapping": {"child": "slug"}})
+     * @Method({"GET"})
      */
-    public function newAction(Request $request)
+    public function addAction(Request $request, Post $tree, Post $parent)
     {
-        $addForm = $this->createFormBuilder(
-            new PostAddType(),
-            new Post(),
-        );
+        $post = new Post();
+        $post->setParent($parent);
+        $post->setRoot($tree);
 
-        $addForm->handleRequest($request);
+        $form = $this->createForm(
+                    new PostType(),
+                    $post
+                );
 
-        if ($addForm->isSubmitted() && $addForm->isValid())
-        {
-            $post = $addForm->getData();
-
-            $form = $this->createFormBuilder(
-                new PostType(),
-                $post,
-            );
-        }
-
-        return $this->render('post/_add.html.twig', [
+        return $this->render('post/add.html.twig', [
             'form'          => $form->createView(),
         ]);
     }

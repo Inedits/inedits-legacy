@@ -1,0 +1,14 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}Contribuer{% endblock %}
+
+{% block player %}
+    {{ include('frontend/_player_homepage.html.twig', with_context = false) }}
+{% endblock %}
+
+{% block body %}
+    <form method="POST">
+        {{ form(form) }}
+        <button class="btn btn-success" type="submit">OK</button>
+    </form>
+{% endblock %}
