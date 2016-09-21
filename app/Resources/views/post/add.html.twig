@@ -7,8 +7,30 @@
 {% endblock %}
 
 {% block body %}
-    <form method="POST">
-        {{ form(form) }}
-        <button class="btn btn-success" type="submit">OK</button>
-    </form>
+    <div class="container">
+        {{ form_start(form, { attr: { 'class': '' } }) }}
+            <p>vos informations personnelles</p>
+            <div class="form-group">
+                {{ form_row(form.firstName) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.lastName) }}
+            </div>
+
+            <p>Votre histoire</p>
+            <div class="form-group">
+                {{ form_row(form.title) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.content) }}
+            </div>
+            <p>Conditions générales d'utilisation</p>
+            <div class="form-group">
+                {{ form_row(form.gtu) }}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" type="submit">Ajouter</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

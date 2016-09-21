@@ -3,8 +3,8 @@
 namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Post;
-use Symfony\Component\Form\Extension\Core\Type as Types;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type as Types;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,11 +13,42 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', Types\TextType::class, [
-                'label' => 'Titre'
+            ->add('firstName', Types\TextType::class, [
+                'mapped'        => false,
+                'label'         => false,
+                'attr'  => [
+                    'placeholder'   => 'Votre Prénom',
+                ]
             ])
-            ->add('Content', Types\TextareaType::class, [
-                'label' => 'Contenu',
+            ->add('lastName', Types\TextType::class, [
+                'mapped'        => false,
+                'label'         => false,
+                'attr'  => [
+                    'placeholder'   => 'Votre Nom',
+                ]
+            ])
+            ->add('title', Types\TextType::class, [
+                'label'         => false,
+                'attr'  => [
+                    'placeholder'   => 'Titre de la contribution',
+                ]
+            ])
+            ->add('content', Types\TextareaType::class, [
+                'label' => false,
+            ])
+            ->add('gtu', Types\ChoiceType::class, [
+                'choices'   => [
+                    1   => 'j\'ai lu et j\'accepte les conditions générales d\'utilisation'
+                ],
+                'label'     => false,
+                'expanded'  => true,
+                'multiple'  => true,
+            ])
+            ->add('root_id', Types\HiddenType::class, [
+                'mapped' => false,
+            ])
+            ->add('parent_id', Types\HiddenType::class, [
+                'mapped' => false,
             ])
         ;
     }
