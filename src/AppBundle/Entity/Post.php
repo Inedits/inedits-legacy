@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\Criteria;
+
 /**
  * Post
  */
@@ -545,7 +547,10 @@ class Post
      */
     public function getUsers()
     {
-        return $this->users;
+        $criteria = Criteria::create();
+        $criteria->where(Criteria::expr()->eq('firstName', 'Jean'));
+
+        return $this->users->matching($criteria);
     }
 
     /**

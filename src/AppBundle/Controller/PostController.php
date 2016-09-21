@@ -32,7 +32,7 @@ class PostController extends Controller
      */
     public function showPostAction(Post $post, Request $request)
     {
-        return $this->render('post\show.html.twig', ['tree' => $post]);
+        return $this->render('post\show.html.twig', ['tree' => $post->getUsers()]);
     }
 
     /**

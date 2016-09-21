@@ -34,6 +34,7 @@ class PostType extends AbstractType
                 ]
             ])
             ->add('content', Types\TextareaType::class, [
+                'required' => false,
                 'label' => false,
                 'attr'  => [
                     'class'   => 'wysiwyg',
