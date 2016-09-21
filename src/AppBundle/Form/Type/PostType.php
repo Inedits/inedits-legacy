@@ -35,6 +35,9 @@ class PostType extends AbstractType
             ])
             ->add('content', Types\TextareaType::class, [
                 'label' => false,
+                'attr'  => [
+                    'class'   => 'wysiwyg',
+                ]
             ])
             ->add('gtu', Types\ChoiceType::class, [
                 'choices'   => [
