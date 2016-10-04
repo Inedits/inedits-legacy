@@ -475,4 +475,12 @@ class UserProfile
     {
         return $this->updated_at;
     }
+
+    public function isFilled()
+    {
+        if ($this->experience || $this->inspiration || $this->style || $this->favoriteBook)
+            return true;
+
+        return false;
+    }
 }
