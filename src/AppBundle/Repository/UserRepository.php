@@ -10,4 +10,17 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findUsersByTree($id, $limit)
+    {
+        $q = $this->createQueryBuilder('u');
+        $q
+            ->leftJoin('u.posts', 'p')
+            ->where('p.id = :id')
+            ->orderBy('u.firstName', 'ASC')
+            ->setMaxResults(3)
+            ->setParameter('id', $id)
+        ;
+
+        return $q->getQuery()->getResult();
+    }
 }

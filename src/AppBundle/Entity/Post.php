@@ -547,10 +547,7 @@ class Post
      */
     public function getUsers()
     {
-        $criteria = Criteria::create();
-        $criteria->where(Criteria::expr()->eq('firstName', 'Jean'));
-
-        return $this->users->matching($criteria);
+        return $this->users;
     }
 
     /**
