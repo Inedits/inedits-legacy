@@ -2,37 +2,56 @@ AppBundle\Entity\UserProfile:
     properties:
         biographie:
             - Type:
-                groups: [registration]
+                groups: [registration, edit]
                 type: string
                 message: Incorrect
         facebook:
             - Type:
-                type: integer
+                groups: [edit]
+                type: string
                 message: Incorrect
             - Url:
-                message: Incorrect
+                groups: [registration, edit]
+                message: Url Incorrect
         twitter:
             - Type:
+                groups: [edit]
                 type: string
                 message: Incorrect
             - Url:
-                message: Incorrect
+                groups: [registration, edit]
+                message: Url Incorrect
         website:
             - Type:
+                groups: [edit]
                 type: string
                 message: Incorrect
             - Url:
-                message: Incorrect
+                groups: [registration, edit]
+                message: Url Incorrect
         favoriteBook:
             - Type:
+                groups: [edit]
                 type: string
                 message: Incorrect
         inspiration:
             - Type:
+                groups: [edit]
+                type: string
+                message: Incorrect
+        favoriteAuthors:
+            - Type:
+                groups: [edit]
+                type: string
+                message: Incorrect
+        favoriteGenre:
+            - Type:
+                groups: [edit]
                 type: string
                 message: Incorrect
         style:
             - Type:
+                groups: [edit]
                 type: string
                 message: Incorrect
         experience:
@@ -41,14 +60,14 @@ AppBundle\Entity\UserProfile:
                 message: Incorrect
         avatar:
             - File:
-                groups: [registration]
+                groups: [registration, edit]
                 mimeTypes: [image/png, image/jpeg]
                 mimeTypesMessage: "Formats supportés: JPG, PNG"
                 maxSize: 1M
                 maxSizeMessage: "Taille Max: 1M"
         cover:
             - File:
-                groups: [registration]
+                groups: [registration, edit]
                 mimeTypes: [image/png, image/jpeg]
                 mimeTypesMessage: "Formats supportés: JPG, PNG"
                 maxSize: 1M

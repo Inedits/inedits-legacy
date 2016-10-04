@@ -43,6 +43,16 @@ AppBundle\Entity\UserProfile:
             length: 255
             nullable: true
             column: favorite_book
+        favoriteAuthors:
+            type: string
+            length: 255
+            nullable: true
+            column: favorite_auhors
+        favoriteGenre:
+            type: string
+            length: 255
+            nullable: true
+            column: favorite_genre
         inspiration:
             type: string
             length: 255

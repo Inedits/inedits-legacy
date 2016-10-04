@@ -22,6 +22,29 @@ class UserProfileType extends AbstractType
             ->add('biographie', Types\TextareaType::class, [
                 'required' => false,
             ])
+            ->add('favoriteAuthors', Types\TextType::class, [
+                'required'  => false,
+                'label'     => 'Auteur(s) préféré(e)'
+            ])
+            ->add('style', Types\TextType::class, [
+                'required' => false,
+            ])
+            ->add('favoriteBook', Types\TextType::class, [
+                'required'  => false,
+                'label'     => 'Livre préféré'
+            ])
+            ->add('inspiration', Types\TextareaType::class, [
+                'required' => false,
+                'label'     => 'Inspiration du moment'
+            ])
+            ->add('favoriteGenre', Types\TextType::class, [
+                'required'  => false,
+                'label'     => 'Genre(s) de prédilection'
+            ])
+            ->add('experience', Types\TextareaType::class, [
+                'required' => false,
+                'label'     => 'En quoi l\'écriture collaborative vous motive-t-elle ?'
+            ])
             ->add('facebook', Types\TextType::class, [
                 'required' => false,
             ])
@@ -30,17 +53,6 @@ class UserProfileType extends AbstractType
             ])
             ->add('website', Types\TextType::class, [
                 'required' => false,
-            ])
-            ->add('style', Types\TextType::class, [
-                'required' => false,
-            ])
-            ->add('experience', Types\TextareaType::class, [
-                'required' => false,
-                'label'     => 'En quoi l\'écriture collaborative vous motive-t-elle ?'
-            ])
-            ->add('favoriteBook', Types\TextType::class, [
-                'required'  => false,
-                'label'     => 'Livre préféré'
             ])
             ->add('avatar', Types\FileType::class, [
                 'required'  => false,
@@ -65,6 +77,7 @@ class UserProfileType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'            => UserProfile::class,
+            'validation_groups'     => array('edit'),
         ));
     }
 

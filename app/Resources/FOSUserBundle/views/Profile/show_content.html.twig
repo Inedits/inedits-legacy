@@ -34,6 +34,16 @@
             {% endif %}
             {% if app.user.userProfile.isFilled() %}
                 <div class="row">
+                    {% if app.user.userProfile.favoriteAuthors is not null %}
+                        <div class="col-xs-12 col-sm-6">
+                            <section>
+                                <header>
+                                    Auteur(s) Préféré(e)s
+                                </header>
+                                <p>{{ app.user.userProfile.favoriteAuthors }}</p>
+                            </section>
+                        </div>
+                    {% endif %}
                     {% if app.user.userProfile.favoriteBook is not null %}
                         <div class="col-xs-12 col-sm-6">
                             <section>
@@ -41,16 +51,6 @@
                                     Livres préférés
                                 </header>
                                 <p>{{ app.user.userProfile.favoriteBook }}</p>
-                            </section>
-                        </div>
-                    {% endif %}
-                    {% if app.user.userProfile.style is not null %}
-                        <div class="col-xs-12 col-sm-6">
-                            <section>
-                                <header>
-                                    Style d'écriture
-                                </header>
-                                <p>{{ app.user.userProfile.style }}</p>
                             </section>
                         </div>
                     {% endif %}
@@ -64,8 +64,31 @@
                             </section>
                         </div>
                     {% endif %}
+
+                    {% if app.user.userProfile.style is not null %}
+                        <div class="col-xs-12 col-sm-6">
+                            <section>
+                                <header>
+                                    Style d'écriture
+                                </header>
+                                <p>{{ app.user.userProfile.style }}</p>
+                            </section>
+                        </div>
+                    {% endif %}
+
+                    {% if app.user.userProfile.favoriteGenre is not null %}
+                        <div class="col-xs-12 col-sm-6">
+                            <section>
+                                <header>
+                                    Style Genre(s) de prédilection
+                                </header>
+                                <p>{{ app.user.userProfile.favoriteGenre }}</p>
+                            </section>
+                        </div>
+                    {% endif %}
+
                     {% if app.user.userProfile.experience is not null %}
-                        <div class="col-xs-12">
+                        <div class="col-xs-12 col-sm-6">
                             <section>
                                 <header>
                                     En quoi l'écriture le motive-t-elle ?
