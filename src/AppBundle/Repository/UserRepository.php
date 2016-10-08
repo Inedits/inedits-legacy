@@ -14,10 +14,12 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
     {
         $q = $this->createQueryBuilder('u');
         $q
-            ->leftJoin('u.posts', 'p')
+            ->leftJoin('u.trees', 'p')
             ->where('p.id = :id')
             ->orderBy('u.firstName', 'ASC')
             ->setParameter('id', $id)
+            ->setMaxResults($limit)
+            ->orderBy('u.firstName')
         ;
 
         return $q->getQuery()->getResult();
