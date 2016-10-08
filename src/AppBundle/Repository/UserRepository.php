@@ -17,7 +17,6 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->leftJoin('u.posts', 'p')
             ->where('p.id = :id')
             ->orderBy('u.firstName', 'ASC')
-            ->setMaxResults(3)
             ->setParameter('id', $id)
         ;
 

@@ -23,7 +23,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface {
 
         $response = null;
 
-        if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
+        if ($this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN')) {
             $response = new RedirectResponse($this->router->generate('admin'));
         } else if ($this->authorizationChecker->isGranted('ROLE_USER')) {
             $response = new RedirectResponse($this->router->generate('fos_user_profile_show'));

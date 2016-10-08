@@ -80,7 +80,7 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/{slug}/{child}/contribuer", name="post_add")
+     * @Route("/arbre/{slug}/{child}/contribuer", name="post_add")
      * @ParamConverter("post", class="AppBundle:Post", options={"mapping": {"child": "slug"}})
      * @Method({"GET"})
      */
