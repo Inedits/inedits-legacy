@@ -475,4 +475,70 @@ class UserProfile
     {
         return $this->updated_at;
     }
+
+    public function isFilled()
+    {
+        if ($this->experience || $this->inspiration || $this->style || $this->favoriteBook || $this->favoriteAuthors || $this->favoriteGenre)
+            return true;
+
+        return false;
+    }
+    /**
+     * @var string
+     */
+    private $favoriteAuthors;
+
+    /**
+     * @var string
+     */
+    private $favoriteGenre;
+
+
+    /**
+     * Set favoriteAuthors
+     *
+     * @param string $favoriteAuthors
+     *
+     * @return UserProfile
+     */
+    public function setFavoriteAuthors($favoriteAuthors)
+    {
+        $this->favoriteAuthors = $favoriteAuthors;
+
+        return $this;
+    }
+
+    /**
+     * Get favoriteAuthors
+     *
+     * @return string
+     */
+    public function getFavoriteAuthors()
+    {
+        return $this->favoriteAuthors;
+    }
+
+    /**
+     * Set favoriteGenre
+     *
+     * @param string $favoriteGenre
+     *
+     * @return UserProfile
+     */
+    public function setFavoriteGenre($favoriteGenre)
+    {
+        $this->favoriteGenre = $favoriteGenre;
+
+        return $this;
+    }
+
+    /**
+     * Get favoriteGenre
+     *
+     * @return string
+     */
+    public function getFavoriteGenre()
+    {
+        return $this->favoriteGenre;
+    }
 }

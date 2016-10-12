@@ -22,9 +22,18 @@ class PostController extends Controller
     public function listPostAction(Request $request)
     {
         $repository = $this->getDoctrine()->getRepository('AppBundle:Post');
+        $userRepo   = $this->getDoctrine()->getRepository('AppBundle:User');
         $trees      = $repository->getRootPost();
 
-        return $this->render('post\list.html.twig', ['trees' => $trees]);
+        foreach ($trees as $value)
+        {
+            $array[] = [
+                'Tree'  => $value,
+                'Users' => $userRepo->findUsersByTree($value->getId(), 3),
+            ];
+        }
+
+        return $this->render('post\list.html.twig', ['trees' => $array]);
     }
 
     /**
@@ -71,7 +80,7 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/{slug}/{child}/contribuer", name="post_add")
+     * @Route("/arbre/{slug}/{child}/contribuer", name="post_add")
      * @ParamConverter("post", class="AppBundle:Post", options={"mapping": {"child": "slug"}})
      * @Method({"GET"})
      */

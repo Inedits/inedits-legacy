@@ -2,6 +2,10 @@ AppBundle\Entity\User:
     type: entity
     table: user
     repositoryClass: AppBundle\Repository\UserRepository
+    manyToMany:
+        trees:
+            targetEntity: AppBundle\Entity\Post
+            mappedBy: users
     oneToMany:
         posts:
             targetEntity: AppBundle\Entity\Post

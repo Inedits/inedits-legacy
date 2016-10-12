@@ -13,14 +13,6 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
  */
 class PostRepository extends NestedTreeRepository
 {
-    // use NestedTreeRepositoryTrait; // or MaterializedPathRepositoryTrait or ClosureTreeRepositoryTrait.
-
-    // public function __construct(EntityManager $em, ClassMetadata $class)
-    // {
-    //     parent::__construct($em, $class);
-
-    //     $this->initializeTreeRepository($em, $class);
-    // }
 
     public function getRootPost()
     {

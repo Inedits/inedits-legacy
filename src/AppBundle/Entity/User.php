@@ -326,4 +326,43 @@ class User extends BaseUser
 
         return $this;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $trees;
+
+
+    /**
+     * Add tree
+     *
+     * @param \AppBundle\Entity\Post $tree
+     *
+     * @return User
+     */
+    public function addTree(\AppBundle\Entity\Post $tree)
+    {
+        $this->trees[] = $tree;
+
+        return $this;
+    }
+
+    /**
+     * Remove tree
+     *
+     * @param \AppBundle\Entity\Post $tree
+     */
+    public function removeTree(\AppBundle\Entity\Post $tree)
+    {
+        $this->trees->removeElement($tree);
+    }
+
+    /**
+     * Get trees
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTrees()
+    {
+        return $this->trees;
+    }
 }

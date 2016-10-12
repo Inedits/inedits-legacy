@@ -16,7 +16,9 @@ AppBundle\Entity\User:
                 minMessage: 5 caractères minimum
         gtu:
             - NotNull:
+                groups: [registration]
                 message: Vous devez accepter les conditions générales d'utilisation
             - NotBlank:
+                groups: [registration]
                 message: Vous devez accepter les conditions générales d'utilisation
 

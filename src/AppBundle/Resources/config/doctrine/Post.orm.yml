@@ -37,6 +37,7 @@ AppBundle\Entity\Post:
     manyToMany:
         users:
             targetEntity: AppBundle\Entity\User
+            inversedBy: trees
             joinTable:
                 name: post_user
             joinColumns:

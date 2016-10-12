@@ -5,8 +5,9 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_USER:          ROLE_USER
+        ROLE_ADMIN:         ROLE_ADMIN
+        ROLE_SUPER_ADMIN:   ROLE_SUPER_ADMIN
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
@@ -44,6 +45,8 @@ security:
         - { path: ^/profile/, role: ROLE_USER }
         # ADMIN
         - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
+        # TREES
+        - { path: ^/arbre/, role: ROLE_USER }
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
