@@ -95,12 +95,12 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-# vich_uploader:
-#     db_driver: orm
-#     mappings:
-#         avatar_file:
-#             uri_prefix:         /uploads/avatar
-#             upload_destination: %kernel.root_dir%/../web/uploads/avatar
-        # cover:
-        #     uri_prefix:         /uploads/cover
-        #     upload_destination: %kernel.root_dir%/../web/uploads/cover
+vich_uploader:
+    db_driver: orm
+    mappings:
+        avatar_file:
+            uri_prefix:         /uploads/avatar
+            upload_destination: %kernel.root_dir%/../web/uploads/avatar
+        cover:
+            uri_prefix:         /uploads/cover
+            upload_destination: %kernel.root_dir%/../web/uploads/cover
