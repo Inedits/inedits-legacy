@@ -63,9 +63,10 @@ class PostController extends Controller
 
         $query = $this->getDoctrine()->getManager()
             ->createQueryBuilder()
-            ->select('node, user')
+            ->select('node, user, parent')
             ->from('AppBundle\Entity\Post', 'node')
             ->leftJoin('node.user', 'user')
+            ->leftJoin('node.parent', 'parent')
             ->where('node.root = :postID')
             ->setParameter('postID', $post->getId())
             ->getQuery()
@@ -80,8 +81,9 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/arbre/{slug}/{child}/contribuer", name="post_add")
-     * @ParamConverter("post", class="AppBundle:Post", options={"mapping": {"child": "slug"}})
+     * @Route("/arbre/{slug}/{parent}/contribuer", name="post_add")
+     * @ParamConverter("tree", class="AppBundle:Post", options={"mapping": {"slug": "slug"}})
+     * @ParamConverter("parent", class="AppBundle:Post", options={"mapping": {"parent": "slug"}})
      * @Method({"GET"})
      */
     public function addAction(Request $request, Post $tree, Post $parent)
@@ -91,12 +93,12 @@ class PostController extends Controller
         $post->setRoot($tree);
 
         $form = $this->createForm(
-                    new PostType(),
-                    $post
-                );
+            new PostType(),
+            $post
+        );
 
         return $this->render('post/add.html.twig', [
-            'form'          => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 

@@ -2,7 +2,7 @@
 
 all: import-sql
 
-import-sql:
+reload-db:
 	app/console doctrine:database:drop --force
 	app/console doctrine:database:create
 	app/console doctrine:migrations:migrate  --no-interaction

@@ -19,7 +19,7 @@ class PostRepository extends NestedTreeRepository
         $q = $this->createQueryBuilder('p');
         $q
             ->where('p.lvl = 0')
-            ->orderBy('p.created_at', 'DESC')
+            ->orderBy('p.createdAt', 'DESC')
         ;
 
         return $q->getQuery()->getResult();

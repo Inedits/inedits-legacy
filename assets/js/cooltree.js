@@ -203,18 +203,11 @@ var CoolTree = (function () {
       }
 
       function clickAddChild(d) {
-        // window.location.href = "https://"+document.location.hostname+"/arbres/"+d.slug+"/ajouter/"+d.id+"/"+d.user_id;
-        window.location.href = "http://localhost:8000/arbre/"+d.parent.slug+"/"+d.slug+"/contribuer";
-      }
-
-      function clickAddBrother(d) {
-        // window.location.href = "https://"+document.location.hostname+"/arbres/"+d.slug+"/ajouter/"+d.parent.id+"/"+d.user_id;
-        window.location.href = "https://"+document.location.hostname+"/arbres/"+d.slug+"/ajouter/"+d.parent.id+"/"+d.user_id;
+        window.location.href = document.location.href+"/"+d.slug+"/contribuer";
       }
 
       function clickShow(d) {
-        // window.location.href = "https://"+document.location.hostname+"/arbres/"+d.slug+"/contribution/"+d.slug;
-        window.location.href = "https://"+document.location.hostname+"/arbres/"+d.slug+"/contribution/"+d.slug;
+        window.location.href = document.location.origin+"/contribution/"+d.slug;
       }
 
       // Hover Bubble
