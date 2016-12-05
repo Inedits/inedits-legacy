@@ -12,7 +12,7 @@ AppBundle\Entity\User:
         email: sebastien@diplomeo.fr
         enabled: true
         roles: ['ROLE_ADMIN']
-        user_profile: '@admin_profile'
+        userProfile: '@admin_profile'
     user:
         username: user
         firstName: Jean
@@ -21,5 +21,5 @@ AppBundle\Entity\User:
         email: sebastien.kalinine@gmail.com
         enabled: true
         roles: ['ROLE_USER']
-        user_profile: '@user_profile'
+        userProfile: '@user_profile'
 

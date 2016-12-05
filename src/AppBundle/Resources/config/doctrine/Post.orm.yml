@@ -12,7 +12,6 @@ AppBundle\Entity\Post:
             joinColumn:
                 referencedColumnName: id
                 onDelete: CASCADE
-                nullable: false
             gedmo:
                 - treeRoot
         user:
