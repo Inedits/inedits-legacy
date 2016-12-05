@@ -573,4 +573,15 @@ class Post
 
         return $this;
     }
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+
 }

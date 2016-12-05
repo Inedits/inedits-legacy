@@ -2,6 +2,7 @@
 
 {% block title %}Profile{% endblock %}
 {% block body_class %}profile{% endblock %}
+
 {% block player %}
     {{ include('user/_cover.html.twig', {
         cover: app.user.userProfile.cover,
@@ -10,5 +11,5 @@
 {% endblock %}
 
 {% block fos_user_content %}
-{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+    {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
 {% endblock fos_user_content %}

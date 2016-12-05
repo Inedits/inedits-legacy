@@ -12,14 +12,16 @@ AppBundle\Entity\Post:
             joinColumn:
                 referencedColumnName: id
                 onDelete: CASCADE
+                nullable: false
             gedmo:
-            - treeRoot
+                - treeRoot
         user:
             targetEntity: AppBundle\Entity\User
             inversedBy: posts
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+                nullable: false
         parent:
             targetEntity: AppBundle\Entity\Post
             inversedBy: children
@@ -53,6 +55,8 @@ AppBundle\Entity\Post:
             id: true
             generator:
                 strategy: AUTO
+            options:
+                unsigned: true
     fields:
         title:
             type: string
@@ -62,15 +66,14 @@ AppBundle\Entity\Post:
             nullable: true
         isMain:
             type: boolean
-            nullable: true
+            options:
+                default: 0
             column: is_main
         isEnd:
             type: boolean
-            nullable: true
+            options:
+                default: 0
             column: is_end
-        userId:
-            type: integer
-            column: user_id
         lft:
             type: integer
             gedmo:
@@ -85,21 +88,23 @@ AppBundle\Entity\Post:
                 - treeLevel
         slug:
             type: string
-            length: 128
+            length: '255'
             unique: true
             gedmo:
                 slug:
                     separator: -
                     fields:
                         - title
-        created_at:
+        createdAt:
             type: datetime
             gedmo:
                 timestampable:
                     on: "create"
-        updated_at:
+            column: created_at
+        updatedAt:
             type: datetime
             gedmo:
                 timestampable:
                     on: "update"
+            column: updated_at
     lifecycleCallbacks: {  }

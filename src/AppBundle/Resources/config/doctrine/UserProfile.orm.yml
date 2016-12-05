@@ -5,7 +5,7 @@ AppBundle\Entity\UserProfile:
     oneToOne:
         user:
             targetEntity: AppBundle\Entity\User
-            mappedBy: user_profile
+            mappedBy: userProfile
             cascade:
                 - remove
     id:
@@ -14,6 +14,8 @@ AppBundle\Entity\UserProfile:
             id: true
             generator:
                 strategy: AUTO
+            options:
+                unsigned: true
     fields:
         avatar:
             type: string
@@ -64,14 +66,16 @@ AppBundle\Entity\UserProfile:
         experience:
             type: text
             nullable: true
-        created_at:
+        createdAt:
             type: datetime
             gedmo:
                 timestampable:
                     on: "create"
-        updated_at:
+            column: created_at
+        updatedAt:
             type: datetime
             gedmo:
                 timestampable:
                     on: "update"
+            column: updated_at
     lifecycleCallbacks: {  }

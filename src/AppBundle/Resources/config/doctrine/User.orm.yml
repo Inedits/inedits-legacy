@@ -11,11 +11,12 @@ AppBundle\Entity\User:
             targetEntity: AppBundle\Entity\Post
             mappedBy: user
     oneToOne:
-        user_profile:
+        userProfile:
             targetEntity: AppBundle\Entity\UserProfile
             inversedBy: user
-            joinColumn: profileId
-            referencedColumnName: id
+            joinColumn:
+                name: profile_id
+                nullable: false
             cascade:
                 - persist
     id:
@@ -24,16 +25,20 @@ AppBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
+            options:
+                unsigned: true
     fields:
         firstName:
             type: string
             length: 255
+            column: first_name
         lastName:
             type: string
             length: 255
+            column: last_name
         slug:
             type: string
-            length: 128
+            length: 255
             unique: true
             gedmo:
                 slug:
@@ -41,14 +46,16 @@ AppBundle\Entity\User:
                     fields:
                         - firstName
                         - lastName
-        created_at:
+        createdAt:
             type: datetime
             gedmo:
                 timestampable:
                     on: "create"
-        updated_at:
+            column: created_at
+        updatedAt:
             type: datetime
             gedmo:
                 timestampable:
                     on: "update"
+            column: updated_at
     lifecycleCallbacks: {  }

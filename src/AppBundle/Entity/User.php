@@ -5,70 +5,42 @@ namespace AppBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * User
- */
 class User extends BaseUser
 {
+    protected $id;
+    private $firstName;
+    private $lastName;
+    private $userProfile;
+    private $posts;
+    private $slug;
+    private $createdAt;
+    private $updatedAt;
+
     public function __toString()
     {
-        return 'toString';
+        return $this->lastName;
     }
 
-    // To Remove Username Field In Form
-    public function setEmail($email){
-        parent::setEmail($email);
-        $this->setUsername($email);
-    }
-
-    /**
-     * @var int
-     */
-    protected $id;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Get expiresAt
-     *
-     * @return \DateTime
-     */
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email); // User email as username
+    }
+
     public function getExpiresAt()
     {
         return $this->expiresAt;
     }
 
-    /**
-     * Get credentials_expire_at
-     *
-     * @return \DateTime
-     */
     public function getCredentialsExpireAt()
     {
         return $this->credentialsExpireAt;
     }
-    /**
-     * @var \AppBundle\Entity\UserProfile
-     */
-    private $user_profile;
 
-
-    /**
-     * Set userProfile
-     *
-     * @param \AppBundle\Entity\UserProfile $userProfile
-     *
-     * @return User
-     */
     public function setUserProfile(\AppBundle\Entity\UserProfile $userProfile = null)
     {
         $this->user_profile = $userProfile;
@@ -77,62 +49,11 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * Get userProfile
-     *
-     * @return \AppBundle\Entity\UserProfile
-     */
     public function getUserProfile()
     {
         return $this->user_profile;
     }
-    /**
-     * @var integer
-     */
-    private $profileId;
 
-
-    /**
-     * Set profileId
-     *
-     * @param integer $profileId
-     *
-     * @return User
-     */
-    public function setProfileId($profileId)
-    {
-        $this->profileId = $profileId;
-
-        return $this;
-    }
-
-    /**
-     * Get profileId
-     *
-     * @return integer
-     */
-    public function getProfileId()
-    {
-        return $this->profileId;
-    }
-    /**
-     * @var string
-     */
-    private $firstName;
-
-    /**
-     * @var string
-     */
-    private $lastName;
-
-
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     *
-     * @return User
-     */
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
@@ -140,23 +61,11 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * Get firstName
-     *
-     * @return string
-     */
     public function getFirstName()
     {
         return $this->firstName;
     }
 
-    /**
-     * Set lastName
-     *
-     * @param string $lastName
-     *
-     * @return User
-     */
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
@@ -164,28 +73,11 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * Get lastName
-     *
-     * @return string
-     */
     public function getLastName()
     {
         return $this->lastName;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $posts;
 
-
-    /**
-     * Add post
-     *
-     * @param \AppBundle\Entity\Post $post
-     *
-     * @return User
-     */
     public function addPost(\AppBundle\Entity\Post $post)
     {
         $this->posts[] = $post;
@@ -193,39 +85,15 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * Remove post
-     *
-     * @param \AppBundle\Entity\Post $post
-     */
     public function removePost(\AppBundle\Entity\Post $post)
     {
         $this->posts->removeElement($post);
     }
 
-    /**
-     * Get posts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
     public function getPosts()
     {
         return $this->posts;
     }
-    /**
-     * @var string
-     */
-    private $slug;
-
-    /**
-     * @var \DateTime
-     */
-    private $created_at;
-
-    /**
-     * @var \DateTime
-     */
-    private $updated_at;
 
 
     /**
@@ -365,4 +233,16 @@ class User extends BaseUser
     {
         return $this->trees;
     }
+
+    private $createdAt;
+
+
+    private $updatedAt;
+
+    /**
+     * @var \AppBundle\Entity\UserProfile
+     */
+    private $userProfile;
+
+
 }
