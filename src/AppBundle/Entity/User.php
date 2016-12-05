@@ -15,6 +15,8 @@ class User extends BaseUser
     private $slug;
     private $createdAt;
     private $updatedAt;
+    private $trees;
+    protected $gtu;
 
     public function __toString()
     {
@@ -43,7 +45,7 @@ class User extends BaseUser
 
     public function setUserProfile(\AppBundle\Entity\UserProfile $userProfile = null)
     {
-        $this->user_profile = $userProfile;
+        $this->userProfile = $userProfile;
         $userProfile->setUser($this);
 
         return $this;
@@ -51,7 +53,7 @@ class User extends BaseUser
 
     public function getUserProfile()
     {
-        return $this->user_profile;
+        return $this->userProfile;
     }
 
     public function setFirstName($firstName)
@@ -95,14 +97,6 @@ class User extends BaseUser
         return $this->posts;
     }
 
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return User
-     */
     public function setSlug($slug)
     {
         $this->slug = $slug;
@@ -110,103 +104,48 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * Get slug
-     *
-     * @return string
-     */
     public function getSlug()
     {
         return $this->slug;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return User
-     */
     public function setCreatedAt($createdAt)
     {
-        $this->created_at = $createdAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return User
-     */
     public function setUpdatedAt($updatedAt)
     {
-        $this->updated_at = $updatedAt;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
     public function getUpdatedAt()
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
-    protected $gtu;
 
-
-    /**
-     * Get gtu
-     *
-     * @return boolean
-     */
     public function getGtu()
     {
         return $this->gtu;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \Boolean $gtu
-     *
-     * @return User
-     */
     public function setGtu($gtu)
     {
         $this->gtu = $gtu;
 
         return $this;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $trees;
 
-
-    /**
-     * Add tree
-     *
-     * @param \AppBundle\Entity\Post $tree
-     *
-     * @return User
-     */
     public function addTree(\AppBundle\Entity\Post $tree)
     {
         $this->trees[] = $tree;
@@ -214,35 +153,16 @@ class User extends BaseUser
         return $this;
     }
 
-    /**
-     * Remove tree
-     *
-     * @param \AppBundle\Entity\Post $tree
-     */
     public function removeTree(\AppBundle\Entity\Post $tree)
     {
         $this->trees->removeElement($tree);
     }
 
-    /**
-     * Get trees
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
     public function getTrees()
     {
         return $this->trees;
     }
 
-    private $createdAt;
-
-
-    private $updatedAt;
-
-    /**
-     * @var \AppBundle\Entity\UserProfile
-     */
-    private $userProfile;
 
 
 }
