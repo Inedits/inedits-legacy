@@ -8,8 +8,16 @@ services:
         class:  AppBundle\Security\LoginSuccessHandler
         arguments:  ['@router', '@security.authorization_checker']
 
+    # User
     app.registration_complet:
         class: AppBundle\EventListener\RegistrationListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    # Post
+    app.post_saved:
+        class: AppBundle\EventListener\PostSavedListener
         arguments: [@router]
         tags:
             - { name: kernel.event_subscriber }

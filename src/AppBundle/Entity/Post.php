@@ -27,12 +27,12 @@ class Post
     /**
      * @var bool
      */
-    private $isMain;
+    private $isMain = 0;
 
     /**
      * @var bool
      */
-    private $isEnd;
+    private $isEnd = 0;
 
     /**
      * @var int

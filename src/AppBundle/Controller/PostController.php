@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
 use AppBundle\Form\Type\PostType;
+use AppBundle\Events;
+use AppBundle\Event\PostSavedEvent;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -84,22 +86,53 @@ class PostController extends Controller
      * @Route("/arbre/{slug}/{parent}/contribuer", name="post_add")
      * @ParamConverter("tree", class="AppBundle:Post", options={"mapping": {"slug": "slug"}})
      * @ParamConverter("parent", class="AppBundle:Post", options={"mapping": {"parent": "slug"}})
-     * @Method({"GET"})
+     * @Method({"GET", "POST"})
      */
     public function addAction(Request $request, Post $tree, Post $parent)
     {
         $post = new Post();
         $post->setParent($parent);
         $post->setRoot($tree);
+        $user = $this->getUser();
+        $post->setUser($user);
 
         $form = $this->createForm(
             new PostType(),
             $post
         );
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $post = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            $this->get('event_dispatcher')->dispatch(Events::POST_SAVED, new PostSavedEvent($post, $user));
+
+            return $this->redirectToRoute('post_saved_success', ['slug' => $post->getSlug()]);
+        }
+
+        if ($form->isSubmitted() && !$form->isValid()) {
+            $this->get('session')->getFlashBag()->add('danger', 'Des erreurs sont survenues.');
+        }
+
         return $this->render('post/add.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/{slug}/confirmation", name="post_saved_success")
+     * @Method({"GET"})
+     */
+    public function addSuccessAction(Request $request, Post $post)
+    {
+
+        return $this->render('post/confirmation.html.twig');
     }
 
 }
