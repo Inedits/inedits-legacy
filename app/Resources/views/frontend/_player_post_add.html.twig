@@ -1,0 +1,8 @@
+<div class="jumbotron default">
+    <div class="absolute-center">
+        <div class="container">
+            <h1>Ecrivez la suite de l'histoire...</h1>
+            <p>Suite de : <a href="{{ path('post_show', {slug:post.slug}) }}">{{ post.title }}</a> écrite par : <a href="{{ path('fos_user_profile_show') }}">{{ user.getCommonName() }}</a></p>
+        </div>
+    </div>
+</div>

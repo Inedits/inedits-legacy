@@ -20,7 +20,12 @@ class User extends BaseUser
 
     public function __toString()
     {
-        return $this->lastName;
+        return $this->firstName.' '.$this->lastName;
+    }
+
+    public function getCommonName()
+    {
+        return $this->firstName.' '.$this->lastName;
     }
 
     public function getId()

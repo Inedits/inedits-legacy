@@ -3,7 +3,7 @@
 {% block title %}Contribuer{% endblock %}
 
 {% block player %}
-    {{ include('frontend/_player_homepage.html.twig', with_context = false) }}
+    {{ include('frontend/_player_post_add.html.twig', {user:app.user, post:parent}, with_context = false) }}
 {% endblock %}
 
 {% block body %}
