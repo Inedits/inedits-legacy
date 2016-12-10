@@ -332,9 +332,11 @@ class Post
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(Post $root, User $user)
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user = $user;
+        $this->root = $user;
     }
 
     /**
@@ -584,4 +586,33 @@ class Post
     private $updatedAt;
 
 
+    /**
+     * @var string
+     */
+    private $content_plain;
+
+
+    /**
+     * Set contentPlain
+     *
+     * @param string $contentPlain
+     *
+     * @return Post
+     */
+    public function setContentPlain($contentPlain)
+    {
+        $this->content_plain = $contentPlain;
+
+        return $this;
+    }
+
+    /**
+     * Get contentPlain
+     *
+     * @return string
+     */
+    public function getContentPlain()
+    {
+        return $this->content_plain;
+    }
 }

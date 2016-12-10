@@ -1,0 +1,24 @@
+AppBundle\Entity\Post:
+    properties:
+        title:
+            - NotBlank: ~
+            - Type:
+                type: string
+                message: Incorrect
+        content:
+            - NotBlank: ~
+            - Type:
+                type: string
+                message: Incorrect
+            - Length:
+                min: 100
+                max: 3000
+                minMessage: 'Trop Court'
+                maxMessage: 'Trop Long'
+        gtu:
+            - NotNull:
+                message: Vous devez accepter les conditions générales d'utilisation
+            - NotBlank:
+                message: Vous devez accepter les conditions générales d'utilisation
+
+

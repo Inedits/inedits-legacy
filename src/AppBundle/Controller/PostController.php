@@ -90,11 +90,9 @@ class PostController extends Controller
      */
     public function addAction(Request $request, Post $tree, Post $parent)
     {
-        $post = new Post();
-        $post->setParent($parent);
-        $post->setRoot($tree);
         $user = $this->getUser();
-        $post->setUser($user);
+        $post = new Post($tree, $user);
+        $post->setParent($parent);
 
         $form = $this->createForm(
             new PostType(),
@@ -106,7 +104,6 @@ class PostController extends Controller
         if ($form->isSubmitted() && $form->isValid())
         {
             $post = $form->getData();
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();

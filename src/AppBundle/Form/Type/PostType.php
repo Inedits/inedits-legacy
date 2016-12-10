@@ -3,6 +3,7 @@
 namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Post;
+use AppBundle\Form\Transformer\PostTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type as Types;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -40,6 +41,8 @@ class PostType extends AbstractType
                     'class'   => 'wysiwyg',
                 ]
             ])
+            ->add('content_plain', Types\HiddenType::class)
+            ->addModelTransformer(new PostTransformer())
             ->add('gtu', Types\ChoiceType::class, [
                 'choices'   => [
                     1   => 'j\'ai lu et j\'accepte les conditions générales d\'utilisation'

@@ -63,6 +63,9 @@ AppBundle\Entity\Post:
         content:
             type: text
             nullable: true
+        content_plain:
+            type: text
+            nullable: true
         isMain:
             type: boolean
             options:
