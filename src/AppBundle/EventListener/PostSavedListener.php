@@ -9,10 +9,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PostSavedListener implements EventSubscriberInterface
 {
+    private $twig;
+    private $mailer;
     private $router;
 
-    public function __construct(UrlGeneratorInterface $router)
+    public function __construct($mailer, $twig, UrlGeneratorInterface $router)
     {
+        $this->twig   = $twig;
+        $this->mailer = $mailer;
         $this->router = $router;
     }
 
@@ -28,7 +32,21 @@ class PostSavedListener implements EventSubscriberInterface
 
     public function onPostSaved(PostSavedEvent $event)
     {
-        // Send Emails
-        //exit('coucou');
+        $message = $this->mailer->createMessage()
+            ->setSubject('Inedit | La première plateforme d\'écriture collaborative')
+            ->setFrom('study-abraod@dev.com', 'Inedit | La première plateforme d\'écriture collaborative')
+            ->setTo([$event->getUser()->getEmail()])
+            ->setBody(
+                $this->twig->render(
+                    'mail/post_add.html.twig',
+                    [
+                        'user' => $event->getUser(),
+                        'post' => $event->getPost()
+                    ]
+                ),
+                'text/html'
+            )
+        ;
+        $this->mailer->send($message);
     }
 }

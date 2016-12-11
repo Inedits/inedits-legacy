@@ -18,6 +18,6 @@ services:
     # Post
     app.post_saved:
         class: AppBundle\EventListener\PostSavedListener
-        arguments: [@router]
+        arguments: ['@mailer', '@twig', '@router']
         tags:
             - { name: kernel.event_subscriber }
