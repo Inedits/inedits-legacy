@@ -26,11 +26,13 @@ class Post
     private $createdAt;
     private $updatedAt;
     private $contentPlain;
+    private $status;
 
-    public function __construct(User $user)
+    public function __construct(User $user, PostStatus $status)
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user = $user;
+        $this->status = $status;
     }
 
     public function getId()
@@ -279,19 +281,7 @@ class Post
     {
         return $this->contentPlain;
     }
-    /**
-     * @var \AppBundle\Entity\PostStatus
-     */
-    private $status;
 
-
-    /**
-     * Set status
-     *
-     * @param \AppBundle\Entity\PostStatus $status
-     *
-     * @return Post
-     */
     public function setStatus(\AppBundle\Entity\PostStatus $status)
     {
         $this->status = $status;
@@ -299,11 +289,6 @@ class Post
         return $this;
     }
 
-    /**
-     * Get status
-     *
-     * @return \AppBundle\Entity\PostStatus
-     */
     public function getStatus()
     {
         return $this->status;

@@ -13,8 +13,6 @@ AppBundle\Entity\Post:
             joinColumn:
                 name: status_id
                 nullable: false
-                options:
-                    default: 3
         root:
             targetEntity: AppBundle\Entity\Post
             joinColumn:

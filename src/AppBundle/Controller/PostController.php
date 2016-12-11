@@ -92,8 +92,9 @@ class PostController extends Controller
      */
     public function addAction(Request $request, Post $tree, Post $parent)
     {
-        $user = $this->getUser();
-        $post = new Post($user);
+        $user   = $this->getUser();
+        $status = $this->getDoctrine()->getRepository('AppBundle:PostStatus')->find(1);
+        $post   = new Post($user, $status);
         $post->setRoot($tree);
         $post->setParent($parent);
 
