@@ -17,10 +17,16 @@ class User extends BaseUser
     private $updatedAt;
     private $trees;
     protected $gtu;
+    private $postCount = 0;
 
     public function __toString()
     {
         return $this->firstName.' '.$this->lastName;
+    }
+
+    public function getPostCount()
+    {
+        return $this->postCount;
     }
 
     public function getCommonName()
@@ -31,6 +37,11 @@ class User extends BaseUser
     public function getFooterName()
     {
         return $this->firstName.' '.ucfirst(substr($this->lastName, 0, 1));
+    }
+
+    public function getBoxName()
+    {
+        return $this->firstName.' '.ucfirst(substr($this->lastName, 0, 1)).".";
     }
 
 
@@ -174,6 +185,12 @@ class User extends BaseUser
         return $this->trees;
     }
 
+    public function setPostCount($postCount)
+    {
+        $this->postCount = $postCount;
+
+        return $this;
+    }
 
 
 }

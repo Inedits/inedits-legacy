@@ -1,0 +1,19 @@
+<div class="user-box">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="cover">
+          {{ include('user/_avatar.html.twig', { avatar_path: user.userProfile.avatar }, { with_context: false }) }}
+        </div>
+      </div>
+      <div class="panel-body text-center">
+        <p class="h3">{{ user.getBoxName() }}</p>
+        {{ user.userProfile.biographie }}
+      </div>
+      <ul class="list-group">
+          <li class="list-group-item">Contributions écrites : <b>{{ user.postCount }}</b></li>
+      </ul>
+      <div class="panel-footer">
+        <a class="btn" href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">Voir son profil</a>
+      </div>
+    </div>
+</div>

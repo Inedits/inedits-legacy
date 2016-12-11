@@ -24,6 +24,18 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $q->getQuery()->getResult();
     }
 
+    public function findBestUsers($limit=3)
+    {
+        $q = $this->createQueryBuilder('u');
+        $q
+            ->where('u.postCount <> 0')
+            ->orderBy('u.postCount', 'DESC')
+            ->setMaxResults($limit)
+        ;
+
+        return $q->getQuery()->getResult();
+    }
+
     public function findLastUsers($limit=3)
     {
         $q = $this->createQueryBuilder('u');

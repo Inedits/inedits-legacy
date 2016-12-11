@@ -12,12 +12,14 @@ class PostSavedListener implements EventSubscriberInterface
     private $twig;
     private $mailer;
     private $router;
+    private $em;
 
-    public function __construct($mailer, $twig, UrlGeneratorInterface $router)
+    public function __construct($mailer, $twig, UrlGeneratorInterface $router, $em)
     {
         $this->twig   = $twig;
         $this->mailer = $mailer;
         $this->router = $router;
+        $this->em     = $em;
     }
 
     /**
@@ -32,15 +34,18 @@ class PostSavedListener implements EventSubscriberInterface
 
     public function onPostSaved(PostSavedEvent $event)
     {
+        $user = $event->getUser();
+
+        // Emails
         $message = $this->mailer->createMessage()
             ->setSubject('Inedit | La première plateforme d\'écriture collaborative')
             ->setFrom('clemence@inedits.fr', 'Inedit | La première plateforme d\'écriture collaborative')
-            ->setTo([$event->getUser()->getEmail()])
+            ->setTo([$user->getEmail()])
             ->setBody(
                 $this->twig->render(
                     'email/post_add.html.twig',
                     [
-                        'user' => $event->getUser(),
+                        'user' => $user,
                         'post' => $event->getPost()
                     ]
                 ),
@@ -48,5 +53,12 @@ class PostSavedListener implements EventSubscriberInterface
             )
         ;
         $this->mailer->send($message);
+
+        // User update
+        $count = $this->em->getRepository('AppBundle\Entity\Post')->countPostByUser($user->getId());
+        $user->setPostCount($count);
+
+        $this->em->persist($user);
+        $this->em->flush();
     }
 }

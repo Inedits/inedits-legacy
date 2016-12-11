@@ -24,4 +24,33 @@ class PostRepository extends NestedTreeRepository
 
         return $q->getQuery()->getResult();
     }
+
+    public function getLastPost($limit=3)
+    {
+        $q = $this->createQueryBuilder('p');
+        $q
+            ->where('p.lvl <> 0')
+            ->andWhere('s.id = 2')
+            ->leftJoin('p.status', 's')
+            ->orderBy('p.createdAt', 'DESC')
+        ;
+
+        return $q->getQuery()->getResult();
+    }
+
+    public function countPostByUser($id)
+    {
+        $q = $this->createQueryBuilder('p');
+        $q
+            ->select('COUNT(1)')
+            ->where('user.id = :id')
+            ->andWhere('p.lvl <> 0')
+            ->andWhere('status.id = 2')
+            ->leftJoin('p.user', 'user')
+            ->leftJoin('p.status', 'status')
+            ->setParameter('id', $id)
+        ;
+
+        return $q->getQuery()->getSingleScalarResult();
+    }
 }

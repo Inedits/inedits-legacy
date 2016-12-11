@@ -36,6 +36,11 @@ AppBundle\Entity\User:
             type: string
             length: 255
             column: last_name
+        postCount:
+            type: integer
+            column: post_counts
+            options:
+                unsigned: true
         slug:
             type: string
             length: 255

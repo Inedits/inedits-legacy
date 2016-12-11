@@ -61,6 +61,11 @@ class PostAdmin extends AbstractAdmin
 
     public function preUpdate($post)
     {
+        $this->container->get('event_dispatcher')->dispatch(Events::POST_ADMIN_SAVE, new PostAdminSavedEvent($post, $post->getUser()));
+    }
+
+    public function postUpdate($post)
+    {
         $this->container->get('event_dispatcher')->dispatch(Events::POST_ADMIN_SAVED, new PostAdminSavedEvent($post, $post->getUser()));
     }
 

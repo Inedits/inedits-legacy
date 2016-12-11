@@ -6,4 +6,40 @@
 {% endblock %}
 
 {% block body %}
+    <section class="last-trees">
+        <div class="container">
+            <p class="h3">Derniers arbres</p>
+            <div class="row">
+                {% for tree in trees %}
+                    <div class="col-xs-12 col-sm-4">
+                        {{ include('post/_tree_box.html.twig', { tree: tree.Tree, users: tree.Users }, with_context = false) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="last-posts">
+        <div class="container">
+            <p class="h3">Derniers arbres</p>
+            <div class="row">
+                {% for post in posts %}
+                    <div class="col-xs-12 col-sm-4">
+                      {{ include('post/_tree_box.html.twig', { tree: post.Tree, users: post.Users }, with_context = false) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="best-users">
+        <div class="container">
+            <p class="h3">Les auteurs les plus actifs</p>
+            <div class="row">
+                {% for user in users %}
+                    <div class="col-xs-12 col-sm-4">
+                      {{ include('user/_user_box.html.twig', { user: user }, with_context = false) }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}

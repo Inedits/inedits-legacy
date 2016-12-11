@@ -18,7 +18,7 @@ services:
     # Post
     app.post_saved:
         class: AppBundle\EventListener\PostSavedListener
-        arguments: ['@mailer', '@twig', '@router']
+        arguments: ['@mailer', '@twig', '@router', '@doctrine.orm.entity_manager']
         tags:
             - { name: kernel.event_subscriber }
     app.post_admin_saved:

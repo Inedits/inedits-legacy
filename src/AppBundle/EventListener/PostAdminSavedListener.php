@@ -28,11 +28,12 @@ class PostAdminSavedListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
+            Events::POST_ADMIN_SAVE  => 'onPostAdminSave',
             Events::POST_ADMIN_SAVED => 'onPostAdminSaved',
         );
     }
 
-    public function onPostAdminSaved(PostAdminSavedEvent $event)
+    public function onPostAdminSave(PostAdminSavedEvent $event)
     {
         $post               = $event->getPost();
         $oldPost            = $this->em->getRepository('AppBundle:Post')->findOneById($post->getId());
@@ -98,5 +99,17 @@ class PostAdminSavedListener implements EventSubscriberInterface
                 $this->mailer->send($message);
             }
         }
+    }
+
+    public function onPostAdminSaved($event)
+    {
+        $user = $event->getUser();
+
+        // User update
+        $count = $this->em->getRepository('AppBundle\Entity\Post')->countPostByUser($user->getId());
+        $user->setPostCount($count);
+
+        $this->em->persist($user);
+        $this->em->flush();
     }
 }
