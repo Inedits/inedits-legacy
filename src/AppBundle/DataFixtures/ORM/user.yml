@@ -11,7 +11,7 @@ AppBundle\Entity\User:
         plainPassword: admin
         email: sebastien@diplomeo.fr
         enabled: true
-        roles: ['ROLE_ADMIN']
+        roles: ['ROLE_SUPER_ADMIN']
         userProfile: '@admin_profile'
     user:
         username: user
