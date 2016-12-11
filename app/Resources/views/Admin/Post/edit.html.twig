@@ -5,3 +5,13 @@
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
     <script src="{{ asset('dist/js/backend.js') }}"></script>
 {% endblock %}
+
+{% block actions %}
+    {% for item in admin.getActionButtons(action, object|default(null)) %}
+        {% if item.template is defined %}
+            <li>{% include item.template %}</li>
+        {% endif %}
+    {% endfor %}
+        <li><a class="sonata-action-element" href="{{ path('post_show', {slug: object.slug}) }}"><i class="fa fa-eye" aria-hidden="true"></i>
+                Voir la contribution</a></li>
+{% endblock %}
