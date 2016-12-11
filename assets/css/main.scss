@@ -24,6 +24,18 @@ input[type=file] {
     max-width: 100%;
 }
 
+.breadcrumb {
+  padding-left: 0;
+  padding-right: 0;
+  > li {
+
+    + li:before {
+      content: ""; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0;
+    }
+  }
+}
+
 /*####################################
 # ==Custom Classes
 ####################################*/
@@ -37,4 +49,14 @@ input[type=file] {
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
+}
+.vertical-absolute-center {
+    position: absolute;
+    top: 50%;
+    max-width: 1200px;
+
+    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
 }

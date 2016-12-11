@@ -1,0 +1,45 @@
+<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+  <li itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem">
+    <a itemscope itemtype="http://schema.org/Thing"
+       itemprop="item" href="{{ path('post_show', { slug: post.root.slug }) }}">
+        <span itemprop="name">{{post.root.title}}</span>
+    </a>
+    <meta itemprop="position" content="1" />
+  </li>
+  {% if post.parent.parent is defined and post.parent.parent is not null %}
+    {% if post.parent.parent.id != post.root.id %}
+      ›
+      <li itemprop="itemListElement" itemscope
+          itemtype="http://schema.org/ListItem">
+        <a itemscope itemtype="http://schema.org/Thing"
+           itemprop="item" href="{{ path('post_show', { slug: post.parent.parent.slug }) }}">
+            <span itemprop="name">{{post.parent.parent.title}}</span>
+        </a>
+        <meta itemprop="position" content="2" />
+      </li>
+    {% endif %}
+  {% endif %}
+  {% if post.parent is defined and post.parent is not null %}
+    {% if post.parent.id != post.root.id %}
+      ›
+      <li itemprop="itemListElement" itemscope
+          itemtype="http://schema.org/ListItem">
+        <a itemscope itemtype="http://schema.org/Thing"
+           itemprop="item" href="{{ path('post_show', { slug: post.parent.slug }) }}">
+            <span itemprop="name">{{post.parent.title}}</span>
+        </a>
+        <meta itemprop="position" content="3" />
+      </li>
+    {% endif %}
+  {% endif %}
+  ›
+  <li itemprop="itemListElement" itemscope
+      itemtype="http://schema.org/ListItem">
+    <a itemscope itemtype="http://schema.org/Thing"
+       itemprop="item" href="{{ path('post_show', { slug: post.slug }) }}">
+        <span itemprop="name">{{post.title}}</span>
+    </a>
+    <meta itemprop="position" content="3" />
+  </li>
+</ol>

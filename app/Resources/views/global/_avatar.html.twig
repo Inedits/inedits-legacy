@@ -1,0 +1,5 @@
+{% if path in not null %}
+    <img src="{{ asset(post.user.userProfile.avatar) }}">
+{% else %}
+    <img class="img-responsive" src="{{ asset('avatar.jpg', 'default') }}">
+{% endif %}

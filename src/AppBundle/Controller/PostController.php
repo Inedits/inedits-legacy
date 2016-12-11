@@ -43,7 +43,10 @@ class PostController extends Controller
      */
     public function showPostAction(Post $post, Request $request)
     {
-        return $this->render('post\show.html.twig', ['tree' => $post->getUsers()]);
+
+        return $this->render('post\show.html.twig', [
+            'post' => $post,
+        ]);
     }
 
     /**
@@ -85,8 +88,8 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/arbre/{slug}/{parent}/contribuer", name="post_add")
-     * @ParamConverter("tree", class="AppBundle:Post", options={"mapping": {"slug": "slug"}})
+     * @Route("/arbre/{tree}/{parent}/contribuer", name="post_add")
+     * @ParamConverter("tree", class="AppBundle:Post", options={"mapping": {"tree": "slug"}})
      * @ParamConverter("parent", class="AppBundle:Post", options={"mapping": {"parent": "slug"}})
      * @Method({"GET", "POST"})
      */

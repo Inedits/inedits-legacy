@@ -1,5 +1,64 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 {% block title %}Show Post{% endblock %}
+
+{% block body_class %}post-show{% endblock %}
 {% block body %}
-    {{dump(tree)}}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-9">
+                <section>
+                    <header>
+                        <h1>{{ post.title }}</h1>
+                        {{ include('post/_breadcrumb.html.twig', { post: post }, { with_context: false }) }}
+                        <a class="vertical-absolute-center btn btn-primary" href="{{ path('post_tree_show', { slug: post.root.slug }) }}">Retour à l'arbre</a>
+                    </header>
+                    <div class="reader">
+                        {% autoescape false %}
+                            {{ post.content }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </section>
+            <div class="col-xs-12 col-sm-3">
+                <aside>
+                    <div class="user-pic">
+                        {{
+                            include(
+                                'global/_avatar.html.twig',
+                                {
+                                    'path': post.user.userProfile.avatar
+                                }
+                            )
+                        }}
+                    </div>
+                    <div class="post-author">
+                        <em>Contribution de :</em>
+                        <p>
+                            {{ post.user.getCommonName() }}
+                        </p>
+                        <a class="btn btn-primary" href="{{ path('fos_user_profile_see', { slug: post.user.slug }) }}">Voir son profil</a>
+                    </div>
+                    <div class="inspiration">
+                        <p class="h3">
+                            Cette histoire vous inspire ?
+                        </p>
+                        <p>
+                            In&amp;dits est le premier site d’écriture collaborative. Ecrivons ensemble les histoires de demain et faites-vous éditer.
+                        </p>
+                        <a class="btn btn-primary" href="{{ path('post_add', { tree: post.root.slug, parent: post.slug }) }}">Ecrivez la suite</a>
+                    </div>
+                    <a class="btn btn-primary" href="{{ path('homepage') }}"><i class="glyphicon glyphicon-flag"></i> Signaler un abus</a>
+                    <div class="panel panel-default">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <b>Ajoutée le</b> : {{ post.createdAt|date('d/m/Y') }}
+                            </li>
+                            <li class="list-group-item">
+                                <b>Déjà lue</b> : 80 fois
+                            </li>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
 {% endblock %}

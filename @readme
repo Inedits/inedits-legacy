@@ -1,0 +1,4 @@
+To fix tree API :
+
+=> Gedmo\Tree\RepositoryUtils;
+    __children => children
