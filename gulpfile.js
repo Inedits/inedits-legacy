@@ -92,6 +92,17 @@ gulp.task('js', function(){
     ;
 });
 
+gulp.task('js', function(){
+    gulp.src([
+            config.scriptsDir       + '/main.js'
+        ])
+        .pipe(concat('backend.js'))
+        .pipe(stripComments())
+        .pipe(uglify())
+        .pipe(gulp.dest(config.jsPublicDir))
+    ;
+});
+
 /*
 * Images from assets to dist
 */

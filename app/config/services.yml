@@ -21,3 +21,12 @@ services:
         arguments: ['@mailer', '@twig', '@router']
         tags:
             - { name: kernel.event_subscriber }
+
+    # Admin
+    admin.post:
+        class: AppBundle\Admin\PostAdmin
+        arguments: [~, AppBundle\Entity\Post, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Contribution }
+        calls:
+            - [ setTemplate, [edit, Admin/Post/edit.html.twig]]

@@ -94,9 +94,11 @@ class PostController extends Controller
     {
         $user   = $this->getUser();
         $status = $this->getDoctrine()->getRepository('AppBundle:PostStatus')->find(1);
-        $post   = new Post($user, $status);
+        $post   = new Post();
         $post->setRoot($tree);
         $post->setParent($parent);
+        $post->setUser($user);
+        $post->setStatus($status);
 
         $form = $this->createForm(
             new PostType(),

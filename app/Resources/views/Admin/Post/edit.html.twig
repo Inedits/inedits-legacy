@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script src="{{ asset('dist/js/backend.js') }}"></script>
+{% endblock %}

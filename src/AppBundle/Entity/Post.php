@@ -28,11 +28,14 @@ class Post
     private $contentPlain;
     private $status;
 
-    public function __construct(User $user, PostStatus $status)
+    public function __construct(/*User $user, PostStatus $status*/)
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->user = $user;
-        $this->status = $status;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
     }
 
     public function getId()
