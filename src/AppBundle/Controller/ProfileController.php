@@ -49,7 +49,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * @Route("/profile/{slug}", name="see")
+     * @Route("/profile/{slug}", name="fos_user_profile_see")
      * @Method({"GET"})
      */
     public function seeAction(User $user)
