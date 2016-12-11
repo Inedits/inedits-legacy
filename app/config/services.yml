@@ -21,11 +21,16 @@ services:
         arguments: ['@mailer', '@twig', '@router']
         tags:
             - { name: kernel.event_subscriber }
+    app.post_admin_saved:
+        class: AppBundle\EventListener\PostAdminSavedListener
+        arguments: ['@mailer', '@twig', '@router', '@doctrine.orm.entity_manager']
+        tags:
+            - { name: kernel.event_subscriber }
 
     # Admin
     admin.post:
         class: AppBundle\Admin\PostAdmin
-        arguments: [~, AppBundle\Entity\Post, ~]
+        arguments: [~, AppBundle\Entity\Post, ~, '@service_container']
         tags:
             - { name: sonata.admin, manager_type: orm, label: Contribution }
         calls:

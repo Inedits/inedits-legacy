@@ -27,6 +27,7 @@ class Post
     private $updatedAt;
     private $contentPlain;
     private $status;
+    private $message;
 
     public function __construct(/*User $user, PostStatus $status*/)
     {
@@ -36,6 +37,18 @@ class Post
     public function __toString()
     {
         return $this->title;
+    }
+
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    public function getMessage()
+    {
+        return $this->message;
     }
 
     public function getId()

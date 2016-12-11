@@ -2,6 +2,8 @@
 
 namespace AppBundle\Admin;
 
+use AppBundle\Event\PostAdminSavedEvent;
+use AppBundle\Events;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -9,6 +11,15 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 class PostAdmin extends AbstractAdmin
 {
+    private $container;
+
+    public function __construct($code, $class, $baseControllerName, $container)
+    {
+        $this->container = $container;
+
+        parent::__construct($code, $class, $baseControllerName);
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -25,7 +36,11 @@ class PostAdmin extends AbstractAdmin
             ->add('status', 'entity', [
                 'class' => 'AppBundle\Entity\PostStatus',
                 'property' => 'label',
-            ]);
+            ])
+            ->add('message', 'textarea', [
+                'required' => false,
+            ])
+        ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -40,4 +55,10 @@ class PostAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('user');
     }
+
+    public function preUpdate($post)
+    {
+        $this->container->get('event_dispatcher')->dispatch(Events::POST_ADMIN_SAVED, new PostAdminSavedEvent($post, $post->getUser()));
+    }
+
 }

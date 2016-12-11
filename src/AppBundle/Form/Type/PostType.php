@@ -82,6 +82,7 @@ class PostType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'        => Post::class,
+            'validation_groups' => ['add'],
         ));
     }
 }

@@ -4,7 +4,6 @@ namespace AppBundle;
 
 final class Events
 {
-    const POST_SAVED = 'post.saved';
-
-    private function __construct() {}
+    const POST_SAVED        = 'post.saved';
+    const POST_ADMIN_SAVED  = 'post.admin_saved';
 }
