@@ -16,10 +16,22 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         $q
             ->leftJoin('u.trees', 'p')
             ->where('p.id = :id')
-            ->orderBy('u.firstName', 'ASC')
             ->setParameter('id', $id)
             ->setMaxResults($limit)
             ->orderBy('u.firstName')
+        ;
+
+        return $q->getQuery()->getResult();
+    }
+
+    public function findLastUsers($limit=3)
+    {
+        $q = $this->createQueryBuilder('u');
+        $q
+            ->leftJoin('u.userProfile', 'profile')
+            ->where('u.enabled = 1')
+            ->orderBy('u.createdAt', 'DESC')
+            ->setMaxResults($limit)
         ;
 
         return $q->getQuery()->getResult();

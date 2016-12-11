@@ -28,6 +28,12 @@ class User extends BaseUser
         return $this->firstName.' '.$this->lastName;
     }
 
+    public function getFooterName()
+    {
+        return $this->firstName.' '.ucfirst(substr($this->lastName, 0, 1));
+    }
+
+
     public function getId()
     {
         return $this->id;

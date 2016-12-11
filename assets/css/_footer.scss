@@ -51,4 +51,131 @@
     border-top: 7px solid #363636;
     padding: 40px 0;
     text-shadow: 2px 2px 2px #000;
+
+    .footer-tree {
+        text-shadow: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            padding: 1em 0;
+            border-bottom: 1px solid #383838;
+
+            a {
+                color: #ddd;
+            }
+        }
+    }
+}
+
+.footer-content {
+    background: url('../media/design/footer-bg2.jpg') repeat;
+    border-bottom: 7px solid #363636;
+    border-top: 7px solid #363636;
+    color: #ddd;
+    padding: 40px 0;
+    text-shadow: 2px 2px 2px #000;
+
+    .footer-title {
+
+        font-family: 'Droid Serif', serif;
+        font-style: italic; color: #bbbbbb;
+        overflow: hidden;
+        white-space: nowrap;
+
+        &:after {
+            content:'ILFAUTFAIREDELAPLACEJESAISCESTPASPROPREMAISLAFAIMJUSTIFIELESMOYENSTOIMEMETUSAISFREROALLEAPLUSJEBISETRIPLEBISEHIGHFIVESWAGDEPOULESISILAMIFAONESTAL';
+            background: url('../media/design/footer-shape.png') repeat-x; color: transparent;
+            text-shadow: none;
+            margin-left: 10px;
+        }
+    }
+
+    .footer-tree {
+        text-shadow: none;
+    }
+
+    .media-body {
+
+        a {
+            color: #ddd;
+        }
+    }
+
+    .text-right {
+        img {
+            margin-bottom: 1em;
+        }
+
+        ul {
+
+            li {
+                p {
+                    margin: 0;
+
+                    &:first-child {
+                        font-size: 28px;
+                    }
+                }
+            }
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            padding: 1em 0;
+            border-bottom: 1px solid #383838;
+
+            a {
+                color: #ddd;
+            }
+        }
+    }
+
+    .about {
+        color: #999999;
+
+        p {
+            margin-bottom: 1.7em;
+        }
+    }
+}
+
+.footer-sub {
+    background-color: #1e1e1e;
+    color: #ddd;
+    font-size: 12px;
+
+    ul, p {
+
+        margin: 0;
+        padding: 20px 0;
+
+        li {
+            padding: 0;
+
+            &:before {
+                content: '·';
+                margin: 0 7px 0 5px;
+            }
+
+            a {
+                color: #ddd;
+            }
+        }
+
+        .first {
+
+            &:before {
+                content: "";
+                margin: 0;
+            }
+        }
+    }
 }

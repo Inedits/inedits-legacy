@@ -46,7 +46,7 @@ security:
         # ADMIN
         - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
         # TREES
-        - { path: ^/arbre/, role: ROLE_USER }
+        - { path: ^/arbre/, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'

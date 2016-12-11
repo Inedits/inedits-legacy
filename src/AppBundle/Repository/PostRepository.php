@@ -14,7 +14,7 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 class PostRepository extends NestedTreeRepository
 {
 
-    public function getRootPost()
+    public function getRootPost($limit=null)
     {
         $q = $this->createQueryBuilder('p');
         $q

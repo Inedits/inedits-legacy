@@ -1,4 +1,3 @@
-
 <div class="author-form">
     <div class="container">
         <div class="row">
@@ -22,11 +21,83 @@
     </div>
 </div>
 
-<div class="footer-content">
+<div class="footer-content text-xs-left">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-3">
-                coucou
+                <p class="footer-title">Derniers arbres</p>
+                <ul class="footer-tree">
+                    {% for tree in lastTrees %}
+                        <li>
+                            <a href="{{ path('post_tree_show', { slug: tree.slug }) }}" alt="{{ tree.title }}">{{ tree.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-3 about">
+                <p class="footer-title">Derniers arbres</p>
+                <p>
+                    La plateforme d’écriture collaborative est développée par les Éditions Inédits.
+                </p>
+                <p>
+                    Cette plateforme est un nouveau concept de réseau social d’écriture. Sa vocation est de permettre aux auteurs d’écrire ensemble des histoires. Après validation de l’éditeur, ces histoires seront proposées en ligne et pourront éventuellement aboutir à une publication imprimée.
+                </p>
+                <p>
+                    Chaque auteur pourra créer son profil et bénéficier ainsi d’une visibilité sur notre site.
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-3 last-user">
+                <p class="footer-title">Derniers membres</p>
+                {% for user in lastUsers %}
+                    <div class="media">
+                        <a class="media-left" href="{{ path('fos_user_profile_see', { slug: user.slug }) }}">
+                            <img class="media-object img-circle" src="{{ asset('avatar.jpg', 'default') }}" alt="{{ user.getCommonName() }}" width="30" height="30">
+                        </a>
+                        <div class="media-body">
+                            <a href="{{ path('fos_user_profile_see', { slug: user.slug }) }}" alt="{{ user.lastName }}">{{ user.getFooterName() }}</a> s'est inscrit sur notre site de {{ user.createdAt|date('d/m/Y') }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-xs-12 col-sm-3 text-xs-center text-right">
+                <img src="{{ asset('design/home-logo.png', 'media') }}" alt=
+                    "logo" width="40" height="40">
+                <ul>
+                    <li>
+                        <p>67</p>
+                        <p>Membres inscrits</p>
+                    </li>
+                    <li>
+                        <p>24</p>
+                        <p>Contributions écrites</p>
+                    </li>
+                    <li>
+                        <p>131142</p>
+                        <p>caractères écrits</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-sub text-xs-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <p>Copyright © 2016 · All Rights Reserved</p>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <ul class="list-inline text-sm-right">
+                    <li class="first"><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                    <li><a href="{{ path('homepage') }}" alt="homepage">Accueil</a></li>
+                </ul>
             </div>
         </div>
     </div>

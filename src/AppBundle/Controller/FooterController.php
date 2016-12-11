@@ -28,6 +28,13 @@ class FooterController extends Controller
             ]
         );
 
-        return $this->render('footer\_mailing_form.html.twig', ['form' => $form->createView()]);
+        $lastUsers  = $this->getDoctrine()->getRepository('AppBundle:User')->findLastUsers(6);
+        $lastTrees  = $this->getDoctrine()->getRepository('AppBundle:Post')->getRootPost(6);
+
+        return $this->render('footer\_mailing_form.html.twig', [
+            'form'      => $form->createView(),
+            'lastUsers' => $lastUsers,
+            'lastTrees' => $lastTrees,
+        ]);
     }
 }
