@@ -1,0 +1,6 @@
+AppBundle\Entity\Mailing:
+    properties:
+        mail:
+            - NotBlank: ~
+            - Email:
+                message: message: "{{ value }}" n'est pas une adresse valide.

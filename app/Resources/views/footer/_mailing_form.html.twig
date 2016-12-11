@@ -1,0 +1,33 @@
+
+<div class="author-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <p class="h5">
+                    Vous connaissez un auteur talentueux ?
+                </p>
+                <p>
+                  Inscrivez-vite son adresse email, nous lui enverrons une invitation pour qu’il découvre notre plateforme collaborative !
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="author-form-wrapper">
+                    {{ form_start(form) }}
+                        {{ form_widget(form.mail, { attr: { 'class': 'pull-left' } }) }}
+                        <button class="btn btn-primary pull-right" type="submit">OK</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                coucou
+            </div>
+        </div>
+    </div>
+</div>

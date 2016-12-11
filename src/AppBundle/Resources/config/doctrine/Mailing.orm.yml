@@ -1,0 +1,30 @@
+AppBundle\Entity\Mailing:
+    type: entity
+    table: mailing
+    repositoryClass: AppBundle\Repository\MailingRepository
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+    fields:
+        mail:
+            type: string
+            length: 255
+            unique: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: "create"
+            column: created_at
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: "update"
+            column: updated_at
+    lifecycleCallbacks: {  }

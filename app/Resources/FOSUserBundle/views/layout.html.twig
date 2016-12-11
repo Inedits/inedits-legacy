@@ -37,6 +37,10 @@
 
         {% block body %}{% endblock %}
 
+        {% block footer %}
+            {{ include('footer/footer.html.twig', { with_context: false } ) }}
+        {% endblock %}
+
     {% block javascripts %}
         <script src="{{ asset('app.js','js') }}" async></script>
         <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>

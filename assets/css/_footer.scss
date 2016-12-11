@@ -1,88 +1,54 @@
 /*####################################
 # ==Footer
 ####################################*/
-.footer-wrapper {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-.page-footer {
-  background-color: #f1f1f1;
-  color: inherit;
-}
-#footer {
-  margin-bottom:20px;
+.author-form {
+    background-color: #dd9933;
+    font-family: 'Droid Serif', serif;
+    font-size: 14px;
+    min-height: 114px;
+    padding: 1.5em 0;
+    position: relative;
+
+    :before {
+        background-color: #e8e8e8;
+        bottom: 0;
+        display: block;
+        left: 50%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    :after {
+        border-bottom: 57px solid transparent;
+        border-left: 26px solid #dd9933;
+        border-top: 57px solid transparent;
+        height: 0;
+        left: 50%;
+        position: absolute;
+        top: 0;
+        width: 0;
+    }
+
+    .author-form-wrapper {
+        max-width: 70%;
+        margin: 18px auto 0;
+
+        input {
+            width: 85%;
+        }
+    }
+
+    .btn {
+        margin-left: 2%;
+        width: 13%;
+    }
 }
 
-#footer a {
-  background-color:inherit;
-  color:inherit;
-  text-decoration:underline;
-}
-
-#footer a:hover {
-  background-color:inherit;
-  color:#005580;
-}
-
-/* bottom */
-#links {
-  padding: 15px;
-  font-size:smaller;
-  line-height:1;
-}
-
-#links .row {
-  margin-bottom:0;
-}
-
-.links {
-  margin:10px 0 10px;
-  padding:0;
-  list-style-type:none;
-}
-
-.links a {
-  overflow:hidden;
-  width:100%;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  font-weight:400;
-  line-height:1.5;
-}
-
-#corporate {
-  background-color:#b8dd1f;
-  color:inherit;
-  font-size:smaller;
-}
-
-#corporate .row {
-  margin-bottom:0;
-}
-
-#corporate_links {
-  margin:0;
-  padding:15px 0 0;
-  list-style-type:none;
-}
-
-#corporate_links .row > div {
-  line-height:19px;
-}
-
-#corporate_links a {
-  display:block;
-  color:#1e1e1e;
-  text-align:center;
-}
-
-#social {
-  margin:0;
-  padding:0;
-  list-style-type:none;
-}
-
-#social .row > div {
-  line-height:46px;
+.footer-content {
+    background: url('../media/design/footer-bg2.jpg') repeat;
+    border-bottom: 7px solid #363636;
+    border-top: 7px solid #363636;
+    padding: 40px 0;
+    text-shadow: 2px 2px 2px #000;
 }
