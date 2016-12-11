@@ -7,6 +7,14 @@ AppBundle\Entity\Post:
         tree:
             type: nested
     manyToOne:
+        status:
+            targetEntity: AppBundle\Entity\PostStatus
+            inversedBy: posts
+            joinColumn:
+                name: status_id
+                nullable: false
+                options:
+                    default: 3
         root:
             targetEntity: AppBundle\Entity\Post
             joinColumn:

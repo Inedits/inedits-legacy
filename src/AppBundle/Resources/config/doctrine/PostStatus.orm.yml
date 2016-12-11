@@ -1,0 +1,21 @@
+AppBundle\Entity\PostStatus:
+    type: entity
+    table: post_status
+    repositoryClass: AppBundle\Repository\PostStatusRepository
+    oneToMany:
+        posts:
+            targetEntity: AppBundle\Entity\Post
+            mappedBy: status
+    id:
+        id:
+            type: integer
+            id: true
+            options:
+                unsigned: true
+            generator:
+                strategy: AUTO
+    fields:
+        label:
+            type: string
+            length: '100'
+    lifecycleCallbacks: {  }

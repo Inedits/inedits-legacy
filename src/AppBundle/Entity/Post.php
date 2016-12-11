@@ -279,4 +279,33 @@ class Post
     {
         return $this->contentPlain;
     }
+    /**
+     * @var \AppBundle\Entity\PostStatus
+     */
+    private $status;
+
+
+    /**
+     * Set status
+     *
+     * @param \AppBundle\Entity\PostStatus $status
+     *
+     * @return Post
+     */
+    public function setStatus(\AppBundle\Entity\PostStatus $status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \AppBundle\Entity\PostStatus
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }

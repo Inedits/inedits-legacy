@@ -69,7 +69,9 @@ class PostController extends Controller
             ->from('AppBundle\Entity\Post', 'node')
             ->leftJoin('node.user', 'user')
             ->leftJoin('node.parent', 'parent')
+            ->leftJoin('node.status', 'status')
             ->where('node.root = :postID')
+            ->andWhere('status.id = 2')
             ->setParameter('postID', $post->getId())
             ->getQuery()
         ;

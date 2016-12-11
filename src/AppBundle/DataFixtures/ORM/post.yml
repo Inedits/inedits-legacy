@@ -1,3 +1,11 @@
+AppBundle\Entity\PostStatus:
+    pending:
+        label: En Attente
+    approved:
+        label: Approuvé
+    denied:
+        label: Suspendue
+
 AppBundle\Entity\Post:
     first_post:
         title: hellos trees
@@ -6,6 +14,7 @@ AppBundle\Entity\Post:
         users: [@admin, @user]
         isEnd: 0
         isMain: 0
+        status: '@approved'
         __construct: false
     first_first_post:
         title: hellos papa 1
@@ -14,6 +23,7 @@ AppBundle\Entity\Post:
         parent: '@first_post'
         isEnd: 0
         isMain: 0
+        status: '@approved'
         __construct: false
     first_second_post:
         title: hellos papa
@@ -22,6 +32,7 @@ AppBundle\Entity\Post:
         parent: '@first_post'
         isEnd: 0
         isMain: 0
+        status: '@approved'
         __construct: false
     first_third_post:
         title: hellos papa 2
@@ -30,5 +41,6 @@ AppBundle\Entity\Post:
         parent: '@first_post'
         isEnd: 0
         isMain: 0
+        status: '@pending'
         __construct: false
 
