@@ -6,7 +6,6 @@ AppBundle\Entity\Post:
                 type: string
                 message: Incorrect
         content:
-            - NotBlank: ~
             - Type:
                 type: string
                 message: Incorrect
@@ -15,5 +14,9 @@ AppBundle\Entity\Post:
                 message: Vous devez accepter les conditions générales d'utilisation
             - NotBlank:
                 message: Vous devez accepter les conditions générales d'utilisation
+        file:
+            - File:
+                mimeTypes: [text/plain, text/html]
+                mimeTypesMessage: Format invalide
 
 

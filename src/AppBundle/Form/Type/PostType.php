@@ -44,8 +44,6 @@ class PostType extends AbstractType
             ->add('file', Types\FileType::class, [
                 'required'  => false,
                 'label'     => 'Envoyer un fichier',
-                'mapped'    => false,
-                'data_class'=> null,
             ])
             ->add('content_plain', Types\HiddenType::class)
             ->addModelTransformer(new PostTransformer())
