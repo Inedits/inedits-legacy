@@ -10,25 +10,25 @@ AppBundle\Entity\UserProfile:
                 groups: [edit]
                 type: string
                 message: Incorrect
-            # - Url:
-            #     groups: [registration, edit]
-            #     message: Url Incorrect
+            - Url:
+                groups: [edit]
+                message: Url Incorrect
         twitter:
             - Type:
                 groups: [edit]
                 type: string
                 message: Incorrect
-            # - Url:
-            #     groups: [registration, edit]
-            #     message: Url Incorrect
+            - Url:
+                groups: [edit]
+                message: Url Incorrect
         website:
             - Type:
                 groups: [edit]
                 type: string
                 message: Incorrect
-            # - Url:
-            #     groups: [registration, edit]
-            #     message: Url Incorrect
+            - Url:
+                groups: [edit]
+                message: Url Incorrect
         favoriteBook:
             - Type:
                 groups: [edit]
@@ -58,18 +58,18 @@ AppBundle\Entity\UserProfile:
             - Type:
                 type: string
                 message: Incorrect
-        # avatar:
-        #     - File:
-        #         groups: [registration, edit]
-        #         mimeTypes: [image/png, image/jpeg]
-        #         mimeTypesMessage: "Formats supportés: JPG, PNG"
-        #         maxSize: 1M
-        #         maxSizeMessage: "Taille Max: 1M"
-        # cover:
-        #     - File:
-        #         groups: [registration, edit]
-        #         mimeTypes: [image/png, image/jpeg]
-        #         mimeTypesMessage: "Formats supportés: JPG, PNG"
-        #         maxSize: 1M
-        #         maxSizeMessage: "Taille Max: 1M"
+        avatar:
+            - File:
+                groups: [registration, edit]
+                mimeTypes: [image/png, image/jpeg, image/gif]
+                mimeTypesMessage: "Formats supportés: JPG, PNG, GIF"
+                maxSize: 10M
+                maxSizeMessage: "Taille Max: 1M"
+        cover:
+            - File:
+                groups: [registration, edit]
+                mimeTypes: [image/png, image/jpeg, image/gif]
+                mimeTypesMessage: "Formats supportés: JPG, PNG, GIF"
+                maxSize: 10M
+                maxSizeMessage: "Taille Max: 1M"
 

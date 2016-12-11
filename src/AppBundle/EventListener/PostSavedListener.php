@@ -38,7 +38,7 @@ class PostSavedListener implements EventSubscriberInterface
             ->setTo([$event->getUser()->getEmail()])
             ->setBody(
                 $this->twig->render(
-                    'mail/post_add.html.twig',
+                    'email/post_add.html.twig',
                     [
                         'user' => $event->getUser(),
                         'post' => $event->getPost()
