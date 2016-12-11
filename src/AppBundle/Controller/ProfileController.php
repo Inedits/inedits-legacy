@@ -11,11 +11,14 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -41,6 +44,21 @@ class ProfileController extends Controller
         }
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
+            'user' => $user
+        ));
+    }
+
+    /**
+     * @Route("/profile/{slug}", name="see")
+     * @Method({"GET"})
+     */
+    public function seeAction(User $user)
+    {
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+
+        return $this->render('FOSUserBundle:Profile:show_other.html.twig', array(
             'user' => $user
         ));
     }

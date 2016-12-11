@@ -4,11 +4,11 @@
 {% block body_class %}profile{% endblock %}
 {% block player %}
     {{ include('user/_cover.html.twig', {
-        cover: app.user.userProfile.cover,
-        alt: app.user.firstName ~ app.user.lastName,
+        cover: user.userProfile.cover,
+        alt: user.firstName ~ user.lastName,
     }, with_context = false) }}
 {% endblock %}
 
 {% block fos_user_content %}
-    {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+    {% include "FOSUserBundle:Profile:show_content_other.html.twig" %}
 {% endblock fos_user_content %}
