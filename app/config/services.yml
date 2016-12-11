@@ -11,7 +11,7 @@ services:
     # User
     app.registration_complet:
         class: AppBundle\EventListener\RegistrationListener
-        arguments: [@router]
+        arguments: ['@mailer', '@twig', '@router']
         tags:
             - { name: kernel.event_subscriber }
 

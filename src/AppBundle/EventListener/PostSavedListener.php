@@ -34,7 +34,7 @@ class PostSavedListener implements EventSubscriberInterface
     {
         $message = $this->mailer->createMessage()
             ->setSubject('Inedit | La première plateforme d\'écriture collaborative')
-            ->setFrom('study-abraod@dev.com', 'Inedit | La première plateforme d\'écriture collaborative')
+            ->setFrom('clemence@inedits.fr', 'Inedit | La première plateforme d\'écriture collaborative')
             ->setTo([$event->getUser()->getEmail()])
             ->setBody(
                 $this->twig->render(

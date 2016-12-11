@@ -9,10 +9,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class RegistrationListener implements EventSubscriberInterface
 {
+    private $twig;
+    private $mailer;
     private $router;
 
-    public function __construct(UrlGeneratorInterface $router)
+    public function __construct($mailer, $twig, UrlGeneratorInterface $router)
     {
+        $this->twig   = $twig;
+        $this->mailer = $mailer;
         $this->router = $router;
     }
 
@@ -28,6 +32,22 @@ class RegistrationListener implements EventSubscriberInterface
 
     public function onRegistrationConfirm(GetResponseUserEvent $event)
     {
+        $message = $this->mailer->createMessage()
+            ->setSubject('Nouvel utilisateur')
+            ->setFrom('clemence@inedits.fr', 'Inedit | La première plateforme d\'écriture collaborative')
+            ->setTo([$event->getUser()->getEmail()])
+            ->setBody(
+                $this->twig->render(
+                    'email/user_add.html.twig',
+                    [
+                        'user' => $event->getUser(),
+                    ]
+                ),
+                'text/html'
+            )
+        ;
+        $this->mailer->send($message);
+
         $url = $this->router->generate('fos_user_profile_show');
 
         $event->setResponse(new RedirectResponse($url));
