@@ -22,14 +22,7 @@
             <div class="col-xs-12 col-sm-3">
                 <aside>
                     <div class="user-pic">
-                        {{
-                            include(
-                                'global/_avatar.html.twig',
-                                {
-                                    'path': post.user.userProfile.avatar
-                                }
-                            )
-                        }}
+                        {{ include('global/_avatar.html.twig', { avatar_path: post.user.userProfile.avatar }, { with_context: false }) }}
                     </div>
                     <div class="post-author">
                         <em>Contribution de :</em>
