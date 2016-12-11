@@ -53,7 +53,10 @@ class PostAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('user');
+        $listMapper->addIdentifier('title');
+        $listMapper->add('user');
+        $listMapper->add('status');
+        $listMapper->add('createdAt');
     }
 
     public function preUpdate($post)
