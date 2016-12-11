@@ -63,8 +63,13 @@ AppBundle\Entity\Post:
         content:
             type: text
             nullable: true
-        content_plain:
+        contentPlain:
             type: text
+            nullable: true
+            column: content_plain
+        file:
+            type: string
+            length: 255
             nullable: true
         isMain:
             type: boolean

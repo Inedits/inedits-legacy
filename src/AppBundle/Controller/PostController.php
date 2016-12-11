@@ -91,7 +91,8 @@ class PostController extends Controller
     public function addAction(Request $request, Post $tree, Post $parent)
     {
         $user = $this->getUser();
-        $post = new Post($tree, $user);
+        $post = new Post($user);
+        $post->setRoot($tree);
         $post->setParent($parent);
 
         $form = $this->createForm(
@@ -104,6 +105,20 @@ class PostController extends Controller
         if ($form->isSubmitted() && $form->isValid())
         {
             $post = $form->getData();
+            $file = $form->get('file')->getData();
+
+            if($file)
+            {
+                $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+                $file->move(
+                    $this->getParameter('post_directory'),
+                    $fileName
+                );
+
+                $post->setFile($fileName);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();

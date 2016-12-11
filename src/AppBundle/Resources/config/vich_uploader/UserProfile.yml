@@ -1,7 +1,0 @@
-AppBundle\Entity\UserProfile:
-    avatar_file:
-        mapping:           avatar_file
-        filename_property: avatar
-    cover:
-        mapping:           cover
-        filename_property: cover

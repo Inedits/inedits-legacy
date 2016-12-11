@@ -26,29 +26,12 @@ class UserProfile
 
     public function __toString()
     {
-        return 'Profil utilisateur';
+        return 'Profil de '.$this->getUser();
     }
 
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setAvatarFile(File $image = null)
-    {
-        $this->avatarFile = $image;
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTime();
-        }
-
-        return $this;
-    }
-
-    public function getAvatarFile()
-    {
-        return $this->avatarFile;
     }
 
     public function setAvatar($avatar)
