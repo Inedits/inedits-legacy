@@ -2,11 +2,21 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="cover">
-          {{ include('user/_cover_box.html.twig', { path: user.userProfile.cover }, { with_context: false }) }}
+          {{
+            include('user/_cover_box.html.twig',
+              { path: user.userProfile.cover, config: 'user_cover_sm', alt: user.slug ~ 'cover' },
+              { with_context: false }
+            )
+          }}
         </div>
         <div class="absolute-center">
           <a href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">
-            {{ include('user/_avatar.html.twig', { avatar_path: user.userProfile.avatar }, { with_context: false }) }}
+            {{
+              include('user/_avatar.html.twig',
+                { path: user.userProfile.avatar, config: 'user_avatar_sm', alt: user.slug, class: "img-circle" },
+                { with_context: false }
+              )
+            }}
           </a>
         </div>
       </div>

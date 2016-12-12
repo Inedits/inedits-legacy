@@ -23,7 +23,7 @@ class DefaultController extends Controller
             ];
         }
 
-        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getLastPost(3);
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->getLastPost(2);
 
         foreach ($posts as $value)
         {

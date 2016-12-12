@@ -1,5 +1,5 @@
-{% if avatar_path is not null %}
-    <img class="img-circle" src="{{ asset(avatar_path, 'avatar') }}">
+{% if path is not null %}
+    <img class="{{ class|default }}" src="{{ asset(path, 'cover') | imagine_filter(config) }}" alt="{{ alt }}" />
 {% else %}
-    <img class="img-circle" src="{{ asset('avatar.jpg', 'default') }}" width="100" height="100">
+    <img class="{{ class|default }}" src="{{ asset('avatar.jpg', 'default') | imagine_filter(config) }}" alt="{{ alt }}" />
 {% endif %}

@@ -1,5 +1,5 @@
 {% if path is not null %}
-    <img class="img-responsive" src="{{ asset(path, 'cover') }} | imagine_filter('user_box') }}" />
+    <img class="img-responsive" src="{{ asset(path, 'cover') }} | imagine_filter(config) }}" alt="{{ alt }}" />
 {% else %}
-    <img class="img-responsive" src="{{ asset('cover.jpg', 'default') | imagine_filter('user_box') }}" />
+    <img class="img-responsive" src="{{ asset('cover.jpg', 'default') | imagine_filter(config) }}" alt="{{ alt }}" />
 {% endif %}

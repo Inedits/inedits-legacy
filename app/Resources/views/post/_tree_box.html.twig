@@ -1,22 +1,36 @@
-<article>
+<article class="tree-box box">
     <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{ tree.title }}</h3>
+      <div class="panel-heading text-center">
+        <div class="panel-heading-title">
+          <h3 class="panel-title">{{ tree.title }}</h3>
+        </div>
       </div>
       <div class="panel-body">
-        {{ tree.content|truncate(200, true) }}
+        <dl class="dl-horizontal">
+            <dt>Extrait :</dt>
+            <dd>
+                {{ tree.content|truncate(200, true) }}
+                <p>
+                    <a href="{{ path('post_tree_show', { slug: tree.slug }) }}">Lire la suite</a>
+                </p>
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>Auteurs :</dt>
+            <dd>
+                <ul class="list-inline">
+                  {% for author in users %}
+                      <li>{{ author.firstName }}</li>
+                  {% endfor %}
+                </ul>
+            </dd>
+        </dl>
       </div>
-      <div class="panel-footer">
-        <ul class="list-inline">
-          {% for author in users %}
-              <li>{{ author.firstName }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="panel-footer">
-        <a class="btn" href="{{ path('post_tree_show', {slug:tree.slug}) }}">Lire</a>
-        {% if app.user is defined %}
-            <a class="btn" href="{{ path('fos_user_registration_register') }}">Participer</a>
+      <div class="panel-footer text-right">
+        <hr>
+        <a class="btn btn-primary" href="{{ path('post_tree_show', {slug:tree.slug}) }}">Lire</a>
+        {% if app.user is not defined %}
+            <a class="btn btn-primary" href="{{ path('fos_user_registration_register') }}">Participer</a>
         {% endif %}
       </div>
     </div>

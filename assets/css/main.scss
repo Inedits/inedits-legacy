@@ -31,6 +31,7 @@ input[type=file] {
     max-width: 100%;
 }
 
+// BreadCrumb
 .breadcrumb {
   padding-left: 0;
   padding-right: 0;
@@ -41,6 +42,16 @@ input[type=file] {
       padding: 0;
     }
   }
+}
+
+// Panels
+.panel-default {
+  border-radius: 0;
+}
+
+// PLayer
+.jumbotron {
+  margin-bottom: 0;
 }
 
 /*####################################

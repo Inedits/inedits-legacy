@@ -13,10 +13,9 @@ liip_imagine :
     filter_sets :
             cache : ~
 
-            # the name of the "filter set"
-            user_box:
+            user_avatar_sm:
                 filters :
-
-                    # create a thumbnail: set size to 120x90 and use the "outbound" mode
-                    # to crop the image when the size ratio of the input differs
+                    thumbnail  : { size : [50, 50], mode : outbound }
+            user_cover_sm:
+                filters :
                     thumbnail  : { size : [400, 200], mode : outbound }

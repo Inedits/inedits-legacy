@@ -3,6 +3,7 @@ $icon-font-path: '../font/';
 
 // Colors
 $dark-blue: #2c3e50;
+$main-blue: #1f285a;
 
 // Vendor
 @import "_bootstrap";
@@ -15,5 +16,6 @@ $dark-blue: #2c3e50;
 @import "_player";
 @import "_post";
 @import "_user_box";
+@import "_post_box";
 @import "_homepage";
 @import "main";
