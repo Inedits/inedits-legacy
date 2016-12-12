@@ -32,7 +32,7 @@ AppBundle\Entity\Post:
         parent: '@first_post'
         isEnd: 0
         isMain: 0
-        status: '@approved'
+        status: '@pending'
         __construct: false
     first_third_post:
         title: hellos papa 2
@@ -41,6 +41,6 @@ AppBundle\Entity\Post:
         parent: '@first_post'
         isEnd: 0
         isMain: 0
-        status: '@pending'
+        status: '@approved'
         __construct: false
 

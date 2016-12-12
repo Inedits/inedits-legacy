@@ -13,6 +13,7 @@ AppBundle\Entity\User:
         enabled: true
         roles: ['ROLE_SUPER_ADMIN']
         userProfile: '@admin_profile'
+        postCount: 1
     user:
         username: user
         firstName: Jean
