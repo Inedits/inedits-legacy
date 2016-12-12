@@ -32,7 +32,8 @@
         "symfony/symfony": "2.8.*",
         "white-october/pagerfanta-bundle": "^1.0",
         "sonata-project/admin-bundle": "^3.10",
-        "sonata-project/doctrine-orm-admin-bundle": "^3.1"
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1",
+        "liip/imagine-bundle": "^1.6"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^2.3",

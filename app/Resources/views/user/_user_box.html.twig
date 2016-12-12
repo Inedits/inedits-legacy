@@ -2,18 +2,25 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <div class="cover">
-          {{ include('user/_avatar.html.twig', { avatar_path: user.userProfile.avatar }, { with_context: false }) }}
+          {{ include('user/_cover_box.html.twig', { path: user.userProfile.cover }, { with_context: false }) }}
+        </div>
+        <div class="absolute-center">
+          <a href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">
+            {{ include('user/_avatar.html.twig', { avatar_path: user.userProfile.avatar }, { with_context: false }) }}
+          </a>
         </div>
       </div>
       <div class="panel-body text-center">
-        <p class="h3">{{ user.getBoxName() }}</p>
-        {{ user.userProfile.biographie }}
+        <a href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">
+          <p class="h3">{{ user.getBoxName() }}</p>
+        </a>
+        {{ user.userProfile.biographie|truncate(100, true) }}
       </div>
-      <ul class="list-group">
+      <ul class="list-group text-center">
           <li class="list-group-item">Contributions écrites : <b>{{ user.postCount }}</b></li>
       </ul>
       <div class="panel-footer">
-        <a class="btn" href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">Voir son profil</a>
+        <a class="btn btn-block" href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">Voir son profil</a>
       </div>
     </div>
 </div>

@@ -5,10 +5,14 @@
     {{ include('frontend/_player_homepage.html.twig', with_context = false) }}
 {% endblock %}
 
+{% block body_class %}
+    homepage
+{% endblock %}
+
 {% block body %}
     <section class="last-trees">
         <div class="container">
-            <p class="h3">Derniers arbres</p>
+            <p class="h3">Les derniers arbres</p>
             <div class="row">
                 {% for tree in trees %}
                     <div class="col-xs-12 col-sm-4">
@@ -20,11 +24,11 @@
     </section>
     <section class="last-posts">
         <div class="container">
-            <p class="h3">Derniers arbres</p>
+            <p class="h3">Les dernière participations</p>
             <div class="row">
                 {% for post in posts %}
                     <div class="col-xs-12 col-sm-4">
-                      {{ include('post/_tree_box.html.twig', { tree: post.Tree, users: post.Users }, with_context = false) }}
+                      {{ include('post/_post_box.html.twig', { tree: post.Tree, users: post.Users }, with_context = false) }}
                     </div>
                 {% endfor %}
             </div>
@@ -35,7 +39,7 @@
             <p class="h3">Les auteurs les plus actifs</p>
             <div class="row">
                 {% for user in users %}
-                    <div class="col-xs-12 col-sm-4">
+                    <div class="col-xs-12 col-sm-3">
                       {{ include('user/_user_box.html.twig', { user: user }, with_context = false) }}
                     </div>
                 {% endfor %}

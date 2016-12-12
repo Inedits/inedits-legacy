@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="panel-footer">
-        <a class="btn" href="{{ path('post_tree_show', {slug:tree.slug}) }}">Lire</a>
+        <a class="btn" href="{{ path('post_show', {slug:tree.slug}) }}">Lire</a>
         {% if app.user is defined %}
             <a class="btn" href="{{ path('fos_user_registration_register') }}">Participer</a>
         {% endif %}

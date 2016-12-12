@@ -1,0 +1,74 @@
+.user-box {
+
+    .panel-heading {
+        padding: 0;
+        position: relative;
+
+        .absolute-center {
+            top: 80%;
+
+            img {
+                border: 2px solid #fff;
+                width: 70px;
+                height: 70px;
+            }
+        }
+    }
+
+    ul {
+
+        li {
+            padding: 14px;
+        }
+    }
+
+    .panel-footer {
+        padding: 0;
+
+        .btn {
+            color: #2b2a2a;
+            background: #fff;
+            border-radius: 0;
+            padding: 14px;
+
+            font-family: 'Source Sans Pro', sans-serif;
+
+            &:hover {
+                color: #fff;
+                background: #2b2a2a;
+            }
+        }
+    }
+
+
+    .panel-body {
+
+        .h3 {
+            font-size: 21px;
+        }
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .user-box {
+
+        .panel-heading {
+
+            .absolute-center {
+
+                img {
+                    border: 2px solid #fff;
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+        }
+
+        .panel-body {
+
+            .h3 {
+                font-size: 19px;
+            }
+        }
+    }
+}
