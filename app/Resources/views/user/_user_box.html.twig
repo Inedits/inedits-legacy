@@ -10,7 +10,7 @@
           }}
         </div>
         <div class="absolute-center">
-          <a href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">
+          <a href="{{ path('fos_user_profile_show', {slug:user.slug}) }}">
             {{
               include('user/_avatar.html.twig',
                 { path: user.userProfile.avatar, config: 'user_avatar_sm', alt: user.slug, class: "img-circle" },
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="panel-body text-center">
-        <a href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">
+        <a href="{{ path('fos_user_profile_show', {slug:user.slug}) }}">
           <p class="h3">{{ user.getBoxName() }}</p>
         </a>
         {{ user.userProfile.biographie|truncate(100, true) }}
@@ -30,7 +30,7 @@
           <li class="list-group-item">Contributions écrites : <b>{{ user.postCount }}</b></li>
       </ul>
       <div class="panel-footer">
-        <a class="btn btn-block" href="{{ path('fos_user_profile_see', {slug:user.slug}) }}">Voir son profil</a>
+        <a class="btn btn-block" href="{{ path('fos_user_profile_show', {slug:user.slug}) }}">Voir son profil</a>
       </div>
     </div>
 </div>

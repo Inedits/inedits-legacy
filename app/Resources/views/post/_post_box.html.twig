@@ -23,7 +23,7 @@
                 <ul class="list-inline">
                   {% for author in users %}
                       <li>
-                        <a href="{{ path('fos_user_profile_see', { slug: author.slug }) }}">
+                        <a href="{{ path('fos_user_profile_show', { slug: author.slug }) }}">
                           {{
                             include('user/_avatar.html.twig',
                               { path: author.UserProfile.avatar, config: 'user_avatar_sm', alt: author.slug, class: "img-circle" },

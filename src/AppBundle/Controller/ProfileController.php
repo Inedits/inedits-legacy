@@ -34,11 +34,14 @@ use FOS\UserBundle\Controller\RegistrationController as BaseController;
 class ProfileController extends Controller
 {
     /**
-     * Show the user
+     * @Route("/profile/{slug}", name="fos_user_profile_show")
+     * @Method({"GET"})
      */
-    public function showAction()
+    public function showAction(User $user=null)
     {
-        $user = $this->getUser();
+        if ($user === null) {
+            $user = $this->getUser();
+        }
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -53,31 +56,13 @@ class ProfileController extends Controller
     }
 
     /**
-     * @Route("/profile/{slug}", name="fos_user_profile_see")
-     * @Method({"GET"})
+     * @Route("/profile/{slug}/modifier", name="fos_user_profile_edit")
+     * @Method({"GET", "POST"})
      */
-    public function seeAction(User $user)
+    public function editAction(Request $request, User $user)
     {
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
-
-        $post = $this->getDoctrine()->getRepository('AppBundle:Post')->getLastPostByUser($user->getId());
-        $users = $post ? $this->getDoctrine()->getRepository('AppBundle:User')->findUsersByTree($post->getRoot()->getId(), 1) : null;
-
-        return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user'  => $user,
-            'post'  => $post,
-            'users' => $users,
-        ));
-    }
-
-    /**
-     * Edit the user
-     */
-    public function editAction(Request $request)
-    {
-        $user = $this->getUser();
+// dump($user);
+// exit('cocc');
         $user->setUserProfile($user->getUserProfile());
 
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -143,7 +128,7 @@ class ProfileController extends Controller
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_profile_show');
+                $url = $this->generateUrl('fos_user_profile_show', ['slug' => $user->getSlug()]);
                 $response = new RedirectResponse($url);
             }
 
@@ -154,7 +139,8 @@ class ProfileController extends Controller
 
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
             'form'          => $form->createView(),
-            'change_form'   => $changeForm->createView()
+            'change_form'   => $changeForm->createView(),
+            'user'          => $user,
         ));
     }
 }

@@ -48,7 +48,7 @@ class RegistrationListener implements EventSubscriberInterface
         ;
         $this->mailer->send($message);
 
-        $url = $this->router->generate('fos_user_profile_show');
+        $url = $this->router->generate('fos_user_profile_show', ['slug' => $event->getUser()->getSlug()]);
 
         $event->setResponse(new RedirectResponse($url));
     }

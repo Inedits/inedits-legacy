@@ -28,7 +28,7 @@
                     {% if app.user.roles[0] == "ROLE_SUPER_ADMIN" %}
                       <li><a href="{{ path('sonata_admin_redirect') }}">Dashboard</a></li>
                     {% endif %}
-                    <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+                    <li><a href="{{ path('fos_user_profile_show', { slug: app.user.slug }) }}">Profil</a></li>
                     <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                 </ul>
             </li>

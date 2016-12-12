@@ -1,188 +1,176 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container">
+<div class="container margin">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="user-sidebar">
                 {{
                   include('user/_avatar.html.twig',
-                    { path: app.user.UserProfile.avatar, config: 'user_avatar_lg', alt: app.user.slug, class: "img-responsive" },
+                    { path: user.UserProfile.avatar, config: 'user_avatar_lg', alt: user.slug, class: "img-responsive" },
                     { with_context: false }
                   )
                 }}
-                <a href="{{ path('fos_user_profile_show') }}">Mon profil</a>
-                <ul class="nav nav-sidebar">
-                    {% if app.user.userProfile.facebook is not empty %}
-                        <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
-                    {% endif %}
-                    {% if app.user.userProfile.twitter is not empty %}
-                        <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
-                    {% endif %}
-                    {% if app.user.userProfile.twitter is not empty %}
-                        <li><a href="{{ app.user.userProfile.website }}">Site Web</a></li>
-                    {% endif %}
-                </ul>
+                <a class="btn btn-block btn-primary" href="{{ path('fos_user_profile_show', { slug: user.slug }) }}">retour profil</a>
             </div>
         </div>
-        <div class="col-sm-8">
-            <section>
-                {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        <div class="col-sm-9">
+            <h1>{{ user.getCommonName() }}</h1>
+            {{ form_start(form, { 'action': path('fos_user_profile_edit', { slug: user.slug }), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="form-group text-left">
-                                {{ form_row(form.userProfile.biographie) }}
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group text-left">
+                            {{ form_row(form.userProfile.biographie, { attr: { "cols": 5 } }) }}
                         </div>
                     </div>
+                    <div class="panel-footer">
+                        <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                    </div>
+                </div>
 
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        {{ form_row(form.userProfile.favoriteAuthors) }}
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    {{ form_row(form.userProfile.favoriteBook) }}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_row(form.userProfile.favoriteAuthors) }}
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    {{ form_row(form.userProfile.inspiration) }}
-                                </div>
-                                <div class="col-sm-6">
-                                    {{ form_row(form.userProfile.style) }}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    {{ form_row(form.userProfile.favoriteGenre) }}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    {{ form_row(form.userProfile.experience) }}
-                                </div>
+                            <div class="col-sm-6">
+                                {{ form_row(form.userProfile.favoriteBook) }}
                             </div>
                         </div>
-                        <div class="panel-footer">
-                            <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {{ form_row(form.userProfile.inspiration) }}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ form_row(form.userProfile.style) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {{ form_row(form.userProfile.favoriteGenre) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ form_row(form.userProfile.experience, { attr: { "cols": 5 } }) }}
+                            </div>
                         </div>
                     </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Informations personnelles
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        {{ form_errors(form.firstName) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                            {{ form_widget(form.firstName, { attr: { placeholder: 'Prénom' } }) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {{ form_errors(form.lastName) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                            {{ form_widget(form.lastName, { attr: { placeholder: 'Nom' } }) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {{ form_errors(form.email) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                            {{ form_widget(form.email, { attr: { placeholder: 'Adresse email' } }) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group {{ form_errors(form.userProfile.facebook) ? 'has-error' : '' }}">
-                                        {{ form_errors(form.userProfile.facebook) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                            {{ form_widget(form.userProfile.facebook, { attr: { placeholder: 'Facebook' } }) }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group {{ form_errors(form.userProfile.facebook) ? 'has-error' : '' }}">
-                                        {{ form_errors(form.userProfile.twitter) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                            {{ form_widget(form.userProfile.twitter, { attr: { placeholder: 'Twitter' } }) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group {{ form_errors(form.userProfile.facebook) ? 'has-error' : '' }}">
-                                        {{ form_errors(form.userProfile.website) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                                            {{ form_widget(form.userProfile.website, { attr: { placeholder: 'Site web' } }) }}
-                                        </div>
-                                    </div>
-                                    {{ form_row(form.userProfile.avatarFile) }}
-                                    {{ form_row(form.userProfile.coverFile) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-footer">
-                            <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-                        </div>
+                    <div class="panel-footer">
+                        <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
                     </div>
-                    {{ form_rest(form) }}
-                {{ form_end(form) }}
+                </div>
 
-                {{ form_start(change_form, { 'action': path('fos_user_change_password'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Sécurité
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        {{ form_errors(change_form.current_password) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
-                                            {{ form_widget(change_form.current_password, { attr: { placeholder: 'Mot de passe' } }) }}
-                                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Informations personnelles
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_errors(form.firstName) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        {{ form_widget(form.firstName, { attr: { placeholder: 'Prénom' } }) }}
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        {{ form_errors(change_form.plainPassword.first) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
-                                            {{ form_widget(change_form.plainPassword.first, { attr: { placeholder: 'Nouveau mot de passe' } }) }}
-                                        </div>
+                                <div class="form-group">
+                                    {{ form_errors(form.lastName) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        {{ form_widget(form.lastName, { attr: { placeholder: 'Nom' } }) }}
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        {{ form_errors(change_form.plainPassword.second) }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
-                                            {{ form_widget(change_form.plainPassword.second, { attr: { placeholder: 'Confirmation Mot de passe' } }) }}
-                                        </div>
+                                <div class="form-group">
+                                    {{ form_errors(form.email) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                        {{ form_widget(form.email, { attr: { placeholder: 'Adresse email' } }) }}
+                                    </div>
+                                </div>
+                                <div class="form-group {{ form_errors(form.userProfile.facebook) ? 'has-error' : '' }}">
+                                    {{ form_errors(form.userProfile.facebook) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                        {{ form_widget(form.userProfile.facebook, { attr: { placeholder: 'Facebook' } }) }}
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="panel-footer">
-                            <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                            <div class="col-sm-6">
+                                <div class="form-group {{ form_errors(form.userProfile.facebook) ? 'has-error' : '' }}">
+                                    {{ form_errors(form.userProfile.twitter) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                        {{ form_widget(form.userProfile.twitter, { attr: { placeholder: 'Twitter' } }) }}
+                                    </div>
+                                </div>
+                                <div class="form-group {{ form_errors(form.userProfile.facebook) ? 'has-error' : '' }}">
+                                    {{ form_errors(form.userProfile.website) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                        {{ form_widget(form.userProfile.website, { attr: { placeholder: 'Site web' } }) }}
+                                    </div>
+                                </div>
+                                {{ form_row(form.userProfile.avatarFile) }}
+                                {{ form_row(form.userProfile.coverFile) }}
+                            </div>
                         </div>
                     </div>
+                    <div class="panel-footer">
+                        <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+            {{ form_end(form) }}
 
-                    {{ form_rest(change_form) }}
+            {{ form_start(change_form, { 'action': path('fos_user_change_password'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Sécurité
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_errors(change_form.current_password) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
+                                        {{ form_widget(change_form.current_password, { attr: { placeholder: 'Mot de passe' } }) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_errors(change_form.plainPassword.first) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
+                                        {{ form_widget(change_form.plainPassword.first, { attr: { placeholder: 'Nouveau mot de passe' } }) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_errors(change_form.plainPassword.second) }}
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-plus"></span></span>
+                                        {{ form_widget(change_form.plainPassword.second, { attr: { placeholder: 'Confirmation Mot de passe' } }) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <input class="btn" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                    </div>
+                </div>
 
-                {{ form_end(change_form) }}
-            </section>
+                {{ form_rest(change_form) }}
+
+            {{ form_end(change_form) }}
         </div>
     </div>
 </div>

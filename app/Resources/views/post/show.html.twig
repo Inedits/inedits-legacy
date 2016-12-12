@@ -29,7 +29,7 @@
                         <p>
                             {{ post.user.getCommonName() }}
                         </p>
-                        <a class="btn btn-primary" href="{{ path('fos_user_profile_see', { slug: post.user.slug }) }}">Voir son profil</a>
+                        <a class="btn btn-primary" href="{{ path('fos_user_profile_show', { slug: post.user.slug }) }}">Voir son profil</a>
                     </div>
                     <div class="inspiration">
                         <p class="h3">

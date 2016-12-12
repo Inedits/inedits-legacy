@@ -50,7 +50,7 @@
                 <p class="footer-title">Derniers membres</p>
                 {% for user in lastUsers %}
                     <div class="media">
-                        <a class="media-left" href="{{ path('fos_user_profile_see', { slug: user.slug }) }}">
+                        <a class="media-left" href="{{ path('fos_user_profile_show', { slug: user.slug }) }}">
                             {{
                               include('user/_avatar.html.twig',
                                 { path: user.UserProfile.avatar, config: 'user_avatar_xs', alt: user.slug, class: "img-circle" },
@@ -59,7 +59,7 @@
                             }}
                         </a>
                         <div class="media-body">
-                            <a href="{{ path('fos_user_profile_see', { slug: user.slug }) }}" alt="{{ user.lastName }}">{{ user.getFooterName() }}</a> s'est inscrit sur notre site de {{ user.createdAt|date('d/m/Y') }}
+                            <a href="{{ path('fos_user_profile_show', { slug: user.slug }) }}" alt="{{ user.lastName }}">{{ user.getFooterName() }}</a> s'est inscrit sur notre site de {{ user.createdAt|date('d/m/Y') }}
                         </div>
                     </div>
                 {% endfor %}

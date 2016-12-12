@@ -15,6 +15,9 @@ body {
 /*####################################
 # ==Containers
 ####################################*/
+.container {
+  max-width: 1000px;
+}
 section {
   padding-bottom: 1.5em;
 }

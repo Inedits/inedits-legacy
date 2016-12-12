@@ -33,7 +33,7 @@ class UserProfileType extends AbstractType
                 'required'  => false,
                 'label'     => 'Livre préféré'
             ])
-            ->add('inspiration', Types\TextareaType::class, [
+            ->add('inspiration', Types\TextType::class, [
                 'required' => false,
                 'label'     => 'Inspiration du moment'
             ])

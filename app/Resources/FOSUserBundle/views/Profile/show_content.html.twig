@@ -11,7 +11,7 @@
                   )
                 }}
                 {% if (user.id == user.id or user.roles[0] == 'ROLE_SUPER_ADMIN') %}
-                    <a class="btn btn-primary btn-block" href="{{ path('fos_user_profile_edit') }}">Modifier profil</a>
+                    <a class="btn btn-primary btn-block" href="{{ path('fos_user_profile_edit', { slug: user.slug }) }}">Modifier profil</a>
                 {% endif %}
                 {% if  user.userProfile.facebook is not null or user.userProfile.twitter is not null or user.userProfile.website is not null %}
                     <ul class="nav nav-sidebar">
