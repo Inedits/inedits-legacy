@@ -42,7 +42,8 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         # USER
-        - { path: ^/profile/, role: ROLE_USER }
+        - { path: ^/profile/$, role: ROLE_USER }
+        # - { path: ^/profile/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
         # ADMIN
         - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
         # TREES
