@@ -1,8 +1,8 @@
 AppBundle\Entity\UserProfile:
     admin_profile:
-        facebook: admin
+        facebook: http://facebook.com
     user_profile:
-        facebook: user
+        facebook: http://facebook.com
 AppBundle\Entity\User:
     admin:
         username: admin

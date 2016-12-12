@@ -19,14 +19,49 @@ class UserProfile
     private $experience;
     private $createdAt;
     private $updatedAt;
-    private $avatarFile;
     private $user;
     private $favoriteAuthors;
     private $favoriteGenre;
+    private $avatarFile;
+    private $coverFile;
 
     public function __toString()
     {
         return 'Profil de '.$this->getUser();
+    }
+
+    public function setAvatarFile(File $image = null)
+    {
+        $this->avatarFile = $image;
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    public function getAvatarFile()
+    {
+        return $this->avatarFile;
+    }
+
+    public function setCoverFile(File $image = null)
+    {
+        $this->coverFile = $image;
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    public function getCoverFile()
+    {
+        return $this->coverFile;
     }
 
     public function getId()

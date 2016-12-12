@@ -22,4 +22,15 @@
 .home-player {
     background: url('../media/frontend/home-header.jpg') center center;
     background-size: cover;
+    color: #fff;
+    padding: 4.5em 15px;
+
+    h1 {
+        margin-bottom: .7em;
+    }
+
+    p {
+        text-transform: uppercase;
+        margin-bottom: 1.7em;
+    }
 }

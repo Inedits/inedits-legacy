@@ -10,5 +10,5 @@
 {% endblock %}
 
 {% block fos_user_content %}
-    {% include "FOSUserBundle:Profile:show_content_other.html.twig" %}
+    {% include "FOSUserBundle:Profile:show_content_other.html.twig" with { user: user } %}
 {% endblock fos_user_content %}

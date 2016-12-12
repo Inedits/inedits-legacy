@@ -105,8 +105,8 @@ class ProfileController extends Controller
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
 
             // Retrieve Files Objects
-            $avatar     = $form['userProfile']->get('avatar')->getData();
-            $cover      = $form['userProfile']->get('cover')->getData();
+            $avatar     = $form['userProfile']->get('avatarFile')->getData();
+            $cover      = $form['userProfile']->get('coverFile')->getData();
 
             if($avatar)
             {
@@ -119,7 +119,6 @@ class ProfileController extends Controller
 
                 $user->getUserProfile()->setAvatar($fileName);
             }
-
             if($cover)
             {
                 $fileName = md5(uniqid()).'.'.$cover->guessExtension();

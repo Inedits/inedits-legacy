@@ -58,14 +58,14 @@ AppBundle\Entity\UserProfile:
             - Type:
                 type: string
                 message: Incorrect
-        avatar:
+        avatarFile:
             - File:
                 groups: [registration, edit]
                 mimeTypes: [image/png, image/jpeg, image/gif]
                 mimeTypesMessage: "Formats supportés: JPG, PNG, GIF"
                 maxSize: 10M
                 maxSizeMessage: "Taille Max: 1M"
-        cover:
+        coverFile:
             - File:
                 groups: [registration, edit]
                 mimeTypes: [image/png, image/jpeg, image/gif]

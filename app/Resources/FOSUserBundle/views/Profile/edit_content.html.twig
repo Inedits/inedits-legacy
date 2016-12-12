@@ -4,11 +4,12 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="user-sidebar">
-                {% if app.user.userProfile.avatar is not null %}
-                    <img class="img-responsive" src="{{ asset(app.user.userProfile.avatar, 'avatar') }}">
-                {% else %}
-                    <img class="img-responsive" src="{{ asset('avatar.jpg', 'default') }}">
-                {% endif %}
+                {{
+                  include('user/_avatar.html.twig',
+                    { path: app.user.UserProfile.avatar, config: 'user_avatar_lg', alt: app.user.slug, class: "img-responsive" },
+                    { with_context: false }
+                  )
+                }}
                 <a href="{{ path('fos_user_profile_show') }}">Mon profil</a>
                 <ul class="nav nav-sidebar">
                     {% if app.user.userProfile.facebook is not empty %}
@@ -125,8 +126,8 @@
                                             {{ form_widget(form.userProfile.website, { attr: { placeholder: 'Site web' } }) }}
                                         </div>
                                     </div>
-                                    {{ form_row(form.userProfile.avatar) }}
-                                    {{ form_row(form.userProfile.cover) }}
+                                    {{ form_row(form.userProfile.avatarFile) }}
+                                    {{ form_row(form.userProfile.coverFile) }}
                                 </div>
                             </div>
                         </div>

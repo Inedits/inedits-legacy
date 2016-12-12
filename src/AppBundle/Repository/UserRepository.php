@@ -16,6 +16,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         $q
             ->leftJoin('u.trees', 'p')
             ->where('p.id = :id')
+            ->andWhere('u.postCount <> 0')
             ->setParameter('id', $id)
             ->setMaxResults($limit)
             ->orderBy('u.firstName')

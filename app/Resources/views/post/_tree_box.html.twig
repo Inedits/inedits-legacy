@@ -20,7 +20,15 @@
             <dd>
                 <ul class="list-inline">
                   {% for author in users %}
-                      <li>{{ author.firstName }}</li>
+                      <li>
+                        <a href="{{ path('fos_user_profile_see', { slug: author.slug }) }}">
+                          {{
+                            include('user/_avatar.html.twig',
+                              { path: author.UserProfile.avatar, config: 'user_avatar_sm', alt: author.slug, class: "img-circle" },
+                              { with_context: false }
+                            )
+                          }}
+                        </a>
                   {% endfor %}
                 </ul>
             </dd>

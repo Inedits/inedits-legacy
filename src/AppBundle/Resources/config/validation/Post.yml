@@ -21,5 +21,3 @@ AppBundle\Entity\Post:
                 groups: [edit]
                 mimeTypes: [text/plain, text/html]
                 mimeTypesMessage: Format invalide
-
-

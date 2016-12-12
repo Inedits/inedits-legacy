@@ -21,11 +21,11 @@ class RegistrationUserProfileType extends AbstractType
             ->add('biographie', Types\TextareaType::class, [
                 'required' => false,
             ])
-            ->add('avatar', Types\FileType::class, [
+            ->add('avatarFile', Types\FileType::class, [
                 'required'  => false,
                 'label'     => 'Image de profil',
             ])
-            ->add('cover', Types\FileType::class, [
+            ->add('coverFile', Types\FileType::class, [
                 'required'  => false,
                 'label'     => 'Image de couverture',
             ])

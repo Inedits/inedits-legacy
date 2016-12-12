@@ -2,20 +2,23 @@ liip_imagine :
 
     # configure resolvers
     resolvers :
-
-        # setup the default resolver
         default :
-
-            # use the default web path
-            web_path : ~
+            web_path :
+                cache_prefix: /uploads/cache
 
     # your filter sets are defined here
     filter_sets :
             cache : ~
 
+            user_avatar_xs:
+                filters :
+                    thumbnail  : { size : [30, 30], mode : outbound }
             user_avatar_sm:
                 filters :
                     thumbnail  : { size : [50, 50], mode : outbound }
+            user_avatar_lg:
+                filters :
+                    thumbnail  : { size : [470, 470], mode : outbound }
             user_cover_sm:
                 filters :
                     thumbnail  : { size : [400, 200], mode : outbound }

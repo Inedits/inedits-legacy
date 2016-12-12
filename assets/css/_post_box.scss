@@ -4,6 +4,7 @@
         background-color: $main-blue;
         color: #fff;
         padding: 18px;
+        border-radius: 0;
 
         .panel-heading-title {
 
@@ -28,6 +29,7 @@
     }
 
     .panel-body {
+        padding: 10px;
 
         dl {
             margin: 0;
@@ -41,7 +43,7 @@
             }
 
             dd {
-                margin-left: 100px;
+                margin-left: 90px;
 
                 p {
 

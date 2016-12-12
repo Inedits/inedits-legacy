@@ -54,17 +54,13 @@ class UserProfileType extends AbstractType
             ->add('website', Types\TextType::class, [
                 'required' => false,
             ])
-            ->add('avatar', Types\FileType::class, [
+            ->add('avatarFile', Types\FileType::class, [
                 'required'  => false,
                 'label'     => 'Image de profil',
-                'mapped'    => false,
-                'data_class'=> null,
             ])
-            ->add('cover', Types\FileType::class, [
+            ->add('coverFile', Types\FileType::class, [
                 'required'  => false,
                 'label'     => 'Image de couverture',
-                'mapped'    => false,
-                'data_class'=> null,
             ])
         ;
         $builder->setAction($options['action']);

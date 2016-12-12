@@ -4,98 +4,99 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="user-sidebar">
-                {% if app.user.userProfile.avatar is not null %}
-                    <img class="img-responsive" src="{{ asset(app.user.userProfile.avatar, 'avatar') }}">
-                {% else %}
-                    <img class="img-responsive" src="{{ asset('avatar.jpg', 'default') }}">
-                {% endif %}
-                {% if app.user.id == user.id %}
+                {{
+                  include('user/_avatar.html.twig',
+                    { path: user.UserProfile.avatar, config: 'user_avatar_lg', alt: user.slug, class: "img-responsive" },
+                    { with_context: false }
+                  )
+                }}
+                {% if user.id == app.user.id %}
                     <a href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
                 {% endif %}
                 <ul class="nav nav-sidebar">
-                    {% if app.user.userProfile.facebook is not null %}
-                        <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
+                    {% if user.userProfile.facebook is not null %}
+                        <li><a href="{{ user.userProfile.facebook }}">Facebook</a></li>
                     {% endif %}
-                    {% if app.user.userProfile.twitter is not null %}
-                        <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
+                    {% if user.userProfile.twitter is not null %}
+                        <li><a href="{{ user.userProfile.twitter }}">Twitter</a></li>
                     {% endif %}
-                    {% if app.user.userProfile.twitter is not null %}
-                        <li><a href="{{ app.user.userProfile.website }}">Site Web</a></li>
+                    {% if user.userProfile.twitter is not null %}
+                        <li><a href="{{ user.userProfile.website }}">Site Web</a></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
         <div class="col-sm-8">
-            {% if app.user.userProfile.biographie is not null %}
+            {% if user.userProfile.biographie is not null %}
                 <section>
                     <header>
                         Biographie
                     </header>
-                    <p>{{ app.user.userProfile.biographie }}</p>
+                    <p>{{ user.userProfile.biographie }}</p>
                 </section>
             {% endif %}
-            {% if app.user.userProfile.isFilled() %}
+            {% if user.userProfile.isFilled() %}
                 <div class="row">
-                    {% if app.user.userProfile.favoriteAuthors is not null %}
+                    {% if user.userProfile.favoriteAuthors is not null %}
                         <div class="col-xs-12 col-sm-6">
                             <section>
                                 <header>
                                     Auteur(s) Préféré(e)s
                                 </header>
-                                <p>{{ app.user.userProfile.favoriteAuthors }}</p>
+                                <p>{{ user.userProfile.favoriteAuthors }}</p>
                             </section>
                         </div>
                     {% endif %}
-                    {% if app.user.userProfile.favoriteBook is not null %}
+                    {% if user.userProfile.favoriteBook is not null %}
                         <div class="col-xs-12 col-sm-6">
                             <section>
                                 <header>
                                     Livres préférés
                                 </header>
-                                <p>{{ app.user.userProfile.favoriteBook }}</p>
+                                <p>{{ user.userProfile.favoriteBook }}</p>
                             </section>
                         </div>
                     {% endif %}
-                    {% if app.user.userProfile.inspiration is not null %}
+                    {% if user.userProfile.inspiration is not null %}
                         <div class="col-xs-12 col-sm-6">
                             <section>
                                 <header>
                                     Inspiration du moment
                                 </header>
-                                <p>{{ app.user.userProfile.inspiration }}</p>
+                                <p>{{ user.userProfile.inspiration }}</p>
                             </section>
                         </div>
                     {% endif %}
 
-                    {% if app.user.userProfile.style is not null %}
+                    {% if user.userProfile.style is not null %}
                         <div class="col-xs-12 col-sm-6">
                             <section>
                                 <header>
                                     Style d'écriture
                                 </header>
-                                <p>{{ app.user.userProfile.style }}</p>
+                                <p>{{ user.userProfile.style }}</p>
                             </section>
                         </div>
                     {% endif %}
 
-                    {% if app.user.userProfile.favoriteGenre is not null %}
+                    {% if user.userProfile.favoriteGenre is not null %}
                         <div class="col-xs-12 col-sm-6">
                             <section>
                                 <header>
                                     Style Genre(s) de prédilection
                                 </header>
-                                <p>{{ app.user.userProfile.favoriteGenre }}</p>
+                                <p>{{ user.userProfile.favoriteGenre }}</p>
                             </section>
                         </div>
                     {% endif %}
 
-                    {% if app.user.userProfile.experience is not null %}
+                    {% if user.userProfile.experience is not null %}
                         <div class="col-xs-12 col-sm-6">
                             <section>
                                 <header>
                                     En quoi l'écriture le motive-t-elle ?
                                 </header>
-                                <p>{{ app.user.userProfile.experience }}</p>
+                                <p>{{ user.userProfile.experience }}</p>
                             </section>
                         </div>
                     {% endif %}
