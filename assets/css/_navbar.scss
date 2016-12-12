@@ -1,12 +1,18 @@
 .navbar {
+    background: #fff;
     margin: 0;
     box-shadow: none;
     border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
 
     .navbar-brand {
         height: auto;
-        padding: 0;
         margin: 0!important;
+        padding: 0;
+        img {
+            padding: 10px;
+        }
     }
 
     .nav {
@@ -14,10 +20,27 @@
     }
 
     .navbar-left {
-        li > a {
-            height: 60px;
-            line-height: 60px;
-            padding: 0 2em;
+        li {
+            border-left: 1px solid #eee;
+
+            &:first-child {
+                border: none;
+            }
+            &:hover {
+                background: #e7e7e7;
+            }
+
+            > a {
+                color: #3e4149;
+                height: 60px;
+                line-height: 30px;
+                font-size: 12px;
+                font-weight: 500;
+
+                &:active {
+                    color: #3e4149;
+                }
+            }
         }
     }
 }

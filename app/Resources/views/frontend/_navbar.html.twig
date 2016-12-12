@@ -13,8 +13,11 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-left">
-            <li class="active"><a href="{{ path('tree_list') }}">Les arbres</a></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="{{ path('homepage') }}">Accueil</a></li>
+            <li><a href="{{ path('homepage') }}">Comment ça marche</a></li>
+            <li><a href="{{ path('tree_list') }}">Les arbres</a></li>
+            <li><a href="{{ path('homepage') }}">Les auteurs</a></li>
+            <li><a href="http://editionsinedits.com/" target="_blank">Nos éditions</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             {% if app.user %}
