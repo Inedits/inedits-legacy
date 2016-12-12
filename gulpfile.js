@@ -19,6 +19,7 @@ var config = {
     masonryDir:     'vendor/desandro/masonry',
     jqueryDir:      'vendor/components/jquery',
     jqueryuiDir:    'vendor/components/jqueryui',
+    fontDir:        'assets/font',
     scriptsDir:     'assets/js',
     stylesheetsDir: 'assets/css',
     mediasDir:      'assets/media',
@@ -61,6 +62,9 @@ gulp.task('css', function() {
 */
 gulp.task('font', function() {
     gulp.src(config.bootstrapDir + '/assets/fonts/bootstrap/*')
+        .pipe(gulp.dest(config.fontPublictDir))
+    ;
+    gulp.src(config.fontDir + '/*')
         .pipe(gulp.dest(config.fontPublictDir))
     ;
 });

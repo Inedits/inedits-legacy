@@ -42,9 +42,13 @@ class ProfileController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
+        $post  = $this->getDoctrine()->getRepository('AppBundle:Post')->getLastPostByUser($user->getId());
+        $users = $post ? $this->getDoctrine()->getRepository('AppBundle:User')->findUsersByTree($post->getRoot()->getId(), 1) : null;
 
         return $this->render('FOSUserBundle:Profile:show.html.twig', array(
-            'user' => $user
+            'user'  => $user,
+            'post'  => $post,
+            'users' => $users,
         ));
     }
 
@@ -58,8 +62,13 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('FOSUserBundle:Profile:show_other.html.twig', array(
-            'user' => $user
+        $post = $this->getDoctrine()->getRepository('AppBundle:Post')->getLastPostByUser($user->getId());
+        $users = $post ? $this->getDoctrine()->getRepository('AppBundle:User')->findUsersByTree($post->getRoot()->getId(), 1) : null;
+
+        return $this->render('FOSUserBundle:Profile:show.html.twig', array(
+            'user'  => $user,
+            'post'  => $post,
+            'users' => $users,
         ));
     }
 

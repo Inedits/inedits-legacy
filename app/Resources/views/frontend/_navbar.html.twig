@@ -11,6 +11,36 @@
         <img class="img-responsive" src="{{ asset('frontend/home-logo.jpg', 'media') }}" alt="Inedits" width="60" height="60">
       </a>
     </div>
+    <ul class="nav navbar-nav navbar-right">
+        {% if app.user %}
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  {{
+                    include('user/_avatar.html.twig',
+                      { path: app.user.UserProfile.avatar, config: 'user_avatar_xs', alt: app.user.slug, class: "img-circle" },
+                      { with_context: false }
+                    )
+                  }}
+                  {{ app.user.firstName }} {{ app.user.lastName }}
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    {% if app.user.roles[0] == "ROLE_SUPER_ADMIN" %}
+                      <li><a href="{{ path('sonata_admin_redirect') }}">Dashboard</a></li>
+                    {% endif %}
+                    <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                </ul>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+            </li>
+        {% endif %}
+    </ul>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-left">
             <li><a href="{{ path('homepage') }}">Accueil</a></li>
@@ -18,36 +48,6 @@
             <li><a href="{{ path('tree_list') }}">Les arbres</a></li>
             <li><a href="{{ path('homepage') }}">Les auteurs</a></li>
             <li><a href="http://editionsinedits.com/" target="_blank">Nos éditions</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            {% if app.user %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                      {{
-                        include('user/_avatar.html.twig',
-                          { path: app.user.UserProfile.avatar, config: 'user_avatar_xs', alt: app.user.slug, class: "img-circle" },
-                          { with_context: false }
-                        )
-                      }}
-                      {{ app.user.firstName }} {{ app.user.lastName }}
-                      <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        {% if app.user.roles[0] == "ROLE_SUPER_ADMIN" %}
-                          <li><a href="{{ path('sonata_admin_redirect') }}">Dashboard</a></li>
-                        {% endif %}
-                        <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-                    </ul>
-                </li>
-            {% else %}
-                <li>
-                    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-                </li>
-                <li>
-                    <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
-                </li>
-            {% endif %}
         </ul>
     </div>
   </div>

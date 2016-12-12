@@ -1,8 +1,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="container">
+<div class="container margin">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="user-sidebar">
                 {{
                   include('user/_avatar.html.twig',
@@ -10,23 +10,38 @@
                     { with_context: false }
                   )
                 }}
-                <a href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
-                <ul class="nav nav-sidebar">
-                    {% if app.user.userProfile.facebook is not null %}
-                        <li><a href="{{ app.user.userProfile.facebook }}">Facebook</a></li>
-                    {% endif %}
-                    {% if app.user.userProfile.twitter is not null %}
-                        <li><a href="{{ app.user.userProfile.twitter }}">Twitter</a></li>
-                    {% endif %}
-                    {% if app.user.userProfile.twitter is not null %}
-                        <li><a href="{{ app.user.userProfile.website }}">Site Web</a></li>
-                    {% endif %}
-                </ul>
+                {% if (app.user.roles[0] == 'ROLE_SUPER_ADMIN') %}
+                    <a class="btn btn-primary btn-block" href="{{ path('fos_user_profile_edit') }}">Modifier son profil</a>
+                {% endif %}
+                {% if  app.user.userProfile.facebook is not null or app.user.userProfile.twitter is not null or app.user.userProfile.website is not null %}
+                    <ul class="nav nav-sidebar">
+                        <p>Ses Réseaux</p>
+                        {% if app.user.userProfile.facebook is not null %}
+                            <li><a href="{{ app.user.userProfile.facebook }}">
+                                <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                Son compte Facebook
+                            </a></li>
+                        {% endif %}
+                        {% if app.user.userProfile.twitter is not null %}
+                            <li><a href="{{ app.user.userProfile.twitter }}">
+                                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                Son compte Twitter
+                            </a></li>
+                        {% endif %}
+                        {% if app.user.userProfile.twitter is not null %}
+                            <li><a href="{{ app.user.userProfile.website }}">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                Son site web
+                            </a></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
             </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
+            <h1>{{ user.getCommonName() }}</h1>
             {% if app.user.userProfile.biographie is not null %}
-                <section>
+                <section class="text-center">
                     <header>
                         Biographie
                     </header>
@@ -99,6 +114,10 @@
                         </div>
                     {% endif %}
                 </div>
+            {% endif %}
+            {% if post is not null %}
+                <p class="h3">Dernière participation</p>
+                {{ include('post/_post_box.html.twig', { tree: post, users: users }, { with_context: false }) }}
             {% endif %}
         </div>
     </div>

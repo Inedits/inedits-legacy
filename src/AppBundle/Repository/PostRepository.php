@@ -20,6 +20,7 @@ class PostRepository extends NestedTreeRepository
         $q
             ->where('p.lvl = 0')
             ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults($limit)
         ;
 
         return $q->getQuery()->getResult();
@@ -33,9 +34,27 @@ class PostRepository extends NestedTreeRepository
             ->andWhere('s.id = 2')
             ->leftJoin('p.status', 's')
             ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults($limit)
         ;
 
         return $q->getQuery()->getResult();
+    }
+
+    public function getLastPostByUser($id)
+    {
+        $q = $this->createQueryBuilder('p');
+        $q
+            ->where('p.lvl <> 0')
+            ->andWhere('u.id = :id')
+            ->andWhere('status = 2')
+            ->leftJoin('p.user', 'u')
+            ->leftJoin('p.status', 'status')
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults(1)
+            ->setParameter('id', $id)
+        ;
+
+        return $q->getQuery()->getOneOrNullResult();
     }
 
     public function countPostByUser($id)
@@ -48,6 +67,7 @@ class PostRepository extends NestedTreeRepository
             ->andWhere('status.id = 2')
             ->leftJoin('p.user', 'user')
             ->leftJoin('p.status', 'status')
+            ->setMaxResults(1)
             ->setParameter('id', $id)
         ;
 

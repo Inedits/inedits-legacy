@@ -1,0 +1,74 @@
+.profile {
+    background: #eee;
+
+    .container.margin {
+
+        .user-sidebar {
+            img {
+                border: 5px solid #fff;
+                border-radius: 4px;
+                margin-bottom: 1em;
+            }
+
+            > a {
+                margin-bottom: 1em;
+            }
+
+            .nav-sidebar {
+                @extend section;
+
+                li {
+                    padding: 0;
+
+                    a {
+                        padding: 0;
+                        margin-bottom: 15px;
+
+                        &:hover {
+                            background-color: initial;
+                        }
+
+                        i {
+                            font-size: 19px;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+
+                p {
+                    font-weight: bold;
+                    margin-bottom: 1em;
+                }
+            }
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 1em;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 5px;
+            padding: 12px 20px 15px 20px;
+            margin-bottom: 1em;
+
+            header {
+
+                color: #3e4149;
+                font-size: 15px;
+                font-weight: bold;
+                margin-bottom: 1em;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .profile {
+
+        .container.margin {
+            margin-top: -70px;
+        }
+    }
+}
