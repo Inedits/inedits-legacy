@@ -3,68 +3,106 @@
 {% block title %}Contribuer{% endblock %}
 
 {% block player %}
-    {{ include('frontend/_player_post_add.html.twig', {user:app.user, post:parent}, with_context = false) }}
+    {{ include('frontend/_player_post_add.html.twig', {user: app.user, post: parent}, with_context = false) }}
 {% endblock %}
-
+{% block body_class %}post-add{% endblock %}
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8">
                 {{ form_start(form, { attr: { 'class': '' } }) }}
-                    <p>vos informations personnelles</p>
-                    <div class="form-group">
-                        {{ form_row(form.firstName, {attr: {'value': app.user.firstName} }) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_row(form.lastName, {attr: {'value': app.user.lastName} }) }}
-                    </div>
+                    <p class="h3">Vos informations personnelles<span class="buble">1</span></p>
+                    {{ form_row(form.firstName, {attr: {'value': app.user.firstName} }) }}
+                    {{ form_row(form.lastName, {attr: {'value': app.user.lastName} }) }}
 
-                    <p>Votre histoire</p>
-                    <div class="form-group">
-                        {{ form_row(form.title) }}
-                    </div>
+                    <p class="h3">Votre histoire<span class="buble">2</span></p>
+                    {{ form_row(form.title) }}
+
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
-                            <p>Nous envoyer votre document</p>
-                            <div class="form-group">
-                                {{ form_row(form.file) }}
-                            </div>
+                            <p class="h3">Nous envoyer votre document :</p>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-
+                            <div class="form-group file-input">
+                                {{ form_widget(form.file) }}
+                                <p class="help-block">.doc, .pdf, .txt<span class="label label-success">Recommandé</span></p>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        {{ form_row(form.content) }}
+                    <p class="h4"><b><u>OU</u></b></p>
+                    <p class="h3">Écrire en ligne avec notre outil :</p>
+                    {{ form_row(form.content) }}
+                    <p class="h3">Conditions générales d'utilisation<span class="buble">3</span></p>
+
+                    <div class="form-group charte">
+                        <p>
+                          Tous les textes proposés par les abonnés sont  soumis à validation par l’éditeur
+                          avant leur publication en ligne. L’éditeur prendra en compte la qualité littéraire des
+                          contenus proposés comme leur pertinence dans le suivi de l’arborescence.
+                        </p>
+                        <p>
+                          Les contenus doivent  être conformes aux lois, ne pas être contraires aux bonnes
+                          mœurs, à l'ordre public, aux réglementations en vigueur, et être libres de tout droit.
+                          <br/>Seront donc refusés :
+                        </p>
+                        <ul>
+                          <li>Les textes déjà soumis à un droit d’auteur.</li>
+
+                          <li>les contenus contrevenant aux lois, à caractère diffamatoire, injurieux, </li>
+                          obscène ou offensant ;
+
+                          <li>la violence verbale ou faisant l'apologie du racisme et de la xénophobie, de </li>
+                          l'homophobie, du révisionnisme ou du négationnisme ;
+
+                          <li>les contenus à caractère pornographique ou pédophile ; </li>
+
+                          <li>la divulgation d'informations permettant l'identification nominative et précise de </li>
+                          toute personne privée telles que le nom de famille, l'adresse postale, l'adresse
+                          électronique, le numéro de téléphone ; 
+
+                          <li>le détournement du site pour faire de la propagande ou du prosélytisme à des </li>
+                          fins professionnelles, commerciales, politiques, religieuses ou sectaires.
+                        </ul>
+                        <p>
+                          Chaque contribution devra porter un titre qui l’identifie.
+                          Les  participants recevront  un mail les informant de la décision  de l’éditeur
+                          concernant leurs contributions. Trois réponses seront possibles : refusé, accepté, à
+                          corriger (dans ce cas les éléments à modifier seront précisés)
+                          Notre site  offre une vitrine de qualité aux auteurs, en conséquence l’auteur ne
+                          pourra se prévaloir de droits d’auteurs pour ses contributions en ligne. En revanche,
+                          si l’éditeur décide de publier une histoire aboutie sous la forme d’un recueil collectif
+                          ou individuel, imprimé et /ou numérique,  un contrat à compte d’éditeur standard (sur
+                          le modèle de celui que recommande la SGDL) sera conclu entre les différentes
+                          parties.
+                        </p>
                     </div>
-                    <p>Conditions générales d'utilisation</p>
-                    <div class="form-group">
-                        {{ form_row(form.gtu) }}
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success" type="submit">Ajouter</button>
-                    </div>
+                    {{ form_row(form.gtu) }}
+
+                    <button class="btn btn-success" type="submit">Ajouter</button>
+                    <p class="h3"><span class="buble last">></span></p>
                 {{ form_end(form) }}
             </div>
             <div class="col-xs-12 col-sm-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="glyphicon glyphicon-info-sign"></i>
+                <div class="panel panel-default warning">
+                    <div class="panel-heading text-center">
+                        <p><i class="glyphicon glyphicon-info-sign"></i></p>
+                        <p>Conseil</p>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item">Faites intervenir au moins UN des protagonistes impliqués dans l’histoire</li>
-                        <li class="list-group-item">Ne négligez aucun élément/détail mentionné dans les contributions précédentes : efforcez-vous au contraire de les reprendre à votre compte au profit de votre propre récit</li>
-                        <li class="list-group-item"> Evitez les ruptures de style ou de ton trop marquées, qui pourraient nuire à la continuité de l’ensemble.</li>
+                        <li class="list-group-item">- Faites intervenir au moins UN des protagonistes impliqués dans l’histoire</li>
+                        <li class="list-group-item">- Ne négligez aucun élément/détail mentionné dans les contributions précédentes : efforcez-vous au contraire de les reprendre à votre compte au profit de votre propre récit</li>
+                        <li class="list-group-item">- Evitez les ruptures de style ou de ton trop marquées, qui pourraient nuire à la continuité de l’ensemble.</li>
                     </ul>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="glyphicon glyphicon-warning-sign"></i>
+                <div class="panel panel-default info">
+                    <div class="panel-heading text-center">
+                        <p><i class="glyphicon glyphicon-warning-sign"></i></p>
+                        <p>Conseil</p>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item">Toutes les contributions sont validées par notre équipe.</li>
-                        <li class="list-group-item">Vous reconnaissez être l'auteur original du texte que vous souhaitez ajouter.</li>
-                        <li class="list-group-item">La taille minimale d'une contribution est de 3000 caractères et la taille maximale, 7000.</li>
+                        <li class="list-group-item">- Toutes les contributions sont validées par notre équipe.</li>
+                        <li class="list-group-item">- Vous reconnaissez être l'auteur original du texte que vous souhaitez ajouter.</li>
+                        <li class="list-group-item">- La taille minimale d'une contribution est de 3000 caractères et la taille maximale, 7000.</li>
                     </ul>
                 </div>
             </div>

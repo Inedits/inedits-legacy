@@ -11,13 +11,11 @@ AppBundle\Entity\Post:
                 message: Incorrect
         gtu:
             - NotNull:
-                groups: [edit]
                 message: Vous devez accepter les conditions générales d'utilisation
             - NotBlank:
                 groups: [edit]
                 message: Vous devez accepter les conditions générales d'utilisation
         file:
             - File:
-                groups: [edit]
                 mimeTypes: [text/plain, text/html]
                 mimeTypesMessage: Format invalide

@@ -6,6 +6,7 @@
     background-size: cover;
     position: relative;
     min-height: 264px;
+    color: #fff;
 }
 
 .user-cover {
@@ -34,4 +35,19 @@
         text-transform: uppercase;
         margin-bottom: 1.7em;
     }
+}
+
+.post-add .jumbotron{
+    background: none;
+    background-color: #222a59;
+    min-height: 200px;
+
+    h1 {
+        font-size: 40px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
 }

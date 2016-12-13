@@ -48,6 +48,7 @@ class PostType extends AbstractType
             ->add('content_plain', Types\HiddenType::class)
             ->addModelTransformer(new PostTransformer())
             ->add('gtu', Types\ChoiceType::class, [
+                'required'  => true,
                 'choices'   => [
                     1   => 'j\'ai lu et j\'accepte les conditions générales d\'utilisation'
                 ],
