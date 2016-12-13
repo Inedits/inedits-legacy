@@ -1,8 +1,29 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
-{% block title %}Tree{% endblock %}
+{% block title %}{{ tree.title }}{% endblock %}
+{% block body_class %}cooltree{% endblock %}
 {% block body %}
-    {% if tree.id is defined %}
-        <a id="getTreeLink" href="{{ path('post_tree_json', { slug: tree.slug }) }}"></a>
-        <div class="tree-container"></div>
-    {% endif %}
+    <a id="getTreeLink" href="{{ path('post_tree_json', { slug: tree.slug }) }}"></a>
+
+    {% for post in posts %}
+        <div class="child-bubble" id="{{ post.slug }}">
+            <p class="bubble-sub-title">
+                Écrit par :
+                <a href="{{ path('fos_user_profile_show', { slug: post.user.slug }) }}">{{ post.user.getCommonName() }}</a>
+                {{
+                  include('user/_avatar.html.twig',
+                    { path: post.user.UserProfile.avatar, config: 'user_avatar_sm', alt: '', class: "img-circle img-absolute" },
+                    { with_context: false }
+                  )
+                }}
+            </p>
+            <p class="bubble-title">{{ post.title }}</p>
+            <p class="bubble-sub-title">Extrait</p>
+            <p>
+                {{ tree.content|truncate(600, true) }}
+            </p>
+            <a href="{{ path('post_show', { slug: post.slug }) }}">Voir</a>
+        </div>
+    {% endfor %}
+
+    <div class="tree-container"></div>
 {% endblock %}

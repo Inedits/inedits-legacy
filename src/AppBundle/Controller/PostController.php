@@ -56,7 +56,12 @@ class PostController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('AppBundle\Entity\Post');
 
-        return $this->render('post\tree.html.twig', ['tree' => $post]);
+        $posts = $repository->getPostByTree($post->getId());
+
+        return $this->render('post\tree.html.twig', [
+            'tree'  => $post,
+            'posts' => $posts,
+        ]);
     }
 
     /**

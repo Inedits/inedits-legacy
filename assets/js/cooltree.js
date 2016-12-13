@@ -101,7 +101,7 @@ var CoolTree = (function () {
 
         // Show Circle
         nodeEnter.append("image")
-              .attr("xlink:href", "/img/design/warning.svg")
+              .attr("xlink:href", "http://localhost:8000/dist/media/design/warning.svg")
               .attr("x", -22)
               .attr("y", -70)
               .attr("width", 40)
@@ -117,7 +117,7 @@ var CoolTree = (function () {
 
         // Add child circle
         nodeEnter.append("image")
-              .attr("xlink:href", "/img/design/addition.svg")
+              .attr("xlink:href", "http://localhost:8000/dist/media/design/addition.svg")
               .attr("x", 30)
               .attr("y", -20)
               .attr("width", 40 )

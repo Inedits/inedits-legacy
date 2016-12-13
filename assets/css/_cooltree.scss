@@ -1,5 +1,92 @@
-.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px
+.cooltree {
+
+    .tree-container {
+        background: url('../media/design/tree_bg.jpg') center center / cover no-repeat;
+
+        >svg {
+            cursor: move;
+            padding-left: 3em;
+        }
+    }
+
+    .node {
+      cursor: pointer;
+      fill: #fff;
+      stroke: steelblue;
+      transition: all 1.5s;
+    }
+    .node.hover circle {
+      fill: #dd9933;
+      stroke: #dd9933;
+      stroke-width: 1.5px;
+    }
+    .node.first circle {
+      fill: #dd9933;
+      stroke: #dd9933;
+      stroke-width: 1.5px;
+    }
+    .node text {
+      font: 10px sans-serif;
+    }
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 1.5px;
+    }
+    .child-links {
+      opacity: 0;
+      transition: all 1.5s;
+      visibility: hidden;
+    }
+
+    /* =========================================================
+    ==Child bubble
+    ========================================================= */
+    .child-bubble {
+      background-color: #112433;
+      border-radius: 11px;
+      color: #fff!important;
+      max-width: 400px;
+      opacity: 0;
+      position: fixed;
+      padding: 3em 1.5em;
+      right: 50px;
+      top: 230px;
+      transition: all 0.3s;
+      visibility: hidden;
+    }
+    .child-bubble .img-absolute {
+      left: 50%;
+      position: absolute;
+      top: -25px;
+      transform: translate(-50%);
+    }
+    .child-bubble.onScene {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .child-bubble .bubble-title {
+      color: #fff;
+      font-size: 20px;
+      margin: 0 0 11px;
+      text-align: center;
+    }
+    .child-bubble .bubble-sub-title {
+      color: #5d5d5d;
+      font-size: 13px;
+      margin: 2px 0;
+      text-align: center;
+    }
+    .onScene {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 468px){
+      .child-bubble {
+        display: none;
+      }
+    }
 }
+

@@ -36,10 +36,14 @@ input[type=file] {
 }
 
 .btn {
-  border: none;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 97%;
-  text-transform: uppercase;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 97%;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #fff;
+    }
 }
 
 // BreadCrumb

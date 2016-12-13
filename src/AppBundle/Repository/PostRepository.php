@@ -57,6 +57,21 @@ class PostRepository extends NestedTreeRepository
         return $q->getQuery()->getOneOrNullResult();
     }
 
+    public function getPostByTree($id)
+    {
+        $q = $this->createQueryBuilder('p');
+        $q
+            ->where('root.id = :id')
+            ->andWhere('status = 2')
+            ->leftJoin('p.root', 'root')
+            ->leftJoin('p.status', 'status')
+            ->orderBy('p.createdAt', 'DESC')
+            ->setParameter('id', $id)
+        ;
+
+        return $q->getQuery()->getResult();
+    }
+
     public function countPostByUser($id)
     {
         $q = $this->createQueryBuilder('p');
