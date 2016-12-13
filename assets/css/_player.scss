@@ -7,6 +7,10 @@
     position: relative;
     min-height: 264px;
     color: #fff;
+
+    .container {
+        max-width: $container-width;
+    }
 }
 
 .user-cover {

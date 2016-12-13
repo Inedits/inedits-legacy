@@ -43,10 +43,10 @@
     </ul>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-left">
-            <li><a href="{{ path('homepage') }}">Accueil</a></li>
+            <li class="{% if app.request.attributes.get('_route') == 'homepage' %}active{% endif %}"><a href="{{ path('homepage') }}">Accueil</a></li>
             <li><a href="{{ path('homepage') }}">Comment ça marche</a></li>
-            <li><a href="{{ path('tree_list') }}">Les arbres</a></li>
-            <li><a href="{{ path('homepage') }}">Les auteurs</a></li>
+            <li class="{% if app.request.attributes.get('_route') == 'tree_list' %}active{% endif %}"><a href="{{ path('tree_list') }}">Les arbres</a></li>
+            <li class="{% if app.request.attributes.get('_route') == 'user_list' %}active{% endif %}"><a href="{{ path('homepage') }}">Les auteurs</a></li>
             <li><a href="http://editionsinedits.com/" target="_blank">Nos éditions</a></li>
         </ul>
     </div>
