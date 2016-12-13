@@ -4,6 +4,20 @@
 {% block body %}
     <a id="getTreeLink" href="{{ path('post_tree_json', { slug: tree.slug }) }}"></a>
 
+    <div class="tree-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <h1>{{ tree.title }}</h1>
+                    <span> <span class="white">{{ tree.children|length }}</span> Contributions</span>
+                    <span>Démarré le : {{ tree.createdAt|date('d/m/Y') }}</span>
+                </div>
+                <div class="col-xs-12 col-sm-6 text-right">
+                    <a class="btn btn-blue" href="{{ path('homepage') }}">Comment ajouter ma contribution</a>
+                </div>
+            </div>
+        </div>
+    </div>
     {% for post in posts %}
         <div class="child-bubble" id="{{ post.slug }}">
             <p class="bubble-sub-title">
