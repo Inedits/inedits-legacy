@@ -3,6 +3,7 @@
 ####################################*/
 body {
     font-family: 'Droid Serif', serif;
+    line-height: 1.5;
 }
 
 /*####################################
@@ -34,11 +35,25 @@ input[type=file] {
     max-width: 100%;
 }
 
+.btn {
+  border: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 97%;
+  text-transform: uppercase;
+}
+
 // BreadCrumb
 .breadcrumb {
-  background-color: #fff;
+  background-color: transparent;
   padding-left: 0;
   padding-right: 0;
+  color: #a2a2a2;
+
+  a {
+    color: #a2a2a2;
+    font-style: italic;
+  }
+
   > li {
 
     + li:before {

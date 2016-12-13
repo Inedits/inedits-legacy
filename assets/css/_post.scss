@@ -1,17 +1,128 @@
-/*####################################
-# ==Buttons
-####################################*/
 .post-show {
+    background-color: #2e2e2e;
+    color: #fff;
+
+    >.container {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 
     section {
 
         > header {
             position: relative;
 
-            .btn {
-
-                right: 15px;
+            h1 {
+                color: #fff;
+                margin-bottom: 10px;
+                margin-top: 0;
             }
+
+            .btn {
+                color: #fff;
+                top: 0;
+                right: 0;
+                background-color: #222222;
+                padding: 1em;
+                position: absolute;
+            }
+        }
+
+        footer {
+
+            .btn {
+                color: #fff;
+                background-color: #222222;
+                margin: 3em 0;
+                padding: 1em;
+            }
+        }
+
+        .reader {
+            background-color: #fff;
+            color: #2c3e50;
+            font-family: 'Baskerville'!important;
+            font-size: 18px;
+            line-height: 30px;
+            padding: 25px;
+        }
+
+        .continued {
+            margin: 0;
+            padding: 30px 0;
+            position: relative;
+            text-align: center;
+            width: 100%;
+
+            &:before {
+                border-top: 2px solid #d7d6d7;
+                content: '';
+                display: block;
+                left: 0;
+                position: absolute;
+                top: 49px;
+                width: 40%;
+            }
+
+            &:after {
+                border-top: 2px solid #d7d6d7;
+                content: '';
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 49px;
+                width: 40%;
+            }
+        }
+    }
+
+    .user-pic {
+        img {
+            border: 5px solid #fff;
+            border-radius: 4px;
+            margin-bottom: 1em;
+        }
+    }
+
+    .post-author {
+        padding: 15px 0;
+        margin-bottom: 1em;
+
+        em {
+            color: #a2a2a2;
+        }
+
+        p {
+            font-size: 21px;
+            font-style: italic;
+            margin-bottom: 1em;
+        }
+    }
+
+    .inspiration {
+        background-color: #222222;
+        padding: 30px 30px 30px 30px;
+        margin-bottom: 1em;
+
+        p {
+            color: #7e7e7e;
+            margin-bottom: 1.5em;
+
+            &.h3 {
+                color: #fff;
+            }
+        }
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+        text-align: left;
+        margin-top: 20px;
+
+        li {
+            border-top: 1px solid #404040;
+            padding: 15px 0;
         }
     }
 }

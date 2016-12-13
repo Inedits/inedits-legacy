@@ -10,13 +10,17 @@
                     <header>
                         <h1>{{ post.title }}</h1>
                         {{ include('post/_breadcrumb.html.twig', { post: post }, { with_context: false }) }}
-                        <a class="vertical-absolute-center btn btn-primary" href="{{ path('post_tree_show', { slug: post.root.slug }) }}">Retour à l'arbre</a>
+                        <a class="btn" href="{{ path('post_tree_show', { slug: post.root.slug }) }}">Retour à l'arbre</a>
                     </header>
                     <div class="reader">
                         {% autoescape false %}
                             {{ post.content }}
+                            <p class="continued">A suivre</p>
                         {% endautoescape %}
                     </div>
+                    <footer class="text-right">
+                        <a class="btn " href="{{ path('post_tree_show', { slug: post.root.slug }) }}">Retour à l'arbre</a>
+                    </footer>
                 </div>
             </section>
             <div class="col-xs-12 col-sm-3">
@@ -24,32 +28,31 @@
                     <div class="user-pic">
                         {{ include('global/_avatar.html.twig', { avatar_path: post.user.userProfile.avatar }, { with_context: false }) }}
                     </div>
-                    <div class="post-author">
+                    <div class="post-author text-center">
                         <em>Contribution de :</em>
                         <p>
                             {{ post.user.getCommonName() }}
                         </p>
-                        <a class="btn btn-primary" href="{{ path('fos_user_profile_show', { slug: post.user.slug }) }}">Voir son profil</a>
+                        <a class="btn btn-grey" href="{{ path('fos_user_profile_show', { slug: post.user.slug }) }}">Voir son profil</a>
                     </div>
-                    <div class="inspiration">
+                    <div class="inspiration text-center">
                         <p class="h3">
                             Cette histoire vous inspire ?
                         </p>
                         <p>
                             In&amp;dits est le premier site d’écriture collaborative. Ecrivons ensemble les histoires de demain et faites-vous éditer.
                         </p>
-                        <a class="btn btn-primary" href="{{ path('post_add', { tree: post.root.slug, parent: post.slug }) }}">Ecrivez la suite</a>
+                        <a class="btn btn-yellow" href="{{ path('post_add', { tree: post.root.slug, parent: post.slug }) }}">Ecrivez la suite</a>
                     </div>
-                    <a class="btn btn-primary" href="{{ path('homepage') }}"><i class="glyphicon glyphicon-flag"></i> Signaler un abus</a>
-                    <div class="panel panel-default">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <b>Ajoutée le</b> : {{ post.createdAt|date('d/m/Y') }}
-                            </li>
-                            <li class="list-group-item">
-                                <b>Déjà lue</b> : 80 fois
-                            </li>
-                    </div>
+                    <a class="btn btn-grey btn-block" href="{{ path('homepage') }}"><i class="glyphicon glyphicon-flag"></i> Signaler un abus</a>
+                    <ul>
+                        <li>
+                            <b>Ajoutée le</b> : {{ post.createdAt|date('d/m/Y') }}
+                        </li>
+                        <li>
+                            <b>Déjà lue</b> : 80 fois
+                        </li>
+                    </ul>
                 </aside>
             </div>
         </div>
