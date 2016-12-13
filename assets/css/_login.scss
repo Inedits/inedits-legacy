@@ -1,0 +1,44 @@
+.user-login {
+    background-color: #eee;
+
+    >.container {
+        padding-top: 2em;
+        padding-bottom: 2em;
+
+        .thumbnail {
+            border-radius: 0;
+            font-family: 'Source Sans Pro', sans-serif;
+            padding: 20px;
+            height: 270px;
+
+            &.login {
+
+                hr {
+                    border-top:1px solid #dddddd;
+                }
+            }
+            &.register {
+                border: none;
+                text-align: center;
+                background-color: $yellow;
+
+                .absolute-center {
+                    width: 80%;
+                }
+
+                .h3 {
+                    font-size: 25px;
+                    font-weight: 100;
+                    color: #2c3e50;
+                    margin-bottom: 1em;
+                }
+
+                p {
+                    font-size: 18px;
+                    color: #fff;
+                    margin-bottom: 1em;
+                }
+            }
+        }
+    }
+}
