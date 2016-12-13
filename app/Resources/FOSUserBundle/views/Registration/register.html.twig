@@ -2,6 +2,8 @@
 
 {% block title %}S'inscrire{% endblock %}
 
+{% block body_class %}user-register{% endblock %}
+
 {% block player %}
     {{ include('frontend/_player.html.twig', { message: "S'inscrire" }, with_context = false) }}
 {% endblock %}

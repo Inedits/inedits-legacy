@@ -3,7 +3,7 @@
 <div class="container">
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
-        <p class="title">Vos informations personnelles *</p>
+        <p class="h3 bubble">Vos informations personnelles *<span>1</span></p>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
@@ -17,21 +17,11 @@
             </div>
         </div>
 
-        <p class="title">Votre compte In&amp;dits</p>
+        <p class="h3 bubble">Votre compte In&amp;dits<span>2</span></p>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    {{ form_row(form.email) }}
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                        {{ form_row(form.userProfile.avatarFile) }}
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        {{ form_row(form.userProfile.coverFile) }}
-                    </div>
+                    {{ form_widget(form.email, { attr: { 'placeholder': 'Votre adresse email' } }) }}
                 </div>
             </div>
         </div>
@@ -39,17 +29,25 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    {{ form_row(form.plainPassword.first) }}
+                    {{ form_widget(form.plainPassword.first, { attr: { 'placeholder': 'Votre mot de passe' } }) }}
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    {{ form_row(form.plainPassword.second) }}
+                    {{ form_widget(form.plainPassword.second, { attr: { 'placeholder': 'Confirmer le mot de passe' } }) }}
                 </div>
             </div>
         </div>
 
-        <p class="title">Votre profil</p>
+        <p class="h3 bubble">Votre profil<span>3</span></p>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                {{ form_row(form.userProfile.avatarFile) }}
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                {{ form_row(form.userProfile.coverFile) }}
+            </div>
+        </div>
         <div class="form-group">
             {{ form_row(form.userProfile.biographie) }}
         </div>
@@ -60,6 +58,7 @@
         </div>
 
         {{ form_rest(form) }}
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        <button class="btn btn-blue" type="submit">S'inscrire</button>
+        <p class="h3 bubble"><span class="last">></span></p>
     {{ form_end(form) }}
 </div>

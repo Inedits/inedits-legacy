@@ -19,7 +19,11 @@ class RegistrationUserProfileType extends AbstractType
     {
         $builder
             ->add('biographie', Types\TextareaType::class, [
+                'label'    => false,
                 'required' => false,
+                'attr'  => [
+                    'placeholder'   => 'Biographie: Parlez nous de vous en quelques mots',
+                ]
             ])
             ->add('avatarFile', Types\FileType::class, [
                 'required'  => false,
