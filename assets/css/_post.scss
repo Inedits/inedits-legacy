@@ -153,31 +153,12 @@
         font-size: 20px;
         margin-bottom: 2em;
         margin-top: 2em;
-
-        span {
-            background-color: #4d5479;
-            border-radius: 25px;
-            color: #fff;
-            display: block;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 19px;
-            font-weight: bold;
-            height: 50px;
-            left: -82px;
-            line-height: 2.6;
-            position: absolute;
-            text-align: center;
-            top: -10px;
-            width: 50px;
-
-            &.last {
-                top: -90px;
-            }
-        }
     }
 
-    .form-group .btn {
-        margin-top: 2em;
+    .form-group  {
+        >.btn {
+            margin-top: 2em;
+        }
     }
 
     .file-input {

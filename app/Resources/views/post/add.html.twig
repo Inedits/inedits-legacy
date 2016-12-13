@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8">
                 {{ form_start(form, { attr: { 'class': '' } }) }}
-                    <p class="h3">Vos informations personnelles<span class="buble">1</span></p>
+                    <p class="h3 bubble">Vos informations personnelles<span>1</span></p>
                     {{ form_row(form.firstName, {attr: {'value': app.user.firstName} }) }}
                     {{ form_row(form.lastName, {attr: {'value': app.user.lastName} }) }}
 
-                    <p class="h3">Votre histoire<span class="buble">2</span></p>
+                    <p class="h3 bubble">Votre histoire<span>2</span></p>
                     {{ form_row(form.title) }}
 
                     <div class="row">
@@ -32,7 +32,7 @@
                     <p class="h4"><b><u>OU</u></b></p>
                     <p class="h3">Écrire en ligne avec notre outil :</p>
                     {{ form_row(form.content) }}
-                    <p class="h3">Conditions générales d'utilisation<span class="buble">3</span></p>
+                    <p class="h3 bubble">Conditions générales d'utilisation<span>3</span></p>
 
                     <div class="form-group charte">
                         <p>
@@ -77,9 +77,10 @@
                         </p>
                     </div>
                     {{ form_row(form.gtu) }}
-
-                    <button class="btn btn-success" type="submit">Ajouter</button>
-                    <p class="h3"><span class="buble last">></span></p>
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit">Ajouter</button>
+                    </div>
+                    <p class="h3 bubble"><span class="buble last">></span></p>
                 {{ form_end(form) }}
             </div>
             <div class="col-xs-12 col-sm-4">
