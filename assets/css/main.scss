@@ -56,6 +56,14 @@ section {
   padding-bottom: 1.5em;
 }
 
+.panel {
+  transition: all 1.2s;
+
+  &:hover {
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+}
+
 /*####################################
 # ==Fixs
 ####################################*/
