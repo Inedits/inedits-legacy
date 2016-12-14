@@ -21,19 +21,21 @@ class MailingController extends Controller
      */
     public function AddAction(Request $request)
     {
+        $user = $this->getUser();
         $form = $this->createForm(
             new MailingType([
                 'action' => $this->generateUrl('mailing_add', [], true),
             ]),
             new Mailing()
         );
+        $mailer = $this->get('mailer');
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $mailing = $form->getData();
             $dupe    = $this->getDoctrine()->getRepository('AppBundle:Mailing')->findOneByMail($mailing->getMail());
-            $exist   = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByMail($mailing->getMail());
+            $exist   = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByEmail($mailing->getMail());
 
             if ($dupe) {
                 $this->get('session')->getFlashBag()->add('danger', 'Cette adresse a déjà été sollicitées');
@@ -51,6 +53,26 @@ class MailingController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($mailing);
             $em->flush();
+
+            // Emails
+            $message = $mailer->createMessage()
+                ->setSubject('Inedit | La première plateforme d\'écriture collaborative')
+                ->setFrom('clemence@inedits.fr', 'Inedit | La première plateforme d\'écriture collaborative')
+                ->setTo([$mailing->getMail()])
+                ->setBody(
+                    $this->render(
+                        'email/mailing_add.html.twig',
+                        [
+                            'user' => $user,
+                        ]
+                    ),
+                    'text/html'
+                )
+            ;
+            $mailer->send($message);
+
+            $this->get('session')->getFlashBag()->add('success', 'Merci de votre aide');
+            $referer = $request->headers->get('referer');
         }
 
         $referer = $request->headers->get('referer');
