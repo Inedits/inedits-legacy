@@ -30,7 +30,7 @@ var config = {
     mediaPublicDir: 'web/dist/media',
 };
 var watchPaths = {
-    stylesheets: ['assets/css/*.scss'],
+    stylesheets: ['assets/css/**/*.scss'],
     scripts:     ['assets/js/*.js'],
     medias:      ['assets/media/**/*'],
 };

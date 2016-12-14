@@ -1,0 +1,84 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}Comment ça marche{% endblock %}
+{% block body_class %}page-how-it-works{% endblock %}
+
+{% block player %}
+    {{ include('frontend/_player.html.twig', {
+        message: 'Comment ça marche',
+    }, with_context = false) }}
+{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <div class="container">
+            <p>Les éditions Inédits proposent, en exclusivité, le premier réseau social d’écriture collaborative !</p>
+
+            <p>Nous mettons en ligne un début d’histoire et faisons appel à votre créativité pour écrire la suite !
+            L’histoire chemine dans plusieurs directions : une arborescence se créé…</p>
+
+            <p>Si une histoire vous inspire, proposez une suite ! Tentez votre chance ! Votre texte sera peut-être mis en ligne, et pourquoi pas… publié ?</p>
+        </div>
+    </div>
+    <section class="account">
+        <div class="container">
+            <div class="row">
+                <img src="{{ asset('design/macbook_1.png', 'media') }}" alt="">
+                <div class="col-xs-12 col-sm-6">
+                    <p class="h3 bubble">
+                        <span>1</span>
+                        <a href="{{ path('fos_user_registration_register') }}">Créez votre compte <strong>Inédits</strong></a>
+                    </p>
+                    <p>
+                        L’inscription est gratuite. Le formulaire une fois rempli, vous recevrez un mail de confirmation. Cliquez sur le lien afin de valider votre inscription.
+                    </p>
+                    <p>
+                        Complétez votre profil d’auteur, personnalisez-le, il vous servira ainsi de carte de visite sur le Web !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="story">
+        <div class="container">
+            <img src="{{ asset('design/macbook_2.png', 'media') }}" alt="">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                    <p class="h3 bubble">
+                        <span>2</span>
+                        <a href="{{ path('tree_list') }}">Choisissez l'histoire qui vous inspire !</a>
+                    </p>
+                    <p>
+                        Chaque début d’histoire donne naissance à un arbre. Explorez nos propositions et choisissez celle qui vous convient !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="text">
+        <div class="container">
+            <img src="{{ asset('design/macbook_3.png', 'media') }}" alt="">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <p class="h3 bubble">
+                        <span>3</span>
+                        <a href="{{ path('fos_user_registration_register') }}">Écrivez et postez votre texte !</a>
+                    </p>
+                    <p>
+                        Donnez un nom à votre texte, cela permettra de repérer à quelle branche il se rattache. Vous pouvez soit télécharger votre fichier, soit écrire directement en ligne. Attention à respecter les éléments de la contribution précédente pour que l’histoire reste cohérente.
+                        À son tour, votre suite pourra inspirer un autre auteur !
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="cta">
+            <div class="cta-wrapper">
+                <p class="h3">Envie d'écrire ?</p>
+                <p>Rejoignez la première plateforme d’écriture collaborative lancée par un éditeur</p>
+                <a class="btn btn-blue" href="{{ path('fos_user_registration_register') }}">S'inscrire<i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

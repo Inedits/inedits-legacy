@@ -13,7 +13,11 @@ $container-width: 990px;
 @import "_bootstrap";
 @import "_responsive_text_center";
 
-// Frontend
+
+// Pages
+@import "page/_how";
+
+// Core
 @import "_buttons";
 @import "_cooltree";
 @import "_navbar";
