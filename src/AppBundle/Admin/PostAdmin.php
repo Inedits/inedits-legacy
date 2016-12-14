@@ -57,6 +57,17 @@ class PostAdmin extends AbstractAdmin
         $listMapper->add('user');
         $listMapper->add('status');
         $listMapper->add('createdAt');
+        $listMapper->add('_action', 'actions', array(
+            'actions' => array(
+                'edit'      => [],
+                'see'  => [
+                    'template' => 'post/_see_button.html.twig',
+                ],
+                'download'  => [
+                    'template' => 'post/_download_file.html.twig',
+                ],
+            )
+        ));
     }
 
     public function preUpdate($post)

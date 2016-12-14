@@ -10,9 +10,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class PostController extends Controller
@@ -159,6 +161,21 @@ class PostController extends Controller
     {
 
         return $this->render('post/confirmation.html.twig');
+    }
+
+    /**
+     * @Route("post/{id}/download", name="post_download_file")
+     * @Method({"GET"})
+     */
+    public function downloadAction(Post $post) {
+        $path        = $this->container->getParameter('post_base_path');
+        $path        .= '/'.$post->getFile();
+
+        $response = new BinaryFileResponse($path);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $post->getSlug().'.txt'
+        );
+        return $response;
     }
 
 }

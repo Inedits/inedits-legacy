@@ -18,6 +18,14 @@ parameters:
     cover_directory:    '%kernel.root_dir%/../web/uploads/cover'
     post_directory:     '%kernel.root_dir%/../web/uploads/contribution'
 
+    js_base_path:       'dist/js'
+    css_base_path:      'dist/css'
+    media_base_path:    'dist/media'
+    avatar_base_path:   'uploads/avatar'
+    cover_base_path:    'uploads/cover'
+    default_base_path:  'dist/media/default'
+    post_base_path:     'uploads/contribution'
+
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
