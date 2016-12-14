@@ -35,3 +35,10 @@ services:
             - { name: sonata.admin, manager_type: orm, label: Contribution }
         calls:
             - [ setTemplate, [edit, Admin/Post/edit.html.twig]]
+    admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, ~, '@service_container']
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Utilisateurs }
+        calls:
+            - [ setTemplate, [edit, Admin/User/edit.html.twig]]

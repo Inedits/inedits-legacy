@@ -1,0 +1,20 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script src="{{ asset('dist/js/backend.js') }}"></script>
+{% endblock %}
+
+{% block actions %}
+    {% for item in admin.getActionButtons(action, object|default(null)) %}
+        {% if item.template is defined %}
+            <li>{% include item.template %}</li>
+        {% endif %}
+    {% endfor %}
+    {% if object.id != 0 %}
+            <li><a class="sonata-action-element" href="{{ path('fos_user_profile_show', {slug: object.slug}) }}"><i class="fa fa-eye" aria-hidden="true"></i>
+                    Voir le profil</a></li>
+    {% endif %}
+{% endblock %}
+
